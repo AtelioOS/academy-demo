@@ -380,6 +380,71 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
 .dstat .sd{font-size:11.5px;font-weight:700;display:flex;align-items:center;gap:3px}
 .dstat .sd svg{width:12px;height:12px}
 .mo-note{font-size:11px;color:var(--tx-3);font-weight:600;margin-top:2px}
+
+/* ---------- New Associates: stage stepper ---------- */
+.assoc-row{padding:16px 20px;border:1px solid var(--bd);border-radius:var(--r-lg);background:var(--surface);box-shadow:var(--sh-sm);margin-bottom:12px}
+.assoc-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.assoc-top .who{flex:1}
+.assoc-top .who b{font-size:14.5px;color:var(--ink)}
+.assoc-top .who .up{font-size:12px;color:var(--tx-2);margin-top:1px}
+.stage-track{display:flex;align-items:flex-start}
+.stg{flex:1;text-align:center;position:relative}
+.stg .sd2{width:28px;height:28px;border-radius:50%;margin:0 auto;display:grid;place-items:center;border:2px solid var(--bd-strong);background:var(--surface);color:var(--tx-3);z-index:2;position:relative}
+.stg .sd2 svg{width:15px;height:15px}
+.stg.done .sd2{background:var(--ok);border-color:var(--ok);color:#fff}
+.stg.cur .sd2{background:var(--gold);border-color:var(--gold);color:#fff;box-shadow:0 0 0 4px var(--gold-tint)}
+.stg .sl2{font-size:10.5px;margin-top:6px;color:var(--tx-2);font-weight:600;line-height:1.25}
+.stg.done .sl2,.stg.cur .sl2{color:var(--ink)}
+.stg::after{content:"";position:absolute;top:14px;left:50%;width:100%;height:2px;background:var(--bd);z-index:1}
+.stg:last-child::after{display:none}
+.stg.done::after{background:var(--ok)}
+.checklist{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.ck{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--tx)}
+.ck .cb{width:20px;height:20px;border-radius:6px;border:2px solid var(--bd-strong);flex:none;display:grid;place-items:center}
+.ck.on .cb{background:var(--ok);border-color:var(--ok)}
+.ck.on .cb svg{width:12px;height:12px;color:#fff}
+.ck.on{color:var(--tx-2)}
+
+/* ---------- Wall of Fame ---------- */
+.wof-hero{background:radial-gradient(130% 150% at 50% -30%,#3327140 0%,#15100A 65%),linear-gradient(160deg,#2A2114,#15100A);border:1px solid var(--bd-dark);border-radius:var(--r-xl);padding:30px;text-align:center;color:var(--on-dark);position:relative;overflow:hidden;box-shadow:var(--sh-md)}
+.tier{margin-bottom:22px}
+.tier-h{display:flex;align-items:center;gap:11px;margin-bottom:13px}
+.tier-h .tr{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex:none;color:#fff}
+.tier-h .tr svg{width:20px;height:20px}
+.tier-h h3{font-family:var(--f-display);font-size:20px;color:var(--ink);font-weight:600}
+.tier-h .tsub{font-size:12px;color:var(--tx-2)}
+.honor{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.hcard{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--bd);border-radius:var(--r-md);background:var(--surface);box-shadow:var(--sh-sm)}
+.hcard .pav{width:42px;height:42px;font-size:14px}
+.hcard b{font-size:13.5px;color:var(--ink);display:block}
+.hcard .rk{font-size:11.5px;color:var(--tx-2)}
+.promo{display:flex;align-items:center;gap:12px;padding:12px 15px;border:1px solid var(--bd);border-radius:var(--r-md);background:var(--surface-2);margin-bottom:9px}
+.promo .pi{width:34px;height:34px;border-radius:9px;background:var(--gold-tint);display:grid;place-items:center;flex:none;color:var(--gold-deep)}
+/* rank ladder */
+.rung{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid var(--bd)}
+.rung:last-child{border-bottom:none}
+.rung .rn{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;flex:none;font-weight:700;font-size:11px;color:#fff}
+.rung.here{background:var(--gold-tint);border-radius:var(--r-md);padding:11px 12px;margin:0 -12px}
+
+/* ---------- Vault ---------- */
+.res-row{display:flex;align-items:center;gap:14px;padding:13px 16px;border:1px solid var(--bd);border-radius:var(--r-md);background:var(--surface);margin-bottom:9px;box-shadow:var(--sh-sm);transition:border-color .13s,box-shadow .13s}
+.res-row:hover{border-color:var(--bd-strong);box-shadow:var(--sh-md)}
+.res-row .ri{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;flex:none;color:#fff}
+.res-row .ri svg{width:19px;height:19px}
+.res-row .rt{font-weight:600;font-size:13.5px;color:var(--ink)}
+.res-row .rm{font-size:11.5px;color:var(--tx-2);display:flex;gap:12px;margin-top:2px;flex-wrap:wrap}
+
+/* ---------- Events ---------- */
+.countdown{display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(140deg,var(--ink),var(--ink-3));color:#fff;border-radius:var(--r-xl);padding:26px 30px;box-shadow:var(--sh-md);flex-wrap:wrap}
+.count-num{font-family:var(--f-display);font-size:52px;color:var(--gold-light);line-height:1}
+.ev-row{display:flex;align-items:center;gap:16px;padding:14px 16px;border:1px solid var(--bd);border-radius:var(--r-md);background:var(--surface);margin-bottom:10px;box-shadow:var(--sh-sm)}
+.ev-date{width:58px;text-align:center;flex:none;border-right:1px solid var(--bd);padding-right:14px}
+.ev-date .d{font-family:var(--f-display);font-size:24px;color:var(--ink);line-height:1;font-weight:600}
+.ev-date .mo{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-deep);font-weight:700;margin-top:2px}
+.ev-body{flex:1}
+.ev-body .et{font-weight:600;font-size:14px;color:var(--ink)}
+.ev-body .em{font-size:12px;color:var(--tx-2);display:flex;gap:12px;margin-top:2px;flex-wrap:wrap}
+.ev-body .em svg{width:12px;height:12px}
 </style>
 </head>
 <body>
@@ -425,6 +490,26 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
     </div>
 
     <div class="navgroup">
+      <div class="lbl">Team · LTD</div>
+      <button class="nav-i" data-view="associates">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M18 6v6M15 9h6"/></svg>
+        New Associates <span class="tag live">Live</span>
+      </button>
+      <button class="nav-i" data-view="walloffame">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M9 15h6M8 21h8M12 15v6"/></svg>
+        Wall of Fame <span class="tag live">Live</span>
+      </button>
+      <button class="nav-i" data-view="vault">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.4"/></svg>
+        LTD Vault <span class="tag live">Live</span>
+      </button>
+      <button class="nav-i" data-view="events">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+        Events <span class="tag live">Live</span>
+      </button>
+    </div>
+
+    <div class="navgroup">
       <div class="lbl">Agency Modules</div>
       <button class="nav-i" data-view="policies">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
@@ -442,15 +527,11 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.2c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.6-2.5 1.8-2.5.6-2.5 1.9 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg>
         Commissions <span class="tag soon">Soon</span>
       </button>
-      <button class="nav-i" data-view="recruiting">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M18 7v6M15 10h6"/></svg>
-        Recruiting <span class="tag soon">Soon</span>
-      </button>
     </div>
 
     <div class="side-foot">
       <div>Demo tenant · <b>LTD Agency</b></div>
-      <div class="pw"><span class="dot"></span> Built on <b>Atelio</b> — a Forma platform</div>
+      <div class="pw"><span class="dot"></span> Built on <b>Atelio</b></div>
     </div>
   </aside>
 
@@ -508,6 +589,17 @@ const I = {
   layers:'<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>',
   refresh:'<path d="M4 12a8 8 0 0 1 13.5-5.8L20 8M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16M4 20v-4h4"/>',
   eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>',
+  cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/>',
+  crown:'<path d="M3 7l4 4 5-6 5 6 4-4v11H3z"/><path d="M3 20h18"/>',
+  star:'<path d="M12 3l2.6 5.6L21 9.4l-4.5 4.3L17.7 20 12 16.8 6.3 20l1.2-6.3L3 9.4l6.4-.8L12 3z"/>',
+  trophy:'<path d="M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M9 15h6M8 21h8M12 15v6"/>',
+  gem:'<path d="M6 3h12l3 5-9 13L3 8l3-5z"/><path d="M3 8h18M9 3l-1 5 4 13 4-13-1-5"/>',
+  flame:'<path d="M12 3c3 4 5 6 5 9a5 5 0 0 1-10 0c0-1.5.7-2.8 1.6-3.8C9 10 10 9 9.6 6.5 11 7 12 8.5 12 3z"/>',
+  folder:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/>',
+  script:'<path d="M8 3h9a1 1 0 0 1 1 1v14a3 3 0 0 0 3 3H7a3 3 0 0 1-3-3V6"/><path d="M4 6a2 2 0 0 1 4 0v13M11 8h4M11 12h4"/>',
+  form:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+  pin:'<path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+  ticket:'<path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H6a2 2 0 0 1-2-2 2 2 0 0 0 0-4z"/><path d="M14 6v12"/>',
 };
 const svg=(k,w=18)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:${w}px;height:${w}px">${I[k]||''}</svg>`;
 const initials=n=>n.split(' ').map(x=>x[0]).slice(0,2).join('');
@@ -517,7 +609,7 @@ const av=(n,i)=>`<div class="pav" style="background:${AV[i%AV.length]}">${initia
 /* ---------- COURSE DATA ---------- */
 const COURSE = {
   title:"Agent Foundations",
-  subtitle:"The Summit path from invitation to your first placed policy",
+  subtitle:"The Team LTD path from invitation to your first placed policy",
   modules:[
     { id:"m1", name:"Invitation", tag:"Module 1", color:"#5B6B72",
       blurb:"Fill your calendar the right way — mindset, list, and the invite itself.",
@@ -778,11 +870,11 @@ function contestCard(c){
 }
 
 /* =====================  APP  ===================== */
-const state={view:'dashboard', current:'k5', persona:'maya', profile:'training', quoteIdx:0, quoteTimer:null, pipeStep:-1, playing:false, playTimer:null};
+const state={view:'dashboard', current:'k5', persona:'maya', profile:'training', vaultSeg:'nonlicensed', quoteIdx:0, quoteTimer:null, pipeStep:-1, playing:false, playTimer:null};
 
 function toast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2400);}
 function setNav(){document.querySelectorAll('.nav-i').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));}
-const CRUMB={dashboard:['Dashboard',''],learn:['Academy','· Course Player'],adaptive:['Academy','· Adaptive Paths'],admin:['Academy','· Content Studio'],analytics:['Academy','· Analytics'],policies:['Policies & Products',''],clients:['Clients (CRM)',''],portal:['Client Portal',''],commissions:['Commissions',''],recruiting:['Recruiting','']};
+const CRUMB={dashboard:['Dashboard',''],learn:['Academy','· Course Player'],adaptive:['Academy','· Adaptive Paths'],admin:['Academy','· Content Studio'],analytics:['Academy','· Analytics'],associates:['New Associates','· Team LTD'],walloffame:['Wall of Fame','· Team LTD'],vault:['LTD Vault','· Team LTD'],events:['Events','· Team LTD'],policies:['Policies & Products',''],clients:['Clients (CRM)',''],portal:['Client Portal',''],commissions:['Commissions','']};
 function nav(v){state.view=v;setNav();const c=CRUMB[v]||[v,''];document.getElementById('crumbTop').textContent=c[0];document.getElementById('crumbSub').textContent=c[1];render();document.querySelector('.main').scrollTop=0;}
 
 function render(){
@@ -794,6 +886,10 @@ function render(){
   else if(V==='adaptive')r.innerHTML=vAdaptive();
   else if(V==='admin')r.innerHTML=vAdmin();
   else if(V==='analytics')r.innerHTML=vAnalytics();
+  else if(V==='associates')r.innerHTML=vAssociates();
+  else if(V==='walloffame')r.innerHTML=vWallOfFame();
+  else if(V==='vault')r.innerHTML=vVault();
+  else if(V==='events')r.innerHTML=vEvents();
   else r.innerHTML=vScaffold(V);
   wire();
 }
@@ -808,6 +904,12 @@ function vDashboard(){
     {v:'analytics',ic:'up',c:'#5E7A6E',t:'Analytics',d:'Leaderboard, completion funnel, and where trainees get stuck.',live:true},
     {v:'policies',ic:'doc',c:'#4C6B63',t:'Policies & Products',d:'Product catalog and application pipeline.',live:false},
     {v:'commissions',ic:'money',c:'#B0894A',t:'Commissions',d:'Overrides, splits and agent statements.',live:false},
+  ];
+  const ltiles=[
+    {v:'associates',ic:'rocket',c:'#5E7A6E',t:'New Associates',d:'Onboarding + LLQP licensing, tracked to first policy.',live:true},
+    {v:'walloffame',ic:'trophy',c:'#B0894A',t:'Wall of Fame',d:'Cash-flow rings, promotions & milestones — live.',live:true},
+    {v:'vault',ic:'folder',c:'#6D5B72',t:'LTD Vault',d:'Scripts, forms & recordings, gated by license status.',live:true},
+    {v:'events',ic:'cal',c:'#5B6B72',t:'Events',d:'BPMs, trainings & the countdown to convention.',live:true},
   ];
   const q=QUOTES[state.quoteIdx%QUOTES.length];
   return `<div class="view">
@@ -851,6 +953,15 @@ function vDashboard(){
     <div class="launch">${tiles.map(t=>`
       <button class="app-tile" data-go="${t.v}">
         <span class="st"><span class="badge ${t.live?'b-ok':'b-neutral'}">${t.live?'Live':'Roadmap'}</span></span>
+        <div class="ic" style="background:linear-gradient(135deg,${t.c},${shade(t.c)})">${svg(t.ic,22)}</div>
+        <h3>${t.t}</h3><p>${t.d}</p>
+      </button>`).join('')}
+    </div>
+
+    <div class="section-t" style="margin-top:30px">Team · LTD — everything they have today, made live</div>
+    <div class="launch">${ltiles.map(t=>`
+      <button class="app-tile" data-go="${t.v}">
+        <span class="st"><span class="badge b-ok">Live</span></span>
         <div class="ic" style="background:linear-gradient(135deg,${t.c},${shade(t.c)})">${svg(t.ic,22)}</div>
         <h3>${t.t}</h3><p>${t.d}</p>
       </button>`).join('')}
@@ -1118,6 +1229,187 @@ function vAnalytics(){
   </div>`;
 }
 
+/* =====================  TEAM · LTD MODULES  ===================== */
+
+/* ---------- New Associates ---------- */
+const STAGES=["Contracting","Onboarding","Licensing (LLQP)","Academy training","Producing"];
+const ASSOCIATES=[
+  {n:"Sofia Marín",up:"Priya Nair",start:"Jun 28",stage:4,status:"Certified — first appointments booked",k:"b-ok"},
+  {n:"Riley Tran",up:"Aisha Karim",start:"Jul 8",stage:3,status:"LLQP passed — in Academy Fast-Start",k:"b-info"},
+  {n:"Maya Chen",up:"Priya Nair",start:"Jul 12",stage:2,status:"In LLQP course · 62%",k:"b-warn"},
+  {n:"Jordan Blake",up:"Marcus Webb",start:"Jul 3",stage:2,status:"LLQP exam booked Aug 6",k:"b-warn"},
+  {n:"Andre Okafor",up:"Bita G.",start:"Jul 20",stage:1,status:"Contracting in review",k:"b-neutral"},
+];
+const ONBOARD=[["WFG contracting signed",1],["Background check cleared",1],["E&O / compliance acknowledged",1],["Advisor code issued",1],["LLQP course enrolled",1],["LLQP exam booked",0],["Provincial licensing filed",0],["Academy Fast-Start assigned",0]];
+function vAssociates(){
+  const stats=[{l:"In onboarding",v:"6",ic:"users"},{l:"In licensing",v:"9",ic:"doc"},{l:"Licensed this month",v:"7",ic:"award"},{l:"Avg. time to license",v:"21d",ic:"clock"}];
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Team · LTD · New Associates</div>
+      <h1>Welcome to Team LTD</h1>
+      <p>Every new associate from contracting to first policy — onboarding and LLQP licensing tracked automatically, then handed straight to the Academy. The hands-off pipeline behind your “time to license.”</p>
+    </div></div>
+    <div class="grid g-4 mb">${stats.map(s=>`<div class="stat"><div class="sl">${svg(s.ic,15)} ${s.l}</div><div class="sv">${s.v}</div></div>`).join('')}</div>
+
+    <div class="section-t">In the pipeline</div>
+    ${ASSOCIATES.map((a,i)=>`<div class="assoc-row">
+      <div class="assoc-top">${av(a.n,i)}<div class="who"><b>${a.n}</b><div class="up">Sponsor: ${a.up} · Started ${a.start}</div></div>
+      <span class="badge ${a.k}">${a.status}</span></div>
+      <div class="stage-track">${STAGES.map((s,si)=>{const cls=si<a.stage?'done':(si===a.stage?'cur':'');return `<div class="stg ${cls}"><div class="sd2">${si<a.stage?svg('check',15):(si===a.stage?svg('flame',15):si+1)}</div><div class="sl2">${s}</div></div>`;}).join('')}</div>
+    </div>`).join('')}
+
+    <div class="grid g-2 mt-l" style="align-items:start">
+      <div class="card card-pad">
+        <div class="flex between center mb"><h3 class="serif" style="font-size:19px;color:var(--ink)">Onboarding checklist</h3><span class="chip">${svg('flame',13)} Maya Chen</span></div>
+        <p class="muted" style="font-size:12.5px;margin:-6px 0 14px">Auto-advances as each step is completed — no manual chasing.</p>
+        <div class="checklist">${ONBOARD.map(o=>`<div class="ck ${o[1]?'on':''}"><span class="cb">${o[1]?svg('check',12):''}</span>${o[0]}</div>`).join('')}</div>
+      </div>
+      <div class="card card-pad">
+        <h3 class="serif" style="font-size:19px;color:var(--ink)">Licensing — LLQP</h3>
+        <p class="muted" style="font-size:12.5px;margin:4px 0 16px">Canadian LLQP progress per associate, feeding “time to license.”</p>
+        ${[["Sofia Marín",100,"Licensed"],["Riley Tran",100,"Licensed"],["Maya Chen",62,"In course"],["Jordan Blake",40,"Exam booked"],["Andre Okafor",8,"Not started"]].map(r=>`<div style="margin-bottom:12px"><div class="flex between" style="font-size:12.5px;margin-bottom:4px"><b style="color:var(--ink)">${r[0]}</b><span class="muted">${r[2]}</span></div><div class="bar"><span style="width:${r[1]}%"></span></div></div>`).join('')}
+      </div>
+    </div>
+    ${spineBlock()}
+  </div>`;
+}
+
+/* ---------- Wall of Fame ---------- */
+const RINGS=[
+  {tier:"$700k Ring",ic:"crown",c:"#B0894A",sub:"Top cash flow · CEO Marketing Director",people:[{n:"Priya Nair",rk:"CEO Marketing Director"}]},
+  {tier:"$300k Ring",ic:"trophy",c:"#9F7D55",sub:"Senior Marketing Directors",people:[{n:"Marcus Webb",rk:"Senior Marketing Director"},{n:"Elena Cruz",rk:"Senior Marketing Director"}]},
+  {tier:"$200k Ring",ic:"gem",c:"#6D5B72",sub:"Marketing Directors",people:[{n:"Aisha Karim",rk:"Marketing Director"},{n:"Tomas Reyes",rk:"Marketing Director"}]},
+  {tier:"$100k Ring",ic:"star",c:"#5B6B72",sub:"",people:[{n:"Devon Pierce",rk:"Sr. Associate"},{n:"Bita G.",rk:"Marketing Director"},{n:"Sam O’Neil",rk:"Sr. Associate"}]},
+  {tier:"$50k Watch",ic:"award",c:"#5E7A6E",sub:"First-ring earners",people:[{n:"Riley Tran",rk:"Associate"},{n:"Sofia Marín",rk:"Associate"},{n:"Jordan Blake",rk:"Associate"}]},
+];
+const PROMOS=[{n:"Sofia Marín",to:"Associate → Sr. Associate",when:"This week"},{n:"Devon Pierce",to:"Sr. Associate → Marketing Director",when:"July"},{n:"Rasika N.",to:"Joined as New Associate",when:"July"}];
+const MILES=[{n:"Riley Tran",m:"First policy placed 🎉"},{n:"Maya Chen",m:"Passed the LLQP exam"},{n:"Andre Okafor",m:"Joined Team LTD"}];
+const LADDER=[{r:"New Associate",c:"#8A7A63"},{r:"Associate",c:"#5E7A6E"},{r:"Sr. Associate",c:"#5B6B72"},{r:"Marketing Director",c:"#6D5B72"},{r:"Senior Marketing Director",c:"#9F7D55"},{r:"CEO Marketing Director",c:"#B0894A"}];
+function vWallOfFame(){
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Team · LTD · Recognition</div>
+      <h1>Wall of Fame</h1>
+      <p>Everything your culture page celebrates — cash-flow rings, promotions, and milestones — but <b>live and updating itself</b> from production, so recognition never goes stale.</p>
+    </div></div>
+
+    <div class="wof-hero mb">
+      <div class="he-eyebrow" style="color:var(--gold-light);position:relative">We value you</div>
+      <h2 class="serif" style="font-size:28px;color:#fff;margin-top:6px;position:relative">We are proud of YOU — and we celebrate YOU</h2>
+      <p style="color:var(--on-dark-2);font-size:13.5px;margin-top:8px;position:relative">Living the dream, one protected family at a time.</p>
+    </div>
+
+    <div class="grid" style="grid-template-columns:1fr 320px;gap:22px;align-items:start">
+      <div>
+        ${RINGS.map(t=>`<div class="tier">
+          <div class="tier-h"><div class="tr" style="background:linear-gradient(135deg,${t.c},${shade(t.c)})">${svg(t.ic,20)}</div><div><h3>${t.tier}</h3>${t.sub?`<div class="tsub">${t.sub}</div>`:''}</div></div>
+          <div class="honor">${t.people.map((p,i)=>`<div class="hcard">${av(p.n,i+t.tier.length)}<div><b>${p.n}</b><span class="rk">${p.rk}</span></div></div>`).join('')}</div>
+        </div>`).join('')}
+      </div>
+      <div style="display:grid;gap:18px">
+        <div class="card card-pad">
+          <h3 class="serif" style="font-size:18px;color:var(--ink)">Recent promotions</h3>
+          <p class="muted" style="font-size:12px;margin:3px 0 12px">Rank-ups this month</p>
+          ${PROMOS.map(p=>`<div class="promo"><div class="pi">${svg('up',17)}</div><div style="flex:1"><b style="font-size:13.5px;color:var(--ink)">${p.n}</b><div style="font-size:12px;color:var(--tx-2)">${p.to}</div></div><span class="mute3" style="font-size:11px">${p.when}</span></div>`).join('')}
+        </div>
+        <div class="card card-pad">
+          <h3 class="serif" style="font-size:18px;color:var(--ink)">Milestones</h3>
+          <p class="muted" style="font-size:12px;margin:3px 0 12px">Auto-detected from activity</p>
+          ${MILES.map((m,i)=>`<div class="flex center gap-s" style="padding:8px 0;border-bottom:1px solid var(--bd)">${av(m.n,i)}<div><b style="font-size:13px;color:var(--ink)">${m.n}</b><div style="font-size:12px;color:var(--tx-2)">${m.m}</div></div></div>`).join('')}
+        </div>
+        <div class="card card-pad">
+          <h3 class="serif" style="font-size:18px;color:var(--ink)">Rank ladder</h3>
+          <p class="muted" style="font-size:12px;margin:3px 0 10px">The WFG path — the team spans it all.</p>
+          ${LADDER.map((r,i)=>`<div class="rung ${r.r==='Marketing Director'?'here':''}"><div class="rn" style="background:${r.c}">${i+1}</div><div style="flex:1;font-size:13px;font-weight:600;color:var(--ink)">${r.r}</div>${r.r==='Marketing Director'?'<span class="badge b-warn">Most agents here</span>':''}</div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------- LTD Vault ---------- */
+const VAULT={
+  nonlicensed:[
+    {t:"Team LTD — New Associate Playbook",type:"Guide",ic:"doc",c:"#5B6B72",u:"Updated Jul 2026",who:"Start here"},
+    {t:"The Invitation Script (warm market)",type:"Script",ic:"script",c:"#5E7A6E",u:"Updated Jun 2026",who:"Prospecting"},
+    {t:"Memory Jogger Worksheet",type:"Form",ic:"form",c:"#6D5B72",u:"Updated May 2026",who:"List building"},
+    {t:"Edifying Your Upline — the 45-second story",type:"Recording",ic:"video",c:"#A5625A",u:"Published Jul 2026",who:"Edification",pub:true},
+    {t:"BPM Overview Deck",type:"Presentation",ic:"layers",c:"#B0894A",u:"Updated Jun 2026",who:"Present the business"},
+  ],
+  licensed:[
+    {t:"WFG Product Guide — IUL & Term",type:"Guide",ic:"doc",c:"#5B6B72",u:"Updated Jul 2026",who:"Products"},
+    {t:"Needs Analysis (DIME) Worksheet",type:"Form",ic:"form",c:"#6D5B72",u:"Updated Jul 2026",who:"Fact-find"},
+    {t:"Closing & Objection Handling",type:"Recording",ic:"video",c:"#A5625A",u:"Published Jul 2026",who:"Advanced",pub:true},
+    {t:"Compliance Guardrails — Suitability",type:"Guide",ic:"lock",c:"#5E7A6E",u:"Updated Jan 2026",who:"Required reading"},
+    {t:"Application Checklist & e-App links",type:"Form",ic:"form",c:"#B0894A",u:"Updated Jul 2026",who:"Submit business"},
+  ],
+};
+function vVault(){
+  const seg=state.vaultSeg, items=VAULT[seg];
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Team · LTD · Resource Vault</div>
+      <h1>LTD Vault</h1>
+      <p>Every script, form, deck, and recording in one place — and it unlocks by license status, so agents only ever see what applies to them.</p>
+    </div></div>
+    <div class="flex between center wrap gap mb">
+      <div class="seg-toggle">
+        <button class="seg-btn ${seg==='nonlicensed'?'on':''}" data-vault="nonlicensed">${svg('users',15)} Non-licensed</button>
+        <button class="seg-btn ${seg==='licensed'?'on':''}" data-vault="licensed">${svg('award',15)} Licensed</button>
+      </div>
+      <div class="search" style="max-width:280px;margin:0">${svg('eye',15)} Search the vault…</div>
+    </div>
+    <div class="demo-note">${svg('info',16)}<div>Showing <b>${seg==='licensed'?'Licensed agent':'Non-licensed agent'}</b> resources (${items.length}). Anything published from <b>Content Studio</b> lands here automatically.</div></div>
+    ${items.map(r=>`<div class="res-row">
+      <div class="ri" style="background:linear-gradient(135deg,${r.c},${shade(r.c)})">${svg(r.ic,19)}</div>
+      <div style="flex:1"><div class="rt">${r.t}</div><div class="rm"><span class="badge b-neutral">${r.type}</span><span>${r.who}</span><span class="mute3">${r.u}</span>${r.pub?`<span class="badge b-warn">${svg('wand',11)} From Content Studio</span>`:''}</div></div>
+      <button class="btn btn-ghost btn-sm">${svg('eye',14)} Open</button>
+    </div>`).join('')}
+  </div>`;
+}
+
+/* ---------- Events ---------- */
+const CONVENTION={days:62,where:"Las Vegas · October 2026"};
+const EVENTS=[
+  {d:"31",mo:"Jul",t:"Weekly BPM — Business Presentation",type:"In-person + Zoom",who:"All team",rsvp:48,ic:"users"},
+  {d:"02",mo:"Aug",t:"Fast-Start Training",type:"Zoom",who:"New Associates",rsvp:19,ic:"flame"},
+  {d:"09",mo:"Aug",t:"Super Saturday — Licensing Push",type:"In-person",who:"In licensing",rsvp:12,ic:"rocket"},
+  {d:"14",mo:"Aug",t:"Product Masterclass — IUL Deep-Dive",type:"Zoom",who:"Licensed agents",rsvp:27,ic:"doc"},
+  {d:"21",mo:"Aug",t:"Leadership Call (SMDs)",type:"Zoom",who:"Senior agents",rsvp:9,ic:"crown"},
+];
+const MILESAHEAD=[{n:"Devon Pierce",m:"1 policy from the $200k Ring",pct:88},{n:"Aisha Karim",m:"On track for SMD promotion this quarter",pct:72},{n:"Riley Tran",m:"2 concepts from Academy certified",pct:80}];
+function vEvents(){
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Team · LTD · Events</div>
+      <h1>Events</h1>
+      <p>BPMs, trainings, and the road to convention — with the milestones your team is chasing, all in one place.</p>
+    </div></div>
+    <div class="countdown mb">
+      <div><div class="eyebrow" style="color:var(--gold-light)">Countdown to Convention</div>
+        <div style="font-family:var(--f-display);font-size:22px;color:#fff;margin-top:4px">Team LTD Convention</div>
+        <div style="color:var(--on-dark-2);font-size:13px;margin-top:2px">${CONVENTION.where}</div></div>
+      <div style="text-align:center"><div class="count-num">${CONVENTION.days}</div><div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-2);font-weight:700">days to go</div></div>
+    </div>
+    <div class="grid" style="grid-template-columns:1fr 330px;gap:22px;align-items:start">
+      <div>
+        <div class="section-t">Upcoming</div>
+        ${EVENTS.map(e=>`<div class="ev-row">
+          <div class="ev-date"><div class="d">${e.d}</div><div class="mo">${e.mo}</div></div>
+          <div class="ev-body"><div class="et">${e.t}</div><div class="em"><span>${svg('pin',12)} ${e.type}</span><span>${svg('users',12)} ${e.who}</span><span class="mute3">${e.rsvp} going</span></div></div>
+          <button class="btn btn-ghost btn-sm">RSVP</button>
+        </div>`).join('')}
+      </div>
+      <div class="card card-pad">
+        <div class="eyebrow">${svg('flame',12)} Milestones ahead</div>
+        <h3 class="serif" style="font-size:18px;color:var(--ink);margin:4px 0 4px">So close — give them a nudge</h3>
+        <p class="muted" style="font-size:12px;margin-bottom:14px">Agents about to hit a ring or rank.</p>
+        ${MILESAHEAD.map((m,i)=>`<div style="margin-bottom:14px"><div class="flex center gap-s" style="margin-bottom:6px">${av(m.n,i)}<div style="flex:1"><b style="font-size:13px;color:var(--ink)">${m.n}</b><div style="font-size:11.5px;color:var(--tx-2)">${m.m}</div></div></div><div class="bar thin"><span style="width:${m.pct}%"></span></div></div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+
 /* ---------- SCAFFOLD MODULES ---------- */
 function vScaffold(v){
   const m=MODULES[v]; if(!m)return `<div class="view"><div class="scaffold"><h2>Coming soon</h2></div></div>`;
@@ -1142,6 +1434,7 @@ function wire(){
   if(state.view==='learn')wireLearn();
   if(state.view==='adaptive')document.querySelectorAll('[data-persona]').forEach(b=>b.onclick=()=>{state.persona=b.dataset.persona;render();});
   if(state.view==='admin')wireAdmin();
+  if(state.view==='vault')document.querySelectorAll('[data-vault]').forEach(b=>b.onclick=()=>{state.vaultSeg=b.dataset.vault;render();});
 }
 
 function wireDash(){
