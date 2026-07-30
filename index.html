@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Summit Financial — Agency OS · Academy Demo</title>
+<meta name="description" content="Adaptive agent-training platform for a life insurance agency — a module on the Agency OS. Built by Forma on the Atelio backbone." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* =============================================================
+   Agency OS — Academy Demo · Design Tokens (neutral / placeholder)
+   Premium fintech-trust palette: Ink navy · Signal gold · Emerald
+   Built by Forma · demo backbone: Atelio
+   ============================================================= */
+:root{
+  /* Core — Ink (deep navy) */
+  --ink:#0F1E33; --ink-2:#16273F; --ink-3:#1E3350; --ink-soft:#25405F;
+  /* Accent — Signal gold (aspiration / promotion) */
+  --gold:#D69B3F; --gold-light:#EBBE6C; --gold-deep:#B27E28; --gold-tint:#FBF1DD;
+  /* Secondary — Sky (adaptive / data) */
+  --sky:#3E7CB1; --sky-light:#6BA3D0; --sky-tint:#E6F0F8;
+  /* Surfaces */
+  --page:#F4F6FA; --surface:#FFFFFF; --surface-2:#FAFBFD; --sidebar:#0F1E33;
+  --sidebar-2:#0B1727; --hover:#F0F3F8; --tint:#EEF2F8;
+  /* Text */
+  --tx:#14243B; --tx-2:#5A6B80; --tx-3:#8A98AB; --on-dark:#EAF0F8; --on-dark-2:#93A6C0;
+  /* Borders */
+  --bd:#E4E9F1; --bd-strong:#D2DAE6; --bd-dark:#22374F;
+  /* Semantic */
+  --ok:#2E9E6B; --ok-soft:#E1F2EA; --warn:#D69B3F; --warn-soft:#FBF1DD;
+  --bad:#D25656; --bad-soft:#F8E4E4; --info:#3E7CB1; --info-soft:#E6F0F8;
+  /* Radii */
+  --r-xs:.3rem; --r-sm:.45rem; --r-md:.6rem; --r-lg:.85rem; --r-xl:1.15rem; --r-pill:999px;
+  /* Shadow */
+  --sh-sm:0 1px 2px rgba(15,30,51,.06),0 1px 3px rgba(15,30,51,.05);
+  --sh-md:0 4px 14px rgba(15,30,51,.08),0 2px 6px rgba(15,30,51,.05);
+  --sh-lg:0 18px 44px rgba(15,30,51,.16),0 6px 16px rgba(15,30,51,.08);
+  /* Type */
+  --f-display:'Fraunces',Georgia,serif;
+  --f-sans:'Plus Jakarta Sans',-apple-system,'Segoe UI',sans-serif;
+  --f-mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:var(--f-sans); background:var(--page); color:var(--tx);
+  -webkit-font-smoothing:antialiased; font-size:15px; line-height:1.5;
+}
+::selection{background:var(--gold-tint)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
+.serif{font-family:var(--f-display)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)}
+.muted{color:var(--tx-2)} .mute3{color:var(--tx-3)}
+.mono{font-family:var(--f-mono)}
+
+/* ---------- App layout ---------- */
+.app{display:grid;grid-template-columns:248px 1fr;height:100vh;overflow:hidden}
+/* ---------- Sidebar ---------- */
+.side{background:linear-gradient(180deg,var(--sidebar) 0%,var(--sidebar-2) 100%);color:var(--on-dark);display:flex;flex-direction:column;overflow-y:auto}
+.side::-webkit-scrollbar{width:0}
+.brand{padding:20px 20px 16px;display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--bd-dark)}
+.brand .logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-deep) 100%);display:grid;place-items:center;flex:none;box-shadow:0 3px 10px rgba(214,155,63,.35)}
+.brand .logo svg{width:22px;height:22px}
+.brand .bt{font-family:var(--f-display);font-weight:600;font-size:16px;letter-spacing:.01em;color:#fff;line-height:1.05}
+.brand .bs{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-2);font-weight:600;margin-top:2px}
+.navgroup{padding:14px 12px 4px}
+.navgroup .lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-2);font-weight:700;padding:0 10px 8px}
+.nav-i{display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:var(--r-md);color:var(--on-dark-2);font-weight:500;font-size:13.5px;position:relative;transition:background .15s,color .15s;margin-bottom:2px}
+.nav-i svg{width:18px;height:18px;flex:none;opacity:.9}
+.nav-i:hover{background:rgba(255,255,255,.05);color:var(--on-dark)}
+.nav-i.active{background:rgba(214,155,63,.14);color:#fff}
+.nav-i.active::before{content:"";position:absolute;left:-12px;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:var(--gold)}
+.nav-i.active svg{opacity:1;color:var(--gold-light)}
+.nav-i .tag{margin-left:auto;font-size:9.5px;font-weight:700;letter-spacing:.06em;padding:2px 6px;border-radius:var(--r-pill);text-transform:uppercase}
+.tag.live{background:var(--ok);color:#fff}
+.tag.soon{background:rgba(255,255,255,.09);color:var(--on-dark-2)}
+.side-foot{margin-top:auto;padding:14px 18px 18px;border-top:1px solid var(--bd-dark);font-size:11px;color:var(--on-dark-2)}
+.side-foot b{color:var(--on-dark);font-weight:600}
+.side-foot .pw{display:flex;align-items:center;gap:7px;margin-top:3px}
+.side-foot .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+/* ---------- Main ---------- */
+.main{overflow-y:auto;position:relative}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.86);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--bd);padding:13px 30px;display:flex;align-items:center;gap:16px}
+.topbar .crumb{font-size:13px;color:var(--tx-2)}
+.topbar .crumb b{color:var(--tx);font-weight:600}
+.topbar .search{margin-left:8px;flex:1;max-width:340px;display:flex;align-items:center;gap:8px;background:var(--tint);border:1px solid transparent;border-radius:var(--r-pill);padding:7px 14px;color:var(--tx-3);font-size:13px}
+.topbar .search svg{width:15px;height:15px}
+.topbar .actions{margin-left:auto;display:flex;align-items:center;gap:12px}
+.icon-btn{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--tx-2);background:var(--surface);border:1px solid var(--bd)}
+.icon-btn:hover{background:var(--hover);color:var(--tx)}
+.icon-btn svg{width:17px;height:17px}
+.avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--ink-3),var(--ink));color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.view{padding:30px 34px 60px;max-width:1240px;margin:0 auto;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- Page header ---------- */
+.ph{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:24px;flex-wrap:wrap}
+.ph h1{font-family:var(--f-display);font-weight:600;font-size:30px;letter-spacing:-.02em;color:var(--ink)}
+.ph p{color:var(--tx-2);margin-top:5px;font-size:14px;max-width:560px}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;padding:9px 16px;border-radius:var(--r-md);transition:all .15s;white-space:nowrap}
+.btn svg{width:16px;height:16px}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:var(--sh-sm)}
+.btn-primary:hover{background:var(--ink-2);box-shadow:var(--sh-md)}
+.btn-gold{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-deep) 100%);color:#fff;box-shadow:0 3px 10px rgba(214,155,63,.3)}
+.btn-gold:hover{filter:brightness(1.05);box-shadow:0 6px 16px rgba(214,155,63,.4)}
+.btn-ghost{background:var(--surface);color:var(--tx);border:1px solid var(--bd)}
+.btn-ghost:hover{background:var(--hover);border-color:var(--bd-strong)}
+.btn-sm{padding:6px 12px;font-size:12.5px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* ---------- Cards ---------- */
+.card{background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-lg);box-shadow:var(--sh-sm)}
+.card-pad{padding:22px}
+.grid{display:grid;gap:18px}
+.g-4{grid-template-columns:repeat(4,1fr)} .g-3{grid-template-columns:repeat(3,1fr)} .g-2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1080px){.g-4{grid-template-columns:repeat(2,1fr)}.g-3{grid-template-columns:repeat(2,1fr)}}
+
+/* stat tile */
+.stat{background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-lg);padding:18px 20px;box-shadow:var(--sh-sm);position:relative;overflow:hidden}
+.stat .sl{font-size:12.5px;color:var(--tx-2);font-weight:600;display:flex;align-items:center;gap:7px}
+.stat .sl svg{width:15px;height:15px;color:var(--gold-deep)}
+.stat .sv{font-family:var(--f-display);font-weight:600;font-size:30px;color:var(--ink);margin-top:8px;letter-spacing:-.02em}
+.stat .sd{font-size:12px;margin-top:5px;font-weight:600}
+.up{color:var(--ok)} .down{color:var(--bad)}
+.stat .spark{position:absolute;right:14px;bottom:12px;opacity:.5}
+
+/* pills / badges */
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:var(--r-pill);letter-spacing:.02em}
+.b-ok{background:var(--ok-soft);color:#1d7a4e} .b-warn{background:var(--warn-soft);color:var(--gold-deep)}
+.b-info{background:var(--info-soft);color:#2c5f8a} .b-bad{background:var(--bad-soft);color:#b23e3e}
+.b-neutral{background:var(--tint);color:var(--tx-2)}
+.b-lvl{padding:3px 9px}
+.lvl-1{background:var(--sky-tint);color:#2c5f8a}
+.lvl-2{background:var(--warn-soft);color:var(--gold-deep)}
+.lvl-3{background:#efe7f8;color:#6b45a8}
+
+/* progress */
+.bar{height:8px;background:var(--tint);border-radius:var(--r-pill);overflow:hidden}
+.bar>span{display:block;height:100%;border-radius:var(--r-pill);background:linear-gradient(90deg,var(--gold),var(--gold-deep))}
+.bar.thin{height:5px}
+.ring{--p:0;width:52px;height:52px;border-radius:50%;background:conic-gradient(var(--gold) calc(var(--p)*1%),var(--tint) 0);display:grid;place-items:center;flex:none}
+.ring::before{content:"";position:absolute;width:38px;height:38px;border-radius:50%;background:var(--surface)}
+.ring span{position:relative;font-size:12px;font-weight:700;color:var(--ink)}
+
+/* ---------- Module rail (dashboard launcher) ---------- */
+.launch{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:980px){.launch{grid-template-columns:repeat(2,1fr)}}
+.app-tile{background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-lg);padding:20px;box-shadow:var(--sh-sm);transition:transform .16s,box-shadow .16s,border-color .16s;position:relative;text-align:left}
+.app-tile:hover{transform:translateY(-3px);box-shadow:var(--sh-md);border-color:var(--bd-strong)}
+.app-tile .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px}
+.app-tile .ic svg{width:22px;height:22px;color:#fff}
+.app-tile h3{font-size:15.5px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
+.app-tile p{font-size:12.5px;color:var(--tx-2);margin-top:5px;line-height:1.45}
+.app-tile .st{position:absolute;top:16px;right:16px}
+
+/* ---------- Academy: course layout ---------- */
+.player-wrap{display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start}
+@media(max-width:1000px){.player-wrap{grid-template-columns:1fr}}
+.video{background:var(--ink);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-md);position:relative;aspect-ratio:16/9}
+.video .poster{position:absolute;inset:0;background:radial-gradient(120% 120% at 30% 20%,#1E3350 0%,#0B1727 70%);display:grid;place-items:center}
+.video .concept-lbl{position:absolute;top:16px;left:18px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-light);background:rgba(0,0,0,.35);padding:5px 11px;border-radius:var(--r-pill);backdrop-filter:blur(4px)}
+.video .ttl{position:absolute;left:22px;bottom:56px;right:22px;color:#fff;font-family:var(--f-display);font-size:24px;font-weight:600;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.play-btn{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);border:1.5px solid rgba(255,255,255,.35);display:grid;place-items:center;transition:transform .16s,background .16s}
+.play-btn:hover{transform:scale(1.06);background:rgba(255,255,255,.24)}
+.play-btn svg{width:30px;height:30px;color:#fff;margin-left:4px}
+.vbar{position:absolute;left:0;right:0;bottom:0;padding:0 0 0}
+.vbar .segments{display:flex;gap:3px;padding:0 14px 10px}
+.seg{flex:1;height:5px;border-radius:var(--r-pill);background:rgba(255,255,255,.22);overflow:hidden;cursor:pointer;position:relative}
+.seg>span{display:block;height:100%;width:0;background:var(--gold-light);border-radius:var(--r-pill)}
+.seg.done>span{width:100%}
+.seg .qz{position:absolute;right:-2px;top:-4px;width:9px;height:9px}
+.vctrl{display:flex;align-items:center;gap:14px;padding:2px 16px 12px;color:#fff}
+.vctrl svg{width:18px;height:18px}
+.vctrl .tc{font-size:12px;color:rgba(255,255,255,.8);font-variant-numeric:tabular-nums}
+.vctrl .sp{margin-left:auto;font-size:11.5px;background:rgba(255,255,255,.14);padding:3px 9px;border-radius:var(--r-sm)}
+
+/* chapters sidebar */
+.chapters{background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-lg);box-shadow:var(--sh-sm);overflow:hidden}
+.ch-head{padding:16px 18px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between}
+.ch-head .t{font-weight:700;font-size:14px;color:var(--ink)}
+.ch-list{max-height:520px;overflow-y:auto}
+.ch{border-bottom:1px solid var(--bd)}
+.ch-t{padding:12px 18px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:13px;color:var(--ink);background:var(--surface-2)}
+.ch-t .cx{width:22px;height:22px;border-radius:6px;background:var(--tint);display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--tx-2);flex:none}
+.concept{padding:9px 18px 9px 26px;display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--tx-2);cursor:pointer;transition:background .13s;border-left:3px solid transparent}
+.concept:hover{background:var(--hover)}
+.concept.active{background:var(--gold-tint);border-left-color:var(--gold);color:var(--ink);font-weight:600}
+.concept .ci{width:18px;height:18px;flex:none;color:var(--tx-3)}
+.concept.done .ci{color:var(--ok)}
+.concept.locked{opacity:.5;cursor:default}
+.concept .dur{margin-left:auto;font-size:11px;color:var(--tx-3);font-variant-numeric:tabular-nums}
+.concept .qflag{font-size:9.5px;font-weight:700;color:var(--gold-deep);background:var(--gold-tint);padding:1px 5px;border-radius:4px}
+
+/* quiz */
+.quiz{background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-lg);box-shadow:var(--sh-md);overflow:hidden;margin-top:22px}
+.quiz-head{background:linear-gradient(120deg,var(--ink) 0%,var(--ink-3) 100%);color:#fff;padding:18px 24px;display:flex;align-items:center;gap:12px}
+.quiz-head .qic{width:36px;height:36px;border-radius:9px;background:rgba(214,155,63,.2);display:grid;place-items:center}
+.quiz-head .qic svg{width:19px;height:19px;color:var(--gold-light)}
+.quiz-head h3{font-size:16px;font-weight:700}
+.quiz-head p{font-size:12px;color:var(--on-dark-2);margin-top:2px}
+.quiz-body{padding:24px}
+.q{margin-bottom:22px}
+.q .qq{font-weight:600;font-size:15px;color:var(--ink);margin-bottom:12px;display:flex;gap:9px}
+.q .qn{color:var(--gold-deep);font-weight:800}
+.opt{display:flex;align-items:center;gap:11px;padding:12px 15px;border:1.5px solid var(--bd);border-radius:var(--r-md);margin-bottom:9px;cursor:pointer;transition:all .13s;font-size:13.5px}
+.opt:hover{border-color:var(--gold-light);background:var(--surface-2)}
+.opt .mk{width:20px;height:20px;border-radius:50%;border:2px solid var(--bd-strong);flex:none;display:grid;place-items:center;transition:all .13s}
+.opt .mk svg{width:12px;height:12px;color:#fff;opacity:0}
+.opt.sel{border-color:var(--gold);background:var(--gold-tint)}
+.opt.sel .mk{border-color:var(--gold);background:var(--gold)}
+.opt.sel .mk svg{opacity:1}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
+.opt.correct .mk{border-color:var(--ok);background:var(--ok)}
+.opt.correct .mk svg{opacity:1}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .mk{border-color:var(--bad);background:var(--bad)}
+.opt.locked{pointer-events:none}
+.explain{font-size:13px;color:var(--tx-2);background:var(--sky-tint);border-left:3px solid var(--sky);padding:11px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin-top:6px;display:none}
+.explain.show{display:block;animation:fade .3s}
+.explain b{color:var(--ink)}
+.quiz-foot{border-top:1px solid var(--bd);padding:16px 24px;display:flex;align-items:center;gap:14px;background:var(--surface-2)}
+
+/* result banner */
+.result{display:none;padding:22px 24px;border-radius:var(--r-md);margin-top:4px;align-items:center;gap:16px}
+.result.show{display:flex;animation:fade .35s}
+.result.pass{background:var(--ok-soft)} .result.retry{background:var(--warn-soft)}
+.result .rc{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;flex:none}
+.result.pass .rc{background:var(--ok)} .result.retry .rc{background:var(--gold)}
+.result .rc svg{width:24px;height:24px;color:#fff}
+.result h4{font-size:16px;color:var(--ink);font-weight:700}
+.result p{font-size:13px;color:var(--tx-2);margin-top:2px}
+
+/* ---------- Adaptive ---------- */
+.adapt-hero{color:#fff;border-radius:var(--r-xl);padding:30px 34px;position:relative;overflow:hidden;background:linear-gradient(120deg,var(--ink),var(--ink-3))}
+.adapt-hero::after{content:"";position:absolute;right:-40px;top:-40px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(214,155,63,.25),transparent 70%)}
+.persona-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.ptab{display:flex;align-items:center;gap:11px;padding:12px 16px;border:1.5px solid var(--bd);border-radius:var(--r-lg);background:var(--surface);transition:all .15s;text-align:left}
+.ptab:hover{border-color:var(--bd-strong);box-shadow:var(--sh-sm)}
+.ptab.active{border-color:var(--gold);background:var(--gold-tint);box-shadow:var(--sh-sm)}
+.ptab .pa{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:14px;flex:none}
+.ptab .pn{font-weight:700;font-size:14px;color:var(--ink)}
+.ptab .pm{font-size:11.5px;color:var(--tx-2)}
+.path{position:relative;padding-left:20px}
+.path::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--bd)}
+.pnode{position:relative;padding:14px 0 14px 20px;display:flex;gap:14px;align-items:flex-start}
+.pnode::before{content:"";position:absolute;left:-17px;top:20px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2.5px solid var(--bd-strong)}
+.pnode.on::before{border-color:var(--gold);background:var(--gold)}
+.pnode.skip::before{border-color:var(--bd);background:var(--bd)}
+.pnode .pcard{flex:1;background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-md);padding:14px 16px;box-shadow:var(--sh-sm)}
+.pnode.skip .pcard{opacity:.55;background:var(--surface-2);box-shadow:none}
+.pnode.on .pcard{border-color:var(--gold-light)}
+.pnode .pt{font-weight:700;font-size:14px;color:var(--ink);display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.pnode .pd{font-size:12.5px;color:var(--tx-2);margin-top:4px}
+.rationale{background:var(--sky-tint);border:1px solid #cfe1f0;border-radius:var(--r-md);padding:14px 16px;font-size:13px;color:#2c5f8a;display:flex;gap:11px}
+.rationale svg{width:18px;height:18px;flex:none;margin-top:1px}
+
+/* ---------- Admin auto-chunk ---------- */
+.upzone{border:2px dashed var(--bd-strong);border-radius:var(--r-lg);padding:40px;text-align:center;background:var(--surface-2);transition:all .2s}
+.upzone .uic{width:60px;height:60px;border-radius:16px;background:var(--gold-tint);display:grid;place-items:center;margin:0 auto 16px}
+.upzone .uic svg{width:28px;height:28px;color:var(--gold-deep)}
+.pipe{display:flex;align-items:center;gap:0;margin:26px 0}
+.pstep{flex:1;text-align:center;position:relative}
+.pstep .pdot{width:40px;height:40px;border-radius:50%;background:var(--surface);border:2px solid var(--bd);display:grid;place-items:center;margin:0 auto 8px;transition:all .3s;color:var(--tx-3);position:relative;z-index:2}
+.pstep .pdot svg{width:18px;height:18px}
+.pstep.done .pdot{border-color:var(--ok);background:var(--ok);color:#fff}
+.pstep.active .pdot{border-color:var(--gold);background:var(--gold);color:#fff;box-shadow:0 0 0 5px var(--gold-tint)}
+.pstep .plbl{font-size:11.5px;font-weight:600;color:var(--tx-2)}
+.pstep.active .plbl,.pstep.done .plbl{color:var(--ink)}
+.pstep::after{content:"";position:absolute;top:20px;left:50%;width:100%;height:2px;background:var(--bd);z-index:1}
+.pstep:last-child::after{display:none}
+.pstep.done::after{background:var(--ok)}
+.chunk-row{display:flex;align-items:center;gap:14px;padding:13px 16px;border:1px solid var(--bd);border-radius:var(--r-md);margin-bottom:9px;background:var(--surface);animation:slideIn .4s ease both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+.chunk-row .cnum{width:26px;height:26px;border-radius:7px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none}
+.chunk-row .cbody{flex:1}
+.chunk-row .ct{font-weight:600;font-size:13.5px;color:var(--ink)}
+.chunk-row .cm{font-size:11.5px;color:var(--tx-2);margin-top:2px;display:flex;gap:12px}
+.chunk-row .cm span{display:flex;align-items:center;gap:4px}
+.chunk-row .cm svg{width:12px;height:12px}
+
+/* ---------- Analytics ---------- */
+.funnel-row{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.funnel-row .fl{width:180px;font-size:13px;font-weight:600;color:var(--ink);flex:none}
+.funnel-row .ft{flex:1;height:34px;border-radius:var(--r-sm);background:var(--tint);overflow:hidden;position:relative}
+.funnel-row .ft>span{display:block;height:100%;border-radius:var(--r-sm);background:linear-gradient(90deg,var(--sky-light),var(--sky));display:flex;align-items:center;padding-left:12px;color:#fff;font-size:12px;font-weight:700}
+.funnel-row .fn{width:110px;text-align:right;font-size:12.5px;color:var(--tx-2);flex:none}
+.lead-table{width:100%;border-collapse:collapse}
+.lead-table th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx-3);font-weight:700;padding:10px 14px;border-bottom:1px solid var(--bd)}
+.lead-table td{padding:12px 14px;border-bottom:1px solid var(--bd);font-size:13.5px}
+.lead-table tr:last-child td{border-bottom:none}
+.lead-table tr:hover td{background:var(--surface-2)}
+.rank{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:12px}
+.rank-1{background:var(--gold);color:#fff} .rank-2{background:#C6CCD6;color:#fff} .rank-3{background:#D9A57A;color:#fff}
+.rank-x{background:var(--tint);color:var(--tx-2)}
+.person{display:flex;align-items:center;gap:10px}
+.pav{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:12px;flex:none}
+.stuck{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--bd)}
+.stuck:last-child{border-bottom:none}
+.stuck .sw{flex:1}
+.stuck .sbar{height:7px;border-radius:var(--r-pill);background:var(--tint);margin-top:6px;overflow:hidden}
+.stuck .sbar>span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--bad))}
+
+/* spine diagram */
+.spine{background:linear-gradient(135deg,#0F1E33,#1E3350);border-radius:var(--r-xl);padding:32px;color:#fff;position:relative;overflow:hidden}
+.spine-flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-top:22px}
+.snode{flex:1;min-width:140px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-md);padding:16px;position:relative}
+.snode .si{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;margin-bottom:10px}
+.snode .si svg{width:18px;height:18px;color:#fff}
+.snode h4{font-size:13.5px;font-weight:700}
+.snode p{font-size:11.5px;color:var(--on-dark-2);margin-top:4px;line-height:1.4}
+.sarrow{display:grid;place-items:center;padding:0 4px;color:var(--gold-light)}
+.sarrow svg{width:20px;height:20px}
+@media(max-width:900px){.sarrow{transform:rotate(90deg);padding:6px 0}.snode{min-width:100%}}
+
+/* scaffold / coming-soon */
+.scaffold{text-align:center;padding:50px 30px;max-width:620px;margin:20px auto}
+.scaffold .sic{width:76px;height:76px;border-radius:20px;display:grid;place-items:center;margin:0 auto 20px;box-shadow:var(--sh-md)}
+.scaffold .sic svg{width:36px;height:36px;color:#fff}
+.scaffold h2{font-family:var(--f-display);font-size:26px;color:var(--ink);font-weight:600}
+.scaffold p{color:var(--tx-2);margin:10px auto 22px;font-size:14px}
+.feat-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;margin-top:8px}
+.feat{display:flex;gap:11px;align-items:flex-start;background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-md);padding:14px 16px}
+.feat svg{width:17px;height:17px;color:var(--ok);flex:none;margin-top:2px}
+.feat b{font-size:13.5px;color:var(--ink);font-weight:600}
+.feat p{font-size:12px;color:var(--tx-2);margin:3px 0 0}
+
+.section-t{font-family:var(--f-display);font-size:20px;font-weight:600;color:var(--ink);margin:6px 0 16px;letter-spacing:-.01em}
+.flex{display:flex} .between{justify-content:space-between} .center{align-items:center} .wrap{flex-wrap:wrap}
+.gap-s{gap:8px}.gap{gap:14px}.gap-l{gap:22px} .mt{margin-top:18px}.mt-l{margin-top:30px}.mb{margin-bottom:18px}
+.hr{height:1px;background:var(--bd);margin:22px 0;border:none}
+.chip{font-size:12px;font-weight:600;color:var(--tx-2);background:var(--tint);padding:5px 12px;border-radius:var(--r-pill);display:inline-flex;align-items:center;gap:6px}
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:13px 22px;border-radius:var(--r-pill);box-shadow:var(--sh-lg);font-size:13.5px;font-weight:600;display:flex;align-items:center;gap:10px;opacity:0;transition:all .3s;z-index:200;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast svg{width:17px;height:17px;color:var(--gold-light)}
+.demo-note{background:var(--gold-tint);border:1px solid #ecdcb8;border-radius:var(--r-md);padding:11px 16px;font-size:12.5px;color:var(--gold-deep);display:flex;gap:9px;align-items:flex-start;margin-bottom:22px}
+.demo-note svg{width:16px;height:16px;flex:none;margin-top:1px}
+.demo-note b{color:#7a5615}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="side">
+    <div class="brand">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L3 6v5c0 5 3.8 9.4 9 11 5.2-1.6 9-6 9-11V6l-9-4z" fill="#fff" opacity=".95"/><path d="M9 12l2 2 4-4.5" stroke="#B27E28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <div class="bt">Summit Financial</div>
+        <div class="bs">Agency OS</div>
+      </div>
+    </div>
+
+    <div class="navgroup">
+      <div class="lbl">Workspace</div>
+      <button class="nav-i" data-view="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        Dashboard
+      </button>
+    </div>
+
+    <div class="navgroup">
+      <div class="lbl">Academy · Training</div>
+      <button class="nav-i" data-view="learn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M7 9.5V14c0 1.5 2.2 3 5 3s5-1.5 5-3V9.5"/><path d="M21 7v5"/></svg>
+        Course Player <span class="tag live">Live</span>
+      </button>
+      <button class="nav-i" data-view="adaptive">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+        Adaptive Paths <span class="tag live">Live</span>
+      </button>
+      <button class="nav-i" data-view="admin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12"/><path d="M8 11l4 4 4-4"/><rect x="4" y="17" width="16" height="4" rx="1.5"/></svg>
+        Content Studio <span class="tag live">Live</span>
+      </button>
+      <button class="nav-i" data-view="analytics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+        Analytics <span class="tag live">Live</span>
+      </button>
+    </div>
+
+    <div class="navgroup">
+      <div class="lbl">Agency Modules</div>
+      <button class="nav-i" data-view="policies">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+        Policies & Products <span class="tag soon">Soon</span>
+      </button>
+      <button class="nav-i" data-view="clients">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M16 6.5a3 3 0 0 1 0 5.5M18 20c0-2-1-3.6-2.5-4.4"/></svg>
+        Clients (CRM) <span class="tag soon">Soon</span>
+      </button>
+      <button class="nav-i" data-view="portal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h5"/></svg>
+        Client Portal <span class="tag soon">Soon</span>
+      </button>
+      <button class="nav-i" data-view="commissions">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.2c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.6-2.5 1.8-2.5.6-2.5 1.9 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg>
+        Commissions <span class="tag soon">Soon</span>
+      </button>
+      <button class="nav-i" data-view="recruiting">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M18 7v6M15 10h6"/></svg>
+        Recruiting <span class="tag soon">Soon</span>
+      </button>
+    </div>
+
+    <div class="side-foot">
+      <div>Demo tenant · <b>Summit Financial Group</b></div>
+      <div class="pw"><span class="dot"></span> Built on <b>Atelio</b> — a Forma platform</div>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <main class="main">
+    <div class="topbar">
+      <div class="crumb"><b id="crumbTop">Dashboard</b> <span id="crumbSub"></span></div>
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        Search agents, courses, policies…
+      </div>
+      <div class="actions">
+        <button class="icon-btn" title="Notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        </button>
+        <div class="avatar">SB</div>
+      </div>
+    </div>
+    <div id="root"></div>
+  </main>
+</div>
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span id="toastMsg"></span></div>
+
+<script>
+/* ============================================================
+   Agency OS — Academy Demo · data + app logic (vanilla JS)
+   ============================================================ */
+"use strict";
+
+/* ---------- icon helper ---------- */
+const I = {
+  play:'<path d="M8 5v14l11-7z"/>',
+  check:'<path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>',
+  lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  circle:'<circle cx="12" cy="12" r="8"/>',
+  quiz:'<path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7"/><circle cx="12" cy="17" r=".6" fill="currentColor" stroke="none"/><rect x="4" y="3" width="16" height="18" rx="2"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/>',
+  bolt:'<path d="M13 3L4 14h6l-1 7 9-11h-6l1-7z"/>',
+  up:'<path d="M6 15l6-6 6 6"/>',
+  users:'<circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M16 6.5a3 3 0 0 1 0 5.5M18 20c0-2-1-3.6-2.5-4.4"/>',
+  award:'<circle cx="12" cy="9" r="5"/><path d="M9 13.5L8 21l4-2 4 2-1-7.5"/>',
+  target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="currentColor" stroke="none"/>',
+  video:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/>',
+  wand:'<path d="M15 4l1.2 2.8L19 8l-2.8 1.2L15 12l-1.2-2.8L11 8l2.8-1.2L15 4z"/><path d="M4 20l7-7"/>',
+  doc:'<path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/>',
+  money:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.2c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.6-2.5 1.8-2.5.6-2.5 1.9 1.1 2 2.5 2 2.5-.8 2.5-2"/>',
+  portal:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h5"/>',
+  arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+  file:'<path d="M14 3v5h5"/><path d="M7 3h7l5 5v13H7z"/>',
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4"/>',
+  scissors:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.5 15.5M14.5 14.5L20 20M8.5 8.5L11 11"/>',
+  rocket:'<path d="M12 3c3 1 6 4 6 9l-3 3H9l-3-3c0-5 3-8 6-9z"/><path d="M9 15l-2 4M15 15l2 4M12 9v.01"/>',
+  layers:'<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>',
+  refresh:'<path d="M4 12a8 8 0 0 1 13.5-5.8L20 8M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 16M4 20v-4h4"/>',
+  eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>',
+};
+const svg=(k,w=18)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:${w}px;height:${w}px">${I[k]||''}</svg>`;
+const initials=n=>n.split(' ').map(x=>x[0]).slice(0,2).join('');
+const AV=['#3E7CB1','#2E9E6B','#B27E28','#8B5C9E','#C15C5C','#4C8C7A','#5A6B80','#C87941'];
+const av=(n,i)=>`<div class="pav" style="background:${AV[i%AV.length]}">${initials(n)}</div>`;
+
+/* ---------- COURSE DATA ---------- */
+const COURSE = {
+  title:"Agent Foundations",
+  subtitle:"The Summit path from invitation to your first placed policy",
+  modules:[
+    { id:"m1", name:"Invitation", tag:"Module 1", color:"#3E7CB1",
+      blurb:"Fill your calendar the right way — mindset, list, and the invite itself.",
+      chapters:[
+        { id:"c1", name:"The Mindset of Invitation", concepts:[
+          { id:"k1", t:"Why people really say yes", dur:"4:10", src:"Team Call · Apr 3", beats:["Posture over pressure","The value-first frame","Common self-sabotage"],
+            quiz:[
+              {q:"What most determines whether a prospect says yes to a meeting?",opts:["The script you memorize","Your posture and the value you lead with","How many people you contact","The time of day you call"],a:1,ex:"Prospects respond to <b>posture and perceived value</b> far more than to a perfect script. Lead with what's in it for them."},
+              {q:"“Value-first framing” means…",opts:["Explaining commissions upfront","Opening with the problem you solve for them","Talking about the company's awards","Asking for a referral immediately"],a:1,ex:"You frame the invite around <b>the prospect's problem</b> (protecting their family's income), not your product or company."},
+            ] },
+          { id:"k2", t:"Posture & tonality", dur:"3:35", src:"Team Call · Apr 3", beats:["Curious, not needy","Pace & pause","Handling the pushback"],
+            quiz:[
+              {q:"A confident, curious tone signals to the prospect that…",opts:["You need this sale","You're doing them a favor worth their time","You are new","You'll discount the policy"],a:1,ex:"Curiosity + calm pacing communicates <b>you're offering something valuable</b>, which raises response rates."},
+            ] },
+          { id:"k3", t:"The 3-question invite framework", dur:"5:02", src:"Workshop · Mar 20", beats:["Q1: Permission","Q2: The gap","Q3: The ask","Recap"], quiz:[
+              {q:"In the 3-question framework, the middle question is designed to…",opts:["Close the sale","Surface the gap between where they are and where they want to be","Collect their email","Book a second agent"],a:1,ex:"The middle question <b>surfaces the gap</b> — that tension is what makes the ask land."},
+            ] },
+        ]},
+        { id:"c2", name:"Building Your List", concepts:[
+          { id:"k4", t:"The memory jogger", dur:"3:20", src:"Onboarding Deck", beats:["Categories of contacts","Don't prejudge","Getting to 100"], quiz:[
+              {q:"“Don't prejudge” means…",opts:["Skip people who look uninterested","List everyone; let them decide","Only list high earners","Only list family"],a:1,ex:"You <b>list everyone</b> and let them self-select. Prejudging shrinks your business."},
+          ] },
+          { id:"k5", t:"Warm vs. cold outreach", dur:"4:48", src:"Team Call · Apr 10", beats:["The warm-market ladder","When to go cold","Tracking cadence"] },
+          { id:"k6", t:"Scripting the reach-out", dur:"4:05", src:"Workshop · Mar 20", beats:["Text vs. call","The 20-second voicemail","Follow-up rhythm"] },
+        ]},
+      ]},
+    { id:"m2", name:"Edification", tag:"Module 2", color:"#B27E28",
+      blurb:"Borrow credibility, build leaders, and run a presentation that closes itself.",
+      chapters:[
+        { id:"c3", name:"Edifying Your Upline", concepts:[
+          { id:"k7", t:"What edification actually is", dur:"3:58", src:"Leadership Call · Feb 28", beats:["Definition & why it works","Third-party credibility","What NOT to edify"], quiz:[
+              {q:"Edification works because it leverages…",opts:["Discount pricing","Third-party credibility","Fear of missing out","Longer contracts"],a:1,ex:"Edification transfers <b>third-party credibility</b> to the person joining the call, so the prospect trusts faster."},
+          ] },
+          { id:"k8", t:"The 45-second story", dur:"4:22", src:"Leadership Call · Feb 28", beats:["Before / bridge / after","Making it repeatable","Practice reps"] },
+        ]},
+        { id:"c4", name:"The Team Presentation", concepts:[
+          { id:"k9", t:"Setting the frame", dur:"5:10", src:"BPM Recording · Apr 1", beats:["Agenda & expectations","Edify the presenter","Managing energy"] },
+          { id:"k10", t:"Transition to the close", dur:"4:36", src:"BPM Recording · Apr 1", beats:["The assumptive bridge","Reading buying signals","Handing off"], quiz:[
+              {q:"A clean transition to close begins with…",opts:["A hard discount","An assumptive next-step question","Restating every feature","Ending the call"],a:1,ex:"An <b>assumptive question</b> (“which start date works better…”) moves them forward without pressure."},
+          ] },
+        ]},
+      ]},
+    { id:"m3", name:"Advanced Concepts", tag:"Module 3", color:"#8B5C9E",
+      blurb:"Products, needs-based selling, objections, and compliance done right.",
+      chapters:[
+        { id:"c5", name:"Needs-Based Selling", concepts:[
+          { id:"k11", t:"Term vs. permanent (IUL/WL)", dur:"6:14", src:"Product Training · Jan 15", beats:["Term basics","Whole life","IUL & cash value","Matching to need"], quiz:[
+              {q:"The core idea of needs-based selling is…",opts:["Always sell the highest premium","Match the product to the client's actual situation","Sell term to everyone","Lead with IUL cash value"],a:1,ex:"You <b>match the product to the documented need</b> — that's both better for the client and compliant."},
+              {q:"Permanent insurance differs from term primarily because it…",opts:["Is always cheaper","Builds cash value and lasts for life","Has no medical exam","Pays higher commission only"],a:1,ex:"Permanent policies (WL/IUL) <b>build cash value and are designed to last for life</b>, unlike level term."},
+          ] },
+          { id:"k12", t:"The needs analysis", dur:"5:40", src:"Product Training · Jan 15", beats:["Income replacement math","DIME method","Presenting the number"] },
+        ]},
+        { id:"c6", name:"Objections & Compliance", concepts:[
+          { id:"k13", t:"The 4 real objections", dur:"4:50", src:"Team Call · Apr 24", beats:["Money / spouse / think / trust","Feel-felt-found","Isolate & resolve"] },
+          { id:"k14", t:"Compliance guardrails", dur:"5:18", src:"Compliance Brief · Jan 8", beats:["Suitability & disclosure","What you cannot say","Documentation"], quiz:[
+              {q:"When a client can't afford the ideal coverage, the compliant move is to…",opts:["Overstate the budget on the app","Document the need and offer suitable coverage they can afford","Skip the needs analysis","Promise guaranteed returns"],a:1,ex:"You <b>document the need and recommend suitable, affordable coverage</b> — never misstate on the application or guarantee returns."},
+          ] },
+        ]},
+      ]},
+  ]
+};
+/* flatten concepts, wire chapter/module refs, seed progress */
+const FLAT=[];
+COURSE.modules.forEach((m,mi)=>m.chapters.forEach(c=>c.concepts.forEach(k=>{
+  k._m=m; k._c=c; k.hasQuiz=!!(k.quiz&&k.quiz.length); FLAT.push(k);
+})));
+const doneSet=new Set(["k1","k2","k3","k4"]); // pre-completed for a believable in-progress demo
+
+/* ---------- ADAPTIVE PERSONAS ---------- */
+const PERSONAS=[
+  { id:"maya", name:"Maya Chen", role:"Brand-new recruit", lvl:1, lvlName:"Foundational track",
+    score:34, color:"#3E7CB1", diff:"Guided pace · extra practice reps",
+    rationale:"Maya scored 34% on the placement assessment and has no prior sales experience. The system routes her through <b>every foundation concept</b>, adds an extra practice rep after Invitation, and holds Advanced Concepts until she's certified on Modules 1–2.",
+    path:[
+      {t:"Placement assessment",m:"6 questions · adaptive",st:"on",badge:"done"},
+      {t:"Invitation — full module",m:"6 concepts + 4 quizzes",st:"on"},
+      {t:"➕ Bonus: role-play reps",m:"Auto-added — weak on tonality",st:"on",badge:"added"},
+      {t:"Edification — full module",m:"4 concepts + 2 quizzes",st:"on"},
+      {t:"Advanced Concepts",m:"Unlocks after Mod 1–2 pass",st:"on",badge:"gated"},
+    ]},
+  { id:"devon", name:"Devon Pierce", role:"Came from car sales", lvl:2, lvlName:"Accelerated track",
+    score:61, color:"#B27E28", diff:"Standard pace · fewer basics",
+    rationale:"Devon tested out of core Invitation concepts (61%) thanks to a sales background, so the engine <b>skips prospecting basics</b> and drops him straight into insurance-specific edification and products, with a compliance checkpoint added.",
+    path:[
+      {t:"Placement assessment",m:"6 questions · adaptive",st:"on",badge:"done"},
+      {t:"Invitation basics",m:"Tested out — mindset & posture",st:"skip",badge:"skipped"},
+      {t:"The 3-question invite framework",m:"Kept — insurance-specific",st:"on"},
+      {t:"Edification — full module",m:"4 concepts + 2 quizzes",st:"on"},
+      {t:"Advanced Concepts + products",m:"6 concepts · main focus",st:"on"},
+    ]},
+  { id:"carla", name:"Carla Ruiz", role:"Licensed, joining the team", lvl:3, lvlName:"Fast-track / leadership",
+    score:88, color:"#8B5C9E", diff:"Challenge pace · leadership add-ons",
+    rationale:"Carla is already licensed and scored 88%. She <b>skips Modules 1–2 entirely</b>, gets only the Summit-specific compliance and presentation concepts, and is offered the leadership / duplication track so she can train her own recruits.",
+    path:[
+      {t:"Placement assessment",m:"6 questions · adaptive",st:"on",badge:"done"},
+      {t:"Invitation & Edification",m:"Tested out — proven proficiency",st:"skip",badge:"skipped"},
+      {t:"Summit compliance guardrails",m:"Required for all agents",st:"on"},
+      {t:"The team presentation (BPM)",m:"Our specific flow",st:"on"},
+      {t:"🎓 Leadership & duplication",m:"Auto-offered — trains recruits",st:"on",badge:"added"},
+    ]},
+];
+
+/* ---------- ADMIN / CONTENT STUDIO ---------- */
+const RAW_VIDEO={ name:"Team Training — Full Recording.mp4", dur:"48:12", size:"1.4 GB", when:"Uploaded just now" };
+const PIPE=[
+  {k:"file",l:"Upload"},{k:"mic",l:"Transcribe"},{k:"scissors",l:"Detect concepts"},{k:"wand",l:"Draft chapters + quizzes"},{k:"rocket",l:"Review & publish"},
+];
+const CHUNKS=[
+  {t:"Why people really say yes",range:"00:00 – 04:10",concept:"Invitation",q:2},
+  {t:"Posture & tonality on the phone",range:"04:10 – 07:45",concept:"Invitation",q:1},
+  {t:"The 3-question invite framework",range:"07:45 – 12:47",concept:"Invitation",q:1},
+  {t:"Edifying your upline",range:"12:47 – 16:45",concept:"Edification",q:2},
+  {t:"The 45-second story",range:"16:45 – 21:07",concept:"Edification",q:1},
+  {t:"Handling the 4 real objections",range:"21:07 – 25:57",concept:"Advanced",q:1},
+  {t:"Compliance guardrails",range:"25:57 – 31:15",concept:"Advanced",q:2},
+];
+
+/* ---------- ANALYTICS ---------- */
+const KPI=[
+  {l:"Active trainees",v:"42",d:"+6 this month",up:true,ic:"users"},
+  {l:"Avg. completion",v:"78%",d:"+12 pts vs Q1",up:true,ic:"target"},
+  {l:"Certified this month",v:"9",d:"3 ahead of goal",up:true,ic:"award"},
+  {l:"Avg. time to license",v:"21 days",d:"−5 days faster",up:true,ic:"clock"},
+];
+const LEADERS=[
+  {n:"Priya Nair",prog:100,score:96,cert:true,streak:14},
+  {n:"Marcus Webb",prog:92,score:91,cert:false,streak:9},
+  {n:"Devon Pierce",prog:74,score:88,cert:false,streak:6},
+  {n:"Aisha Karim",prog:68,score:84,cert:false,streak:5},
+  {n:"Tyler Brooks",prog:55,score:79,cert:false,streak:3},
+  {n:"Maya Chen",prog:31,score:72,cert:false,streak:2},
+];
+const FUNNEL=[
+  {l:"Invited",v:64,pct:100},{l:"Started course",v:52,pct:81},{l:"Finished Invitation",v:44,pct:69},
+  {l:"Finished Edification",v:33,pct:52},{l:"Finished Advanced",v:19,pct:30},{l:"Certified",v:15,pct:23},
+];
+const STUCK=[
+  {t:"Compliance guardrails",m:"38% retake the quiz",pct:38},
+  {t:"Term vs. permanent (IUL/WL)",m:"31% rewatch the video",pct:31},
+  {t:"The needs analysis (DIME)",m:"27% pause > 3 min",pct:27},
+  {t:"Transition to the close",m:"19% fail first attempt",pct:19},
+];
+
+/* ---------- SCAFFOLD MODULES ---------- */
+const MODULES={
+  policies:{ic:"doc",color:"#3E7CB1",name:"Policies & Products",
+    tag:"Product catalog + application pipeline",
+    desc:"Your carriers, products, and every application in flight — the source of truth the Academy trains agents on and Commissions pays from.",
+    feats:[["Product catalog","Term, Whole Life, IUL and riders per carrier, with the same needs-based framing agents learn in Academy."],["Application pipeline","Submitted → underwriting → issued → placed, with status and requirements per case."],["Carrier & commission rules","Carrier grids drive the Commissions module automatically — no re-keying."],["Suitability on file","The compliance concepts from training become enforced fields here."]]},
+  clients:{ic:"users",color:"#2E9E6B",name:"Clients (CRM)",
+    tag:"One shared client & household record",
+    desc:"Every prospect and policyholder in one book the whole agency reads from — the same record the Client Portal and Policies modules share.",
+    feats:[["Households & needs analysis","DIME numbers and coverage gaps stored on the record, straight from the training method."],["Pipeline & activities","Invites, presentations, and follow-ups — tied back to who recruited and who trained the agent."],["Policy history","Every policy, claim, and review on the household timeline."],["Referrals & tree","See which agent and which recruit generated each client."]]},
+  portal:{ic:"portal",color:"#8B5C9E",name:"Client Portal",
+    tag:"Self-serve for policyholders",
+    desc:"A branded portal where clients view coverage, documents, and beneficiaries — reducing the service load so agents stay in production.",
+    feats:[["Coverage at a glance","Policies, premiums, and payment status in plain language."],["Documents & e-sign","Illustrations, applications, and disclosures in one place."],["Beneficiary updates","Life changes captured without an agent phone call."],["Secure messaging","Requests routed to the right agent, logged in the CRM."]]},
+  commissions:{ic:"money",color:"#B27E28",name:"Commissions",
+    tag:"Overrides, splits, and statements",
+    desc:"Turns placed policies into paid commissions and hierarchy overrides automatically — the payoff that motivates the whole training funnel.",
+    feats:[["Hierarchy & overrides","Multi-level override calc that mirrors your agency's real structure."],["Splits & advances","Configurable splits, advance vs. as-earned, chargeback tracking."],["Agent statements","Every agent sees exactly what they earned and why."],["Reconciliation","Carrier statements matched to expected commissions."]]},
+  recruiting:{ic:"target",color:"#C15C5C",name:"Recruiting",
+    tag:"Invite → onboard → into training",
+    desc:"Where the funnel starts: capture recruits, run onboarding, and hand them straight to the Academy — closing the loop on the shared spine.",
+    feats:[["Recruit pipeline","Applicants tracked from first contact through contracting and licensing."],["Onboarding checklist","E&O, carrier contracting, and background steps in one flow."],["Auto-enroll to Academy","A new recruit lands in the adaptive training path automatically."],["Team tree","See each agent's recruits and their training + production status."]]},
+};
+
+/* =====================  APP  ===================== */
+const state={view:'dashboard', current:'k5', persona:'maya', pipeStep:-1, playing:false, playTimer:null};
+
+function toast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2400);}
+function setNav(){document.querySelectorAll('.nav-i').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));}
+const CRUMB={dashboard:['Dashboard',''],learn:['Academy','· Course Player'],adaptive:['Academy','· Adaptive Paths'],admin:['Academy','· Content Studio'],analytics:['Academy','· Analytics'],policies:['Policies & Products',''],clients:['Clients (CRM)',''],portal:['Client Portal',''],commissions:['Commissions',''],recruiting:['Recruiting','']};
+function nav(v){state.view=v;setNav();const c=CRUMB[v]||[v,''];document.getElementById('crumbTop').textContent=c[0];document.getElementById('crumbSub').textContent=c[1];render();document.querySelector('.main').scrollTop=0;}
+
+function render(){
+  const r=document.getElementById('root');
+  const V=state.view;
+  if(V==='dashboard')r.innerHTML=vDashboard();
+  else if(V==='learn')r.innerHTML=vLearn();
+  else if(V==='adaptive')r.innerHTML=vAdaptive();
+  else if(V==='admin')r.innerHTML=vAdmin();
+  else if(V==='analytics')r.innerHTML=vAnalytics();
+  else r.innerHTML=vScaffold(V);
+  wire();
+}
+
+/* ---------- DASHBOARD ---------- */
+function vDashboard(){
+  const tiles=[
+    {v:'learn',ic:'video',c:'#3E7CB1',t:'Course Player',d:'Adaptive video course, cut into concepts with quizzes after each segment.',live:true},
+    {v:'adaptive',ic:'spark',c:'#8B5C9E',t:'Adaptive Paths',d:'Placement assessment curates each trainee’s path to their ability.',live:true},
+    {v:'admin',ic:'wand',c:'#B27E28',t:'Content Studio',d:'Drop a recording → auto-chunk into concepts, chapters & draft quizzes.',live:true},
+    {v:'analytics',ic:'up',c:'#2E9E6B',t:'Analytics',d:'Leaderboard, completion funnel, and where trainees get stuck.',live:true},
+    {v:'policies',ic:'doc',c:'#4C8C7A',t:'Policies & Products',d:'Product catalog and application pipeline.',live:false},
+    {v:'commissions',ic:'money',c:'#C87941',t:'Commissions',d:'Overrides, splits and agent statements.',live:false},
+  ];
+  return `<div class="view">
+    <div class="ph">
+      <div>
+        <div class="eyebrow">Summit Financial Group · Agency OS</div>
+        <h1>Good morning, Sare</h1>
+        <p>Your agency’s training engine at a glance. The Academy module is live in this demo — the rest of the platform is shown as the roadmap it plugs into.</p>
+      </div>
+      <button class="btn btn-gold" data-go="learn">${svg('play',16)} Resume the demo course</button>
+    </div>
+
+    <div class="demo-note">${svg('info',16)}<div><b>This is a working demo.</b> Everything under <b>Academy</b> is clickable — play a lesson, take a quiz, switch adaptive learner profiles, and watch a recording auto-chunk itself. Branding, colors, and content are placeholders to be swapped for Sare’s.</div></div>
+
+    <div class="grid g-4">${KPI.map(k=>stat(k)).join('')}</div>
+
+    <div class="section-t" style="margin-top:30px">Academy — live modules</div>
+    <div class="launch">${tiles.map(t=>`
+      <button class="app-tile" data-go="${t.v}">
+        <span class="st"><span class="badge ${t.live?'b-ok':'b-neutral'}">${t.live?'Live':'Roadmap'}</span></span>
+        <div class="ic" style="background:linear-gradient(135deg,${t.c},${shade(t.c)})">${svg(t.ic,22)}</div>
+        <h3>${t.t}</h3><p>${t.d}</p>
+      </button>`).join('')}
+    </div>
+
+    <div class="grid g-2 mt-l" style="align-items:start">
+      <div class="card card-pad">
+        <div class="flex between center mb"><h3 class="serif" style="font-size:18px;color:var(--ink)">Needs attention</h3><span class="chip">${svg('bolt',13)} 3 items</span></div>
+        ${attn('warn','6 trainees stalled on Compliance guardrails','Highest drop-off concept — consider a shorter re-cut.','analytics')}
+        ${attn('info','Maya Chen is behind pace','Adaptive engine added extra reps; nudge sent automatically.','adaptive')}
+        ${attn('ok','New recording ready to publish','7 concepts detected from your 48-min team call.','admin')}
+      </div>
+      <div class="card card-pad">
+        <h3 class="serif" style="font-size:18px;color:var(--ink)">Your training funnel</h3>
+        <p class="muted" style="font-size:13px;margin:4px 0 16px">From invite to certified — the whole agency in one view.</p>
+        ${FUNNEL.slice(0,6).map(f=>`<div class="flex center gap" style="margin-bottom:9px"><div style="width:130px;font-size:12.5px;font-weight:600;color:var(--ink)">${f.l}</div><div class="bar" style="flex:1"><span style="width:${f.pct}%"></span></div><div style="width:34px;text-align:right;font-size:12.5px;font-weight:700;color:var(--tx-2)">${f.v}</div></div>`).join('')}
+      </div>
+    </div>
+
+    ${spineBlock()}
+  </div>`;
+}
+function stat(k){return `<div class="stat"><div class="sl">${svg(k.ic,15)} ${k.l}</div><div class="sv">${k.v}</div><div class="sd ${k.up?'up':'down'}">${svg('up',13)} ${k.d}</div></div>`;}
+function attn(kind,t,d,go){const cls={warn:'b-warn',info:'b-info',ok:'b-ok'}[kind];return `<button data-go="${go}" style="display:flex;gap:12px;width:100%;text-align:left;padding:12px 0;border-bottom:1px solid var(--bd)"><span class="badge ${cls}" style="align-self:flex-start;margin-top:2px">●</span><span><b style="font-size:13.5px;color:var(--ink);display:block">${t}</b><span style="font-size:12.5px;color:var(--tx-2)">${d}</span></span></button>`;}
+
+function spineBlock(){
+  const nodes=[
+    {ic:'target',c:'#C15C5C',h:'Recruited',p:'Applicant enters via Recruiting.'},
+    {ic:'spark',c:'#8B5C9E',h:'Trained',p:'Adaptive Academy path, matched to ability.'},
+    {ic:'award',c:'#2E9E6B',h:'Licensed',p:'Certified — auto-flagged ready to sell.'},
+    {ic:'doc',c:'#3E7CB1',h:'Places policy',p:'Client + application in Policies / CRM.'},
+    {ic:'money',c:'#B27E28',h:'Gets paid',p:'Commission + upline override, automatically.'},
+  ];
+  return `<div class="spine mt-l">
+    <div class="eyebrow" style="color:var(--gold-light)">Why one platform</div>
+    <h2 class="serif" style="font-size:23px;margin-top:6px;color:#fff">One agent record — from first invite to first commission</h2>
+    <p style="color:var(--on-dark-2);font-size:13.5px;max-width:640px;margin-top:8px">Training isn’t a standalone app bolted on the side. On the Agency OS, the person Sare recruits, the agent she trains, the policies they place, and the commissions they earn are <b style="color:#fff">the same record</b>. Academy is the front door to that spine.</p>
+    <div class="spine-flow">${nodes.map((n,i)=>`
+      <div class="snode"><div class="si" style="background:${n.c}">${svg(n.ic,18)}</div><h4>${n.h}</h4><p>${n.p}</p></div>
+      ${i<nodes.length-1?`<div class="sarrow">${svg('arrow',20)}</div>`:''}`).join('')}
+    </div>
+  </div>`;
+}
+function shade(hex){const n=parseInt(hex.slice(1),16);let r=(n>>16)-28,g=((n>>8)&255)-24,b=(n&255)-20;r=Math.max(0,r);g=Math.max(0,g);b=Math.max(0,b);return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);}
+
+/* ---------- LEARN (course player) ---------- */
+function vLearn(){
+  const k=FLAT.find(x=>x.id===state.current)||FLAT[0];
+  const m=k._m;
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">${COURSE.title} · ${m.tag} — ${m.name}</div>
+      <h1>${k._c.name}</h1>
+      <p>Each pre-recorded video is cut into individual <b>concepts</b>, grouped into <b>chapters</b>, with a quick <b>quiz or exercise</b> after every segment.</p>
+    </div>
+    <div class="flex gap-s center">${courseProgressChip()}</div></div>
+
+    <div class="player-wrap">
+      <div>
+        ${playerHTML(k)}
+        <div class="flex between center" style="margin-top:16px">
+          <div><div style="font-weight:700;font-size:16px;color:var(--ink)">${k.t}</div>
+          <div class="muted" style="font-size:12.5px;margin-top:2px">${svg('scissors',12)} Auto-cut from “${k.src}” · ${k.beats.length} segments${k.hasQuiz?' · quiz after':''}</div></div>
+          <button class="btn btn-ghost btn-sm" id="prevBtn">${svg('arrow',14)} Prev</button>
+        </div>
+        <div id="quizMount">${k.hasQuiz?quizHTML(k):concludeHTML(k)}</div>
+      </div>
+      ${chaptersHTML()}
+    </div>
+  </div>`;
+}
+function courseProgressChip(){const pct=Math.round(doneSet.size/FLAT.length*100);return `<div class="chip">${svg('layers',13)} ${doneSet.size}/${FLAT.length} concepts · ${pct}%</div>`;}
+function playerHTML(k){
+  return `<div class="video" id="video">
+    <div class="poster">
+      <button class="play-btn" id="playBtn">${svg('play',30)}</button>
+    </div>
+    <div class="concept-lbl">${k._m.name} · Concept</div>
+    <div class="ttl">${k.t}</div>
+    <div class="vbar">
+      <div class="segments" id="segs">${k.beats.map((b,i)=>`<div class="seg" data-i="${i}" title="${b}"><span></span></div>`).join('')}</div>
+      <div class="vctrl">
+        ${svg('play',18)}<span class="tc" id="tc">0:00 / ${k.dur}</span>
+        <span class="sp">Auto-chunked · ${k.beats.length} segments</span>
+      </div>
+    </div>
+  </div>`;
+}
+function chaptersHTML(){
+  let html=`<div class="chapters"><div class="ch-head"><span class="t">${COURSE.title}</span><span class="badge b-neutral">${COURSE.modules.length} modules</span></div><div class="ch-list">`;
+  COURSE.modules.forEach(m=>m.chapters.forEach((c,ci)=>{
+    html+=`<div class="ch"><div class="ch-t"><span class="cx" style="background:${m.color}22;color:${m.color}">${m.tag.split(' ')[1]}.${ci+1}</span>${c.name}</div>`;
+    c.concepts.forEach(k=>{
+      const done=doneSet.has(k.id), active=k.id===state.current;
+      const icon=done?svg('check',18):(active?svg('play',18):svg('circle',18));
+      html+=`<button class="concept ${done?'done':''} ${active?'active':''}" data-k="${k.id}">
+        <span class="ci">${icon}</span><span>${k.t}</span>
+        ${k.hasQuiz?'<span class="qflag">QUIZ</span>':''}
+        <span class="dur">${k.dur}</span></button>`;
+    });
+    html+=`</div>`;
+  }));
+  return html+`</div></div>`;
+}
+function quizHTML(k){
+  return `<div class="quiz" id="quiz">
+    <div class="quiz-head"><div class="qic">${svg('quiz',19)}</div><div><h3>Checkpoint — ${k.t}</h3><p>Answer to lock in this concept and continue. ${k.quiz.length} question${k.quiz.length>1?'s':''}.</p></div></div>
+    <div class="quiz-body">${k.quiz.map((q,qi)=>qBlock(q,qi)).join('')}</div>
+    <div class="quiz-foot">
+      <button class="btn btn-gold" id="submitQuiz">${svg('check',16)} Submit answers</button>
+      <span class="muted" style="font-size:12.5px" id="quizHint">Select an answer for each question.</span>
+    </div>
+    <div class="result" id="quizResult" style="margin:0 24px 24px"></div>
+  </div>`;
+}
+function qBlock(q,qi){
+  return `<div class="q" data-qi="${qi}"><div class="qq"><span class="qn">${qi+1}.</span><span>${q.q}</span></div>
+    ${q.opts.map((o,oi)=>`<div class="opt" data-oi="${oi}"><span class="mk">${svg('check',12)}</span><span>${o}</span></div>`).join('')}
+    <div class="explain"><b>Why:</b> <span class="ext"></span></div></div>`;
+}
+function concludeHTML(k){
+  return `<div class="quiz" id="quiz"><div class="quiz-body" style="text-align:center;padding:34px">
+    <div style="font-weight:700;font-size:16px;color:var(--ink)">No quiz on this concept</div>
+    <p class="muted" style="font-size:13px;margin:6px 0 16px">Watch the segments, then mark it complete to continue the path.</p>
+    <button class="btn btn-primary" id="markDone">${svg('check',16)} Mark concept complete</button>
+  </div></div>`;
+}
+
+/* ---------- ADAPTIVE ---------- */
+function vAdaptive(){
+  const p=PERSONAS.find(x=>x.id===state.persona);
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Academy · Personalization engine</div>
+      <h1>Adaptive Paths</h1>
+      <p>A short placement assessment curates the course to each trainee’s ability — skipping what they’ve mastered, reinforcing what they haven’t, and gating advanced material until they’re ready.</p>
+    </div></div>
+
+    <div class="adapt-hero mb">
+      <div class="eyebrow" style="color:var(--gold-light)">How it works</div>
+      <h2 class="serif" style="font-size:22px;color:#fff;margin-top:6px">Same course. A different path for every agent.</h2>
+      <p style="color:var(--on-dark-2);font-size:13.5px;max-width:640px;margin-top:8px;position:relative">Switch between three real-world learner profiles below to see how the same “Agent Foundations” course reshapes itself around each person.</p>
+    </div>
+
+    <div class="persona-tabs">${PERSONAS.map(pp=>`
+      <button class="ptab ${pp.id===state.persona?'active':''}" data-persona="${pp.id}">
+        <span class="pa" style="background:${pp.color}">${initials(pp.name)}</span>
+        <span><span class="pn">${pp.name}</span><br><span class="pm">${pp.role}</span></span>
+      </button>`).join('')}
+    </div>
+
+    <div class="grid g-3 mb">
+      <div class="stat"><div class="sl">${svg('target',15)} Placement score</div><div class="sv">${p.score}%</div><div class="sd muted" style="font-weight:600">Sets the starting point</div></div>
+      <div class="stat"><div class="sl">${svg('layers',15)} Assigned track</div><div class="sv" style="font-size:20px;line-height:1.3;margin-top:12px">Level ${p.lvl} <span class="badge b-lvl lvl-${p.lvl}">${p.lvlName}</span></div></div>
+      <div class="stat"><div class="sl">${svg('spark',15)} Difficulty & pacing</div><div class="sv" style="font-size:16px;line-height:1.4;margin-top:12px;font-family:var(--f-sans);font-weight:600">${p.diff}</div></div>
+    </div>
+
+    <div class="rationale mb">${svg('spark',18)}<div><b>Why this path for ${p.name.split(' ')[0]}:</b> ${p.rationale}</div></div>
+
+    <div class="card card-pad">
+      <div class="flex between center mb"><h3 class="serif" style="font-size:18px;color:var(--ink)">${p.name.split(' ')[0]}’s curated path</h3>
+      <span class="chip">${svg('eye',13)} Live preview</span></div>
+      <div class="path">${p.path.map(n=>pnode(n)).join('')}</div>
+    </div>
+  </div>`;
+}
+function pnode(n){
+  const badge=n.badge?{done:'<span class="badge b-ok">Completed</span>',added:'<span class="badge b-warn">Auto-added</span>',skipped:'<span class="badge b-neutral">Tested out</span>',gated:'<span class="badge b-info">Gated</span>'}[n.badge]:'';
+  const cls=n.st==='skip'?'skip':'on';
+  return `<div class="pnode ${cls}"><div class="pcard"><div class="pt">${n.t} ${badge}</div><div class="pd">${n.m}</div></div></div>`;
+}
+
+/* ---------- ADMIN / CONTENT STUDIO ---------- */
+function vAdmin(){
+  const step=state.pipeStep;
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Academy · Content Studio</div>
+      <h1>Hands-off content creation</h1>
+      <p>Sare drops in a pre-recorded video. The system transcribes it, detects each concept, cuts it into chapters, and drafts a quiz for every segment — she just reviews and publishes.</p>
+    </div></div>
+
+    <div class="card card-pad mb">
+      ${step<0?`<div class="upzone" id="upzone">
+        <div class="uic">${svg('video',28)}</div>
+        <div style="font-weight:700;font-size:16px;color:var(--ink)">Drop a recording to build a course</div>
+        <p class="muted" style="font-size:13px;margin:6px 0 16px">MP4, MOV or a Zoom/Teams recording · up to 4 hours</p>
+        <button class="btn btn-gold" id="fakeUpload">${svg('file',16)} Use sample: “Team Training — Full Recording.mp4”</button>
+      </div>`:`
+      <div class="flex between center wrap gap" style="margin-bottom:6px">
+        <div class="flex center gap"><div style="width:44px;height:44px;border-radius:11px;background:var(--ink);display:grid;place-items:center;flex:none;color:#fff">${svg('video',22)}</div>
+        <div><div style="font-weight:700;color:var(--ink)">${RAW_VIDEO.name}</div><div class="muted" style="font-size:12.5px">${RAW_VIDEO.dur} · ${RAW_VIDEO.size} · ${RAW_VIDEO.when}</div></div></div>
+        <span class="badge ${step>=PIPE.length-1?'b-ok':'b-warn'}">${step>=PIPE.length-1?'Ready to publish':'Processing…'}</span>
+      </div>
+      <div class="pipe">${PIPE.map((s,i)=>`
+        <div class="pstep ${i<step?'done':''} ${i===step?'active':''}">
+          <div class="pdot">${i<step?svg('check',18):svg(s.k,18)}</div>
+          <div class="plbl">${s.l}</div>
+        </div>`).join('')}
+      </div>`}
+    </div>
+
+    <div id="chunkArea">${step>=2?chunkResult(step):''}</div>
+  </div>`;
+}
+function chunkResult(step){
+  const ready=step>=PIPE.length-1;
+  const totalQ=CHUNKS.reduce((a,c)=>a+c.q,0);
+  return `<div class="card card-pad">
+    <div class="flex between center wrap mb">
+      <div><h3 class="serif" style="font-size:18px;color:var(--ink)">${CHUNKS.length} concepts detected${ready?', quizzes drafted':'…'}</h3>
+      <p class="muted" style="font-size:13px;margin-top:3px">From one ${RAW_VIDEO.dur} recording → ${CHUNKS.length} bite-size concepts · ${totalQ} auto-drafted questions</p></div>
+      ${ready?`<button class="btn btn-gold" id="publishBtn">${svg('rocket',16)} Review & publish course</button>`:`<span class="chip">${svg('refresh',13)} Working…</span>`}
+    </div>
+    <div id="chunkList">${CHUNKS.map((c,i)=>chunkRow(c,i,step)).join('')}</div>
+  </div>`;
+}
+function chunkRow(c,i,step){
+  const show=step>=3; // quizzes appear at draft step
+  return `<div class="chunk-row" style="animation-delay:${i*70}ms">
+    <div class="cnum">${i+1}</div>
+    <div class="cbody"><div class="ct">${c.t}</div>
+    <div class="cm"><span>${svg('clock',12)} ${c.range}</span><span>${svg('layers',12)} ${c.concept}</span>${show?`<span style="color:var(--gold-deep)">${svg('quiz',12)} ${c.q} question${c.q>1?'s':''} drafted</span>`:`<span class="muted">drafting quiz…</span>`}</div></div>
+    <span class="badge ${show?'b-ok':'b-neutral'}">${show?'Ready':'…'}</span>
+  </div>`;
+}
+
+/* ---------- ANALYTICS ---------- */
+function vAnalytics(){
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Academy · Analytics</div>
+      <h1>Team progress at a glance</h1>
+      <p>The hands-off oversight view: who’s moving, who’s stalled, and exactly which concepts trip trainees up — so the course keeps improving itself.</p>
+    </div></div>
+
+    <div class="grid g-4 mb">${KPI.map(k=>stat(k)).join('')}</div>
+
+    <div class="grid g-2" style="align-items:start">
+      <div class="card card-pad">
+        <h3 class="serif" style="font-size:18px;color:var(--ink)">Agent leaderboard</h3>
+        <p class="muted" style="font-size:13px;margin:4px 0 14px">Progress + quiz score across the team.</p>
+        <table class="lead-table"><thead><tr><th></th><th>Agent</th><th>Progress</th><th>Score</th><th>Streak</th></tr></thead><tbody>
+        ${LEADERS.map((l,i)=>`<tr>
+          <td><div class="rank ${i<3?'rank-'+(i+1):'rank-x'}">${i+1}</div></td>
+          <td><div class="person">${av(l.n,i)}<div><div style="font-weight:600;color:var(--ink)">${l.n}</div>${l.cert?'<span class="badge b-ok" style="margin-top:2px">Certified</span>':''}</div></div></td>
+          <td style="min-width:120px"><div class="bar thin" style="width:100px"><span style="width:${l.prog}%"></span></div><span class="muted" style="font-size:11.5px">${l.prog}%</span></td>
+          <td><b style="color:var(--ink)">${l.score}</b></td>
+          <td><span class="chip" style="padding:3px 9px">${svg('bolt',12)} ${l.streak}d</span></td>
+        </tr>`).join('')}
+        </tbody></table>
+      </div>
+
+      <div style="display:grid;gap:18px">
+        <div class="card card-pad">
+          <h3 class="serif" style="font-size:18px;color:var(--ink)">Completion funnel</h3>
+          <p class="muted" style="font-size:13px;margin:4px 0 16px">Where the agency loses momentum.</p>
+          ${FUNNEL.map(f=>`<div class="funnel-row"><div class="fl">${f.l}</div><div class="ft"><span style="width:${f.pct}%">${f.pct}%</span></div><div class="fn">${f.v} agents</div></div>`).join('')}
+        </div>
+        <div class="card card-pad">
+          <div class="flex between center"><h3 class="serif" style="font-size:18px;color:var(--ink)">Where trainees get stuck</h3><span class="badge b-warn">Auto-detected</span></div>
+          <p class="muted" style="font-size:13px;margin:4px 0 14px">Concepts flagged for a re-cut or a shorter explainer.</p>
+          ${STUCK.map(s=>`<div class="stuck"><div class="sw"><div style="font-weight:600;font-size:13.5px;color:var(--ink)">${s.t}</div><div class="muted" style="font-size:12px">${s.m}</div><div class="sbar"><span style="width:${Math.min(100,s.pct*2.3)}%"></span></div></div><b style="color:var(--gold-deep);font-size:15px">${s.pct}%</b></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------- SCAFFOLD MODULES ---------- */
+function vScaffold(v){
+  const m=MODULES[v]; if(!m)return `<div class="view"><div class="scaffold"><h2>Coming soon</h2></div></div>`;
+  return `<div class="view">
+    <div class="scaffold">
+      <div class="sic" style="background:linear-gradient(135deg,${m.color},${shade(m.color)})">${svg(m.ic,36)}</div>
+      <div class="eyebrow">Agency OS · Roadmap module</div>
+      <h2>${m.name}</h2>
+      <p>${m.desc}</p>
+      <span class="chip">${svg('layers',13)} ${m.tag}</span>
+      <div class="feat-list mt-l">${m.feats.map(f=>`<div class="feat">${svg('check',17)}<div><b>${f[0]}</b><p>${f[1]}</p></div></div>`).join('')}</div>
+      <div class="rationale" style="margin-top:24px;text-align:left">${svg('info',18)}<div>This module isn’t built in the demo — it’s shown to make the platform vision concrete. On the shared spine, <b>${m.name}</b> reads the same agent and client records Academy already uses, so nothing is entered twice.</div></div>
+      <div class="mt"><button class="btn btn-primary" data-go="dashboard">${svg('arrow',16)} Back to dashboard</button></div>
+    </div>
+  </div>`;
+}
+
+/* ============ INTERACTION WIRING ============ */
+function wire(){
+  document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>nav(b.dataset.go));
+  if(state.view==='learn')wireLearn();
+  if(state.view==='adaptive')document.querySelectorAll('[data-persona]').forEach(b=>b.onclick=()=>{state.persona=b.dataset.persona;render();});
+  if(state.view==='admin')wireAdmin();
+}
+
+function wireLearn(){
+  document.querySelectorAll('.concept').forEach(b=>b.onclick=()=>{state.current=b.dataset.k;stopPlay();render();});
+  const prev=document.getElementById('prevBtn');
+  if(prev)prev.onclick=()=>{const i=FLAT.findIndex(x=>x.id===state.current);if(i>0){state.current=FLAT[i-1].id;stopPlay();render();}};
+  const pb=document.getElementById('playBtn'); if(pb)pb.onclick=playToggle;
+  document.querySelectorAll('#segs .seg').forEach(s=>s.onclick=()=>fillTo(+s.dataset.i));
+  wireQuiz();
+  const md=document.getElementById('markDone'); if(md)md.onclick=()=>completeConcept();
+}
+function playToggle(){
+  const segs=[...document.querySelectorAll('#segs .seg')];
+  if(state.playing){stopPlay();return;}
+  state.playing=true;
+  const pb=document.getElementById('playBtn'); if(pb)pb.style.opacity=.15;
+  let idx=segs.findIndex(s=>!s.classList.contains('done'));
+  if(idx<0)idx=0;
+  const k=FLAT.find(x=>x.id===state.current);
+  const step=()=>{
+    if(idx>=segs.length){stopPlay();onSegmentsDone(k);return;}
+    const bar=segs[idx].querySelector('span');
+    let w=0;
+    state.playTimer=setInterval(()=>{
+      w+=6; bar.style.width=Math.min(100,w)+'%';
+      updTC(k,idx,w,segs.length);
+      if(w>=100){clearInterval(state.playTimer);segs[idx].classList.add('done');idx++;setTimeout(step,180);}
+    },26);
+  };
+  step();
+}
+function updTC(k,idx,w,total){const tc=document.getElementById('tc');if(!tc)return;const p=k.dur.split(':').map(Number);const totS=p[0]*60+p[1];const cur=Math.round(totS*((idx+w/100)/total));tc.textContent=`${Math.floor(cur/60)}:${String(cur%60).padStart(2,'0')} / ${k.dur}`;}
+function stopPlay(){state.playing=false;if(state.playTimer)clearInterval(state.playTimer);const pb=document.getElementById('playBtn');if(pb)pb.style.opacity=1;}
+function fillTo(i){const segs=[...document.querySelectorAll('#segs .seg')];segs.forEach((s,j)=>{s.classList.toggle('done',j<=i);s.querySelector('span').style.width=j<=i?'100%':'0';});}
+function onSegmentsDone(k){stopPlay();toast('Concept watched — checkpoint unlocked');const q=document.getElementById('quiz');if(q)q.scrollIntoView({behavior:'smooth',block:'center'});}
+
+function wireQuiz(){
+  const quiz=document.getElementById('quiz'); if(!quiz)return;
+  const k=FLAT.find(x=>x.id===state.current); if(!k||!k.hasQuiz)return;
+  quiz.querySelectorAll('.q').forEach(qb=>{
+    qb.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{
+      if(qb.classList.contains('answered'))return;
+      qb.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));
+      o.classList.add('sel'); qb.dataset.sel=o.dataset.oi;
+      const hint=document.getElementById('quizHint');
+      const answered=[...quiz.querySelectorAll('.q')].filter(x=>x.dataset.sel!==undefined).length;
+      if(hint)hint.textContent=`${answered}/${k.quiz.length} answered.`;
+    });
+  });
+  const sub=document.getElementById('submitQuiz');
+  sub.onclick=()=>{
+    const blocks=[...quiz.querySelectorAll('.q')];
+    if(blocks.some(b=>b.dataset.sel===undefined)){toast('Select an answer for each question');return;}
+    let correct=0;
+    blocks.forEach((b,qi)=>{
+      b.classList.add('answered');
+      const sel=+b.dataset.sel, ans=k.quiz[qi].a;
+      b.querySelectorAll('.opt').forEach(o=>{o.classList.add('locked');const oi=+o.dataset.oi;if(oi===ans)o.classList.add('correct');if(oi===sel&&sel!==ans)o.classList.add('wrong');});
+      const ex=b.querySelector('.explain');ex.classList.add('show');ex.querySelector('.ext').innerHTML=k.quiz[qi].ex;
+      if(sel===ans)correct++;
+    });
+    const pass=correct===blocks.length;
+    const res=document.getElementById('quizResult');
+    res.className='result show '+(pass?'pass':'retry');
+    res.innerHTML=`<div class="rc">${svg(pass?'check':'refresh',24)}</div>
+      <div style="flex:1"><h4>${pass?'Passed — concept complete!':`${correct}/${blocks.length} correct — review & retry`}</h4>
+      <p>${pass?'This concept is marked done and the next one is unlocked on your path.':'Read the explanations above, then try again to continue.'}</p></div>
+      ${pass?`<button class="btn btn-gold" id="nextConcept">${svg('arrow',16)} Next concept</button>`:`<button class="btn btn-ghost" id="retryQuiz">${svg('refresh',16)} Retry</button>`}`;
+    sub.disabled=true;sub.style.opacity=.5;
+    if(pass){completeConcept(true);document.getElementById('nextConcept').onclick=goNext;}
+    else document.getElementById('retryQuiz').onclick=()=>render();
+    res.scrollIntoView({behavior:'smooth',block:'center'});
+  };
+}
+function completeConcept(silent){doneSet.add(state.current);if(!silent){toast('Concept marked complete');goNext();}}
+function goNext(){const i=FLAT.findIndex(x=>x.id===state.current);if(i<FLAT.length-1){state.current=FLAT[i+1].id;stopPlay();render();document.querySelector('.main').scrollTo({top:0,behavior:'smooth'});}else{toast('You’ve reached the end of the course 🎓');}}
+
+/* ---------- ADMIN pipeline animation ---------- */
+function wireAdmin(){
+  const up=document.getElementById('fakeUpload');
+  if(up)up.onclick=()=>runPipeline();
+  const pub=document.getElementById('publishBtn');
+  if(pub)pub.onclick=()=>{toast('Course published to the Academy 🚀');state.pipeStep=-1;setTimeout(()=>{nav('learn');},700);};
+}
+function runPipeline(){
+  state.pipeStep=0; render();
+  const advance=()=>{
+    state.pipeStep++;
+    render();
+    if(state.pipeStep<PIPE.length-1){
+      const delay=state.pipeStep===2?1100:900;
+      setTimeout(advance,delay);
+    }
+  };
+  setTimeout(advance,700);
+}
+
+/* ---------- boot ---------- */
+document.querySelectorAll('.nav-i').forEach(b=>b.onclick=()=>nav(b.dataset.view));
+nav('dashboard');
+</script>
+</body>
+</html>
