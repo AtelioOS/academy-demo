@@ -7,7 +7,7 @@
 <meta name="description" content="Adaptive agent-training platform for a life insurance agency — a module on the Agency OS. Built by Forma on the Atelio backbone." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* =============================================================
    Agency OS — Academy Demo · Design Tokens (neutral / placeholder)
@@ -15,30 +15,30 @@
    Built by Forma · demo backbone: Atelio
    ============================================================= */
 :root{
-  /* Core — Ink (deep navy) */
-  --ink:#0F1E33; --ink-2:#16273F; --ink-3:#1E3350; --ink-soft:#25405F;
-  /* Accent — Signal gold (aspiration / promotion) */
-  --gold:#D69B3F; --gold-light:#EBBE6C; --gold-deep:#B27E28; --gold-tint:#FBF1DD;
-  /* Secondary — Sky (adaptive / data) */
-  --sky:#3E7CB1; --sky-light:#6BA3D0; --sky-tint:#E6F0F8;
-  /* Surfaces */
-  --page:#F4F6FA; --surface:#FFFFFF; --surface-2:#FAFBFD; --sidebar:#0F1E33;
-  --sidebar-2:#0B1727; --hover:#F0F3F8; --tint:#EEF2F8;
-  /* Text */
-  --tx:#14243B; --tx-2:#5A6B80; --tx-3:#8A98AB; --on-dark:#EAF0F8; --on-dark-2:#93A6C0;
+  /* Core — Ink (warm near-black · LTD signature) */
+  --ink:#191307; --ink-2:#241C0E; --ink-3:#332816; --ink-soft:#42341F;
+  /* Accent — Bronze / champagne gold (LTD #9F7D55) */
+  --gold:#9F7D55; --gold-light:#C6A97E; --gold-deep:#7A5E3C; --gold-tint:#F1E9DA;
+  /* Secondary — Muted evergreen (data / adaptive) */
+  --sky:#5E7A6E; --sky-light:#8AA598; --sky-tint:#E9EFEB;
+  /* Surfaces (warm ivory) */
+  --page:#F5F1E8; --surface:#FFFFFF; --surface-2:#FAF6EE; --sidebar:#15100A;
+  --sidebar-2:#0C0805; --hover:#F3ECDF; --tint:#EFE7D8;
+  /* Text (warm charcoal) */
+  --tx:#231C12; --tx-2:#6E6150; --tx-3:#9E9483; --on-dark:#F2EADB; --on-dark-2:#B9A98C;
   /* Borders */
-  --bd:#E4E9F1; --bd-strong:#D2DAE6; --bd-dark:#22374F;
+  --bd:#E8DFCC; --bd-strong:#D9CCB1; --bd-dark:#352A1A;
   /* Semantic */
-  --ok:#2E9E6B; --ok-soft:#E1F2EA; --warn:#D69B3F; --warn-soft:#FBF1DD;
-  --bad:#D25656; --bad-soft:#F8E4E4; --info:#3E7CB1; --info-soft:#E6F0F8;
+  --ok:#4C7A5E; --ok-soft:#E5EDE6; --warn:#B8863A; --warn-soft:#F4E9D0;
+  --bad:#B0524B; --bad-soft:#F1E1DE; --info:#5E7A6E; --info-soft:#E9EFEB;
   /* Radii */
   --r-xs:.3rem; --r-sm:.45rem; --r-md:.6rem; --r-lg:.85rem; --r-xl:1.15rem; --r-pill:999px;
-  /* Shadow */
-  --sh-sm:0 1px 2px rgba(15,30,51,.06),0 1px 3px rgba(15,30,51,.05);
-  --sh-md:0 4px 14px rgba(15,30,51,.08),0 2px 6px rgba(15,30,51,.05);
-  --sh-lg:0 18px 44px rgba(15,30,51,.16),0 6px 16px rgba(15,30,51,.08);
+  /* Shadow (warm-tinted) */
+  --sh-sm:0 1px 2px rgba(30,22,10,.06),0 1px 3px rgba(30,22,10,.05);
+  --sh-md:0 4px 14px rgba(30,22,10,.09),0 2px 6px rgba(30,22,10,.06);
+  --sh-lg:0 20px 48px rgba(30,22,10,.20),0 6px 16px rgba(30,22,10,.10);
   /* Type */
-  --f-display:'Fraunces',Georgia,serif;
+  --f-display:'Cormorant Garamond','Junge',Georgia,serif;
   --f-sans:'Plus Jakarta Sans',-apple-system,'Segoe UI',sans-serif;
   --f-mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
 }
@@ -343,6 +343,43 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
 .demo-note{background:var(--gold-tint);border:1px solid #ecdcb8;border-radius:var(--r-md);padding:11px 16px;font-size:12.5px;color:var(--gold-deep);display:flex;gap:9px;align-items:flex-start;margin-bottom:22px}
 .demo-note svg{width:16px;height:16px;flex:none;margin-top:1px}
 .demo-note b{color:#7a5615}
+
+/* ---------- serif tuning for Cormorant ---------- */
+.ph h1{font-size:34px;font-weight:600}
+.serif{font-weight:600}
+
+/* ---------- profile segmented toggle ---------- */
+.seg-toggle{display:inline-flex;background:var(--tint);border:1px solid var(--bd);border-radius:var(--r-pill);padding:4px;gap:2px}
+.seg-btn{padding:8px 18px;border-radius:var(--r-pill);font-size:13px;font-weight:600;color:var(--tx-2);transition:all .16s;white-space:nowrap;display:flex;align-items:center;gap:7px}
+.seg-btn svg{width:15px;height:15px}
+.seg-btn:hover{color:var(--tx)}
+.seg-btn.on{background:var(--ink);color:#fff;box-shadow:var(--sh-sm)}
+.seg-btn.on svg{color:var(--gold-light)}
+
+/* ---------- hero band ---------- */
+.hero{background:radial-gradient(130% 150% at 50% -30%,#33271400 0%,#15100A 65%),linear-gradient(160deg,#2A2114 0%,#15100A 55%,#100C07 100%);border:1px solid var(--bd-dark);border-radius:var(--r-xl);padding:34px 30px 30px;color:var(--on-dark);position:relative;overflow:hidden;text-align:center;box-shadow:var(--sh-md)}
+.hero .frame{position:absolute;inset:14px;border:1px solid rgba(198,169,126,.22);border-radius:calc(var(--r-xl) - 8px);pointer-events:none}
+.hero .wm{position:absolute;font-family:var(--f-display);font-weight:600;font-size:280px;color:rgba(198,169,126,.05);top:50%;left:50%;transform:translate(-50%,-46%);line-height:1;pointer-events:none;letter-spacing:.05em}
+.hero .he-eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-light);position:relative}
+.hero .he-mark{font-family:var(--f-display);font-weight:600;font-size:42px;color:#fff;letter-spacing:.02em;line-height:1;margin-top:8px;position:relative}
+.hero .he-rule{width:46px;height:1px;background:var(--gold);margin:16px auto 0;opacity:.7}
+.hero .he-quote{font-family:var(--f-display);font-style:italic;font-size:21px;line-height:1.4;color:var(--gold-light);max-width:640px;margin:16px auto 0;min-height:58px;position:relative;transition:opacity .5s ease}
+.hero .he-author{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark-2);margin-top:10px;font-weight:600;position:relative;transition:opacity .5s ease}
+.hero .he-pill{position:absolute;top:26px;display:inline-flex;align-items:center;gap:8px;background:rgba(198,169,126,.12);border:1px solid rgba(198,169,126,.25);border-radius:var(--r-pill);padding:7px 13px;font-size:12px;font-weight:600;color:var(--gold-light)}
+.hero .he-pill svg{width:14px;height:14px}
+.hero .he-pill.left{left:26px} .hero .he-pill.right{right:26px}
+.hero .he-pill b{color:#fff;font-family:var(--f-display);font-size:15px;font-weight:600}
+@media(max-width:760px){.hero .he-pill{display:none}.hero .he-mark{font-size:32px}}
+
+/* ---------- dashboard stat with chart ---------- */
+.dstat{background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-lg);padding:18px 20px 14px;box-shadow:var(--sh-sm);position:relative}
+.dstat .sl{font-size:12px;color:var(--tx-2);font-weight:600;display:flex;align-items:center;gap:7px}
+.dstat .sl svg{width:15px;height:15px;color:var(--gold-deep)}
+.dstat .sv{font-family:var(--f-display);font-weight:600;font-size:30px;color:var(--ink);margin-top:6px;letter-spacing:-.01em;line-height:1}
+.dstat .srow{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:8px}
+.dstat .sd{font-size:11.5px;font-weight:700;display:flex;align-items:center;gap:3px}
+.dstat .sd svg{width:12px;height:12px}
+.mo-note{font-size:11px;color:var(--tx-3);font-weight:600;margin-top:2px}
 </style>
 </head>
 <body>
@@ -351,10 +388,10 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
   <aside class="side">
     <div class="brand">
       <div class="logo">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L3 6v5c0 5 3.8 9.4 9 11 5.2-1.6 9-6 9-11V6l-9-4z" fill="#fff" opacity=".95"/><path d="M9 12l2 2 4-4.5" stroke="#B27E28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-family:var(--f-display);font-weight:600;font-size:19px;color:#fff;letter-spacing:.02em;line-height:1">LTD</span>
       </div>
       <div>
-        <div class="bt">Summit Financial</div>
+        <div class="bt">LTD Agency</div>
         <div class="bs">Agency OS</div>
       </div>
     </div>
@@ -412,7 +449,7 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
     </div>
 
     <div class="side-foot">
-      <div>Demo tenant · <b>Summit Financial Group</b></div>
+      <div>Demo tenant · <b>LTD Agency</b></div>
       <div class="pw"><span class="dot"></span> Built on <b>Atelio</b> — a Forma platform</div>
     </div>
   </aside>
@@ -429,7 +466,7 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
         <button class="icon-btn" title="Notifications">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
         </button>
-        <div class="avatar">SB</div>
+        <div class="avatar">SR</div>
       </div>
     </div>
     <div id="root"></div>
@@ -474,7 +511,7 @@ const I = {
 };
 const svg=(k,w=18)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:${w}px;height:${w}px">${I[k]||''}</svg>`;
 const initials=n=>n.split(' ').map(x=>x[0]).slice(0,2).join('');
-const AV=['#3E7CB1','#2E9E6B','#B27E28','#8B5C9E','#C15C5C','#4C8C7A','#5A6B80','#C87941'];
+const AV=['#9F7D55','#5E7A6E','#6D5B72','#A5625A','#5B6B72','#B0894A','#4C6B63','#8A7A63'];
 const av=(n,i)=>`<div class="pav" style="background:${AV[i%AV.length]}">${initials(n)}</div>`;
 
 /* ---------- COURSE DATA ---------- */
@@ -482,7 +519,7 @@ const COURSE = {
   title:"Agent Foundations",
   subtitle:"The Summit path from invitation to your first placed policy",
   modules:[
-    { id:"m1", name:"Invitation", tag:"Module 1", color:"#3E7CB1",
+    { id:"m1", name:"Invitation", tag:"Module 1", color:"#5B6B72",
       blurb:"Fill your calendar the right way — mindset, list, and the invite itself.",
       chapters:[
         { id:"c1", name:"The Mindset of Invitation", concepts:[
@@ -507,7 +544,7 @@ const COURSE = {
           { id:"k6", t:"Scripting the reach-out", dur:"4:05", src:"Workshop · Mar 20", beats:["Text vs. call","The 20-second voicemail","Follow-up rhythm"] },
         ]},
       ]},
-    { id:"m2", name:"Edification", tag:"Module 2", color:"#B27E28",
+    { id:"m2", name:"Edification", tag:"Module 2", color:"#9F7D55",
       blurb:"Borrow credibility, build leaders, and run a presentation that closes itself.",
       chapters:[
         { id:"c3", name:"Edifying Your Upline", concepts:[
@@ -523,7 +560,7 @@ const COURSE = {
           ] },
         ]},
       ]},
-    { id:"m3", name:"Advanced Concepts", tag:"Module 3", color:"#8B5C9E",
+    { id:"m3", name:"Advanced Concepts", tag:"Module 3", color:"#6D5B72",
       blurb:"Products, needs-based selling, objections, and compliance done right.",
       chapters:[
         { id:"c5", name:"Needs-Based Selling", concepts:[
@@ -552,7 +589,7 @@ const doneSet=new Set(["k1","k2","k3","k4"]); // pre-completed for a believable 
 /* ---------- ADAPTIVE PERSONAS ---------- */
 const PERSONAS=[
   { id:"maya", name:"Maya Chen", role:"Brand-new recruit", lvl:1, lvlName:"Foundational track",
-    score:34, color:"#3E7CB1", diff:"Guided pace · extra practice reps",
+    score:34, color:"#5B6B72", diff:"Guided pace · extra practice reps",
     rationale:"Maya scored 34% on the placement assessment and has no prior sales experience. The system routes her through <b>every foundation concept</b>, adds an extra practice rep after Invitation, and holds Advanced Concepts until she's certified on Modules 1–2.",
     path:[
       {t:"Placement assessment",m:"6 questions · adaptive",st:"on",badge:"done"},
@@ -562,7 +599,7 @@ const PERSONAS=[
       {t:"Advanced Concepts",m:"Unlocks after Mod 1–2 pass",st:"on",badge:"gated"},
     ]},
   { id:"devon", name:"Devon Pierce", role:"Came from car sales", lvl:2, lvlName:"Accelerated track",
-    score:61, color:"#B27E28", diff:"Standard pace · fewer basics",
+    score:61, color:"#9F7D55", diff:"Standard pace · fewer basics",
     rationale:"Devon tested out of core Invitation concepts (61%) thanks to a sales background, so the engine <b>skips prospecting basics</b> and drops him straight into insurance-specific edification and products, with a compliance checkpoint added.",
     path:[
       {t:"Placement assessment",m:"6 questions · adaptive",st:"on",badge:"done"},
@@ -572,7 +609,7 @@ const PERSONAS=[
       {t:"Advanced Concepts + products",m:"6 concepts · main focus",st:"on"},
     ]},
   { id:"carla", name:"Carla Ruiz", role:"Licensed, joining the team", lvl:3, lvlName:"Fast-track / leadership",
-    score:88, color:"#8B5C9E", diff:"Challenge pace · leadership add-ons",
+    score:88, color:"#6D5B72", diff:"Challenge pace · leadership add-ons",
     rationale:"Carla is already licensed and scored 88%. She <b>skips Modules 1–2 entirely</b>, gets only the Summit-specific compliance and presentation concepts, and is offered the leadership / duplication track so she can train her own recruits.",
     path:[
       {t:"Placement assessment",m:"6 questions · adaptive",st:"on",badge:"done"},
@@ -626,30 +663,122 @@ const STUCK=[
 
 /* ---------- SCAFFOLD MODULES ---------- */
 const MODULES={
-  policies:{ic:"doc",color:"#3E7CB1",name:"Policies & Products",
+  policies:{ic:"doc",color:"#5B6B72",name:"Policies & Products",
     tag:"Product catalog + application pipeline",
     desc:"Your carriers, products, and every application in flight — the source of truth the Academy trains agents on and Commissions pays from.",
     feats:[["Product catalog","Term, Whole Life, IUL and riders per carrier, with the same needs-based framing agents learn in Academy."],["Application pipeline","Submitted → underwriting → issued → placed, with status and requirements per case."],["Carrier & commission rules","Carrier grids drive the Commissions module automatically — no re-keying."],["Suitability on file","The compliance concepts from training become enforced fields here."]]},
-  clients:{ic:"users",color:"#2E9E6B",name:"Clients (CRM)",
+  clients:{ic:"users",color:"#5E7A6E",name:"Clients (CRM)",
     tag:"One shared client & household record",
     desc:"Every prospect and policyholder in one book the whole agency reads from — the same record the Client Portal and Policies modules share.",
     feats:[["Households & needs analysis","DIME numbers and coverage gaps stored on the record, straight from the training method."],["Pipeline & activities","Invites, presentations, and follow-ups — tied back to who recruited and who trained the agent."],["Policy history","Every policy, claim, and review on the household timeline."],["Referrals & tree","See which agent and which recruit generated each client."]]},
-  portal:{ic:"portal",color:"#8B5C9E",name:"Client Portal",
+  portal:{ic:"portal",color:"#6D5B72",name:"Client Portal",
     tag:"Self-serve for policyholders",
     desc:"A branded portal where clients view coverage, documents, and beneficiaries — reducing the service load so agents stay in production.",
     feats:[["Coverage at a glance","Policies, premiums, and payment status in plain language."],["Documents & e-sign","Illustrations, applications, and disclosures in one place."],["Beneficiary updates","Life changes captured without an agent phone call."],["Secure messaging","Requests routed to the right agent, logged in the CRM."]]},
-  commissions:{ic:"money",color:"#B27E28",name:"Commissions",
+  commissions:{ic:"money",color:"#B0894A",name:"Commissions",
     tag:"Overrides, splits, and statements",
     desc:"Turns placed policies into paid commissions and hierarchy overrides automatically — the payoff that motivates the whole training funnel.",
     feats:[["Hierarchy & overrides","Multi-level override calc that mirrors your agency's real structure."],["Splits & advances","Configurable splits, advance vs. as-earned, chargeback tracking."],["Agent statements","Every agent sees exactly what they earned and why."],["Reconciliation","Carrier statements matched to expected commissions."]]},
-  recruiting:{ic:"target",color:"#C15C5C",name:"Recruiting",
+  recruiting:{ic:"target",color:"#A5625A",name:"Recruiting",
     tag:"Invite → onboard → into training",
     desc:"Where the funnel starts: capture recruits, run onboarding, and hand them straight to the Academy — closing the loop on the shared spine.",
     feats:[["Recruit pipeline","Applicants tracked from first contact through contracting and licensing."],["Onboarding checklist","E&O, carrier contracting, and background steps in one flow."],["Auto-enroll to Academy","A new recruit lands in the adaptive training path automatically."],["Team tree","See each agent's recruits and their training + production status."]]},
 };
 
+/* ---------- ROTATING QUOTES (agencies love these) ---------- */
+const QUOTES=[
+  {q:"Protect the family first. The sale takes care of itself.",a:"Sales floor mantra"},
+  {q:"You don't build a team. You build people, and the people build the team.",a:"On duplication"},
+  {q:"Every no is one conversation closer to a family protected.",a:"On persistence"},
+  {q:"Train them so well they could leave — lead them so well they won't.",a:"On leadership"},
+  {q:"Activity beats anxiety. Make the next call.",a:"Fast-start creed"},
+];
+
+/* ---------- DASHBOARD PROFILES ---------- */
+const DASH={
+  training:{
+    label:"Agents in Training", greeting:"Good morning, Sare",
+    sub:"Your new-advisor pipeline at a glance — who's moving, who's stalled, and how this month compares to the last.",
+    pill:{l:"Certified this quarter",v:"24"},
+    kpis:[
+      {l:"Active trainees",v:"42",d:"+6",up:true,ic:"users",series:[28,31,34,36,38,42],note:"vs 36 last month"},
+      {l:"Avg. completion",v:"78%",d:"+12 pts",up:true,ic:"target",series:[54,60,63,68,72,78],note:"vs 72% last month"},
+      {l:"Certified / mo",v:"9",d:"+1",up:true,ic:"award",series:[4,5,6,7,8,9],note:"vs 8 last month"},
+      {l:"Time to license",v:"21d",d:"−5 days",up:true,ic:"clock",series:[31,29,27,25,24,21],note:"faster vs last mo",inv:true},
+    ],
+    trend:{title:"New agents certified",subtitle:"Last 6 months — steady climb since the adaptive paths launched.",unit:"",color:"var(--gold)",
+      data:[{m:"Feb",v:4},{m:"Mar",v:5},{m:"Apr",v:6},{m:"May",v:7},{m:"Jun",v:8},{m:"Jul",v:9}]},
+    funnelTitle:"Training funnel", funnel:FUNNEL,
+    attention:[
+      ['warn','6 trainees stalled on Compliance guardrails','Highest drop-off concept — consider a shorter re-cut.','analytics'],
+      ['info','Maya Chen is behind pace','Adaptive engine added extra reps; nudge sent automatically.','adaptive'],
+      ['ok','New recording ready to publish','7 concepts detected from your 48-min team call.','admin'],
+    ],
+    contest:{title:"Q3 Fast-Start — Race to Certified",prize:"Presidents' Club dinner + $500 bonus",daysLeft:23,goal:100,
+      fmt:v=>v+"%", leaders:[{n:"Priya Nair",val:100},{n:"Marcus Webb",val:92},{n:"Devon Pierce",val:74},{n:"Aisha Karim",val:68}]},
+  },
+  senior:{
+    label:"Senior Agents", greeting:"Good morning, Sare",
+    sub:"Your team's production and duplication at a glance — annualized premium, recruiting, and overrides vs last month.",
+    pill:{l:"Team AP this quarter",v:"$792k"},
+    kpis:[
+      {l:"Team AP (mo)",v:"$284k",d:"+8%",up:true,ic:"money",series:[180,205,220,246,262,284],note:"vs $262k last month"},
+      {l:"Policies placed",v:"63",d:"+11",up:true,ic:"doc",series:[41,44,49,52,57,63],note:"vs 52 last month"},
+      {l:"Recruits in pipeline",v:"18",d:"+4",up:true,ic:"target",series:[9,11,12,14,15,18],note:"vs 14 last month"},
+      {l:"Team override (mo)",v:"$41k",d:"+9%",up:true,ic:"up",series:[26,29,31,35,38,41],note:"vs $38k last month"},
+    ],
+    trend:{title:"Team production by month",subtitle:"Annualized premium ($000s) — the number your SMDs watch.",unit:"k",color:"var(--gold)",
+      data:[{m:"Feb",v:180},{m:"Mar",v:205},{m:"Apr",v:220},{m:"May",v:246},{m:"Jun",v:262},{m:"Jul",v:284}]},
+    funnelTitle:"Recruiting → production funnel",
+    funnel:[{l:"Leads",v:120,pct:100},{l:"Interviews",v:58,pct:48},{l:"Contracted",v:31,pct:26},{l:"Licensed",v:22,pct:18},{l:"First policy",v:17,pct:14},{l:"Producing monthly",v:14,pct:12}],
+    attention:[
+      ['warn','3 mentees stalled in training','Their certification is blocking your override tier.','analytics'],
+      ['info','2 recruits awaiting contracting','Sitting in onboarding > 5 days — nudge them through.','recruiting'],
+      ['ok','July override statement ready','$41,240 across your hierarchy — review before payout.','commissions'],
+    ],
+    contest:{title:"Q3 Production — Trip to Cancún",prize:"All-inclusive Cancún trip for 2",daysLeft:23,goal:60,
+      fmt:v=>"$"+v+"k", leaders:[{n:"Priya Nair",val:52},{n:"Marcus Webb",val:47},{n:"Bita G.",val:41},{n:"Aisha Karim",val:33}]},
+  },
+};
+
+/* ---------- CHART HELPERS ---------- */
+function spark(series,color,w,h){color=color||'var(--gold)';w=w||96;h=h||34;
+  const mn=Math.min(...series),mx=Math.max(...series),rng=(mx-mn)||1;
+  const pts=series.map((v,i)=>[i/(series.length-1)*w, h-4-((v-mn)/rng)*(h-8)]);
+  const line=pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+  const area='0,'+h+' '+line+' '+w+','+h;
+  const last=pts[pts.length-1];
+  return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" style="overflow:visible;display:block"><polyline points="'+area+'" fill="'+color+'" opacity=".10"/><polyline points="'+line+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="'+last[0]+'" cy="'+last[1]+'" r="2.8" fill="'+color+'"/></svg>';
+}
+function barChart(data,unit,h){h=h||156;unit=unit||'';
+  const mx=Math.max(...data.map(d=>d.v))||1;
+  return '<div style="display:flex;align-items:flex-end;gap:8px;height:'+h+'px;padding-top:12px">'+
+    data.map((d,i)=>{const bh=Math.max(5,(d.v/mx)*(h-40));const last=i===data.length-1;
+      return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%">'+
+        '<div style="font-size:11px;font-weight:700;color:'+(last?'var(--gold-deep)':'var(--tx-3)')+';margin-bottom:5px">'+d.v+unit+'</div>'+
+        '<div style="width:64%;max-width:36px;height:'+bh+'px;border-radius:5px 5px 0 0;background:'+(last?'linear-gradient(180deg,var(--gold-light),var(--gold))':'var(--tint)')+';border:1px solid '+(last?'transparent':'var(--bd)')+'"></div>'+
+        '<div style="font-size:10.5px;color:var(--tx-3);margin-top:7px;font-weight:600">'+d.m+'</div></div>';}).join('')+'</div>';
+}
+function dstat(k){
+  const arrow=k.inv?'down':'up';
+  return '<div class="dstat"><div class="sl">'+svg(k.ic,15)+' '+k.l+'</div>'+
+    '<div class="srow"><div><div class="sv">'+k.v+'</div><div class="sd up">'+svg('up',12)+' '+k.d+'</div></div>'+
+    '<div style="flex:none">'+spark(k.series)+'</div></div>'+
+    '<div class="mo-note">'+k.note+'</div></div>';
+}
+function contestCard(c){
+  return '<div class="card card-pad">'+
+    '<div class="flex between center mb"><div><div class="eyebrow">Quarterly contest</div><h3 class="serif" style="font-size:20px;color:var(--ink);margin-top:2px">'+c.title+'</h3></div>'+
+    '<span class="badge b-warn" style="white-space:nowrap">'+svg('clock',12)+' '+c.daysLeft+'d left</span></div>'+
+    '<div class="flex center gap-s" style="background:var(--gold-tint);border:1px solid #ecdcb8;border-radius:var(--r-md);padding:11px 14px;margin-bottom:16px">'+
+    svg('award',18)+'<div style="font-size:13px;color:var(--gold-deep)"><b style="color:#7a5615">Prize:</b> '+c.prize+'</div></div>'+
+    c.leaders.map((l,i)=>{const pct=Math.min(100,Math.round(l.val/c.goal*100));
+      return '<div style="margin-bottom:13px"><div class="flex between center" style="font-size:12.5px;margin-bottom:5px"><span class="flex center gap-s"><span class="rank '+(i<3?'rank-'+(i+1):'rank-x')+'" style="width:20px;height:20px;font-size:11px">'+(i+1)+'</span><b style="color:var(--ink)">'+l.n+'</b></span><span class="muted" style="font-variant-numeric:tabular-nums">'+c.fmt(l.val)+' / '+c.fmt(c.goal)+'</span></div><div class="bar"><span style="width:'+pct+'%"></span></div></div>';}).join('')+
+    '</div>';
+}
+
 /* =====================  APP  ===================== */
-const state={view:'dashboard', current:'k5', persona:'maya', pipeStep:-1, playing:false, playTimer:null};
+const state={view:'dashboard', current:'k5', persona:'maya', profile:'training', quoteIdx:0, quoteTimer:null, pipeStep:-1, playing:false, playTimer:null};
 
 function toast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2400);}
 function setNav(){document.querySelectorAll('.nav-i').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));}
@@ -657,6 +786,7 @@ const CRUMB={dashboard:['Dashboard',''],learn:['Academy','· Course Player'],ada
 function nav(v){state.view=v;setNav();const c=CRUMB[v]||[v,''];document.getElementById('crumbTop').textContent=c[0];document.getElementById('crumbSub').textContent=c[1];render();document.querySelector('.main').scrollTop=0;}
 
 function render(){
+  if(state.quoteTimer){clearInterval(state.quoteTimer);state.quoteTimer=null;}
   const r=document.getElementById('root');
   const V=state.view;
   if(V==='dashboard')r.innerHTML=vDashboard();
@@ -670,27 +800,52 @@ function render(){
 
 /* ---------- DASHBOARD ---------- */
 function vDashboard(){
+  const p=state.profile, D=DASH[p];
   const tiles=[
-    {v:'learn',ic:'video',c:'#3E7CB1',t:'Course Player',d:'Adaptive video course, cut into concepts with quizzes after each segment.',live:true},
-    {v:'adaptive',ic:'spark',c:'#8B5C9E',t:'Adaptive Paths',d:'Placement assessment curates each trainee’s path to their ability.',live:true},
-    {v:'admin',ic:'wand',c:'#B27E28',t:'Content Studio',d:'Drop a recording → auto-chunk into concepts, chapters & draft quizzes.',live:true},
-    {v:'analytics',ic:'up',c:'#2E9E6B',t:'Analytics',d:'Leaderboard, completion funnel, and where trainees get stuck.',live:true},
-    {v:'policies',ic:'doc',c:'#4C8C7A',t:'Policies & Products',d:'Product catalog and application pipeline.',live:false},
-    {v:'commissions',ic:'money',c:'#C87941',t:'Commissions',d:'Overrides, splits and agent statements.',live:false},
+    {v:'learn',ic:'video',c:'#5B6B72',t:'Course Player',d:'Adaptive video course, cut into concepts with quizzes after each segment.',live:true},
+    {v:'adaptive',ic:'spark',c:'#6D5B72',t:'Adaptive Paths',d:'Placement assessment curates each trainee’s path to their ability.',live:true},
+    {v:'admin',ic:'wand',c:'#9F7D55',t:'Content Studio',d:'Drop a recording → auto-chunk into concepts, chapters & draft quizzes.',live:true},
+    {v:'analytics',ic:'up',c:'#5E7A6E',t:'Analytics',d:'Leaderboard, completion funnel, and where trainees get stuck.',live:true},
+    {v:'policies',ic:'doc',c:'#4C6B63',t:'Policies & Products',d:'Product catalog and application pipeline.',live:false},
+    {v:'commissions',ic:'money',c:'#B0894A',t:'Commissions',d:'Overrides, splits and agent statements.',live:false},
   ];
+  const q=QUOTES[state.quoteIdx%QUOTES.length];
   return `<div class="view">
-    <div class="ph">
+    <div class="ph" style="margin-bottom:18px">
       <div>
-        <div class="eyebrow">Summit Financial Group · Agency OS</div>
-        <h1>Good morning, Sare</h1>
-        <p>Your agency’s training engine at a glance. The Academy module is live in this demo — the rest of the platform is shown as the roadmap it plugs into.</p>
+        <div class="eyebrow">LTD Agency · Agency OS</div>
+        <h1>${D.greeting}</h1>
+        <p>${D.sub}</p>
       </div>
-      <button class="btn btn-gold" data-go="learn">${svg('play',16)} Resume the demo course</button>
+      <div class="seg-toggle">
+        <button class="seg-btn ${p==='training'?'on':''}" data-profile="training">${svg('layers',15)} Agents in Training</button>
+        <button class="seg-btn ${p==='senior'?'on':''}" data-profile="senior">${svg('award',15)} Senior Agents</button>
+      </div>
     </div>
 
-    <div class="demo-note">${svg('info',16)}<div><b>This is a working demo.</b> Everything under <b>Academy</b> is clickable — play a lesson, take a quiz, switch adaptive learner profiles, and watch a recording auto-chunk itself. Branding, colors, and content are placeholders to be swapped for Sare’s.</div></div>
+    <div class="hero mb">
+      <div class="frame"></div><div class="wm">L</div>
+      <div class="he-pill left">${svg(p==='senior'?'money':'award',14)} ${D.pill.l} · <b>${D.pill.v}</b></div>
+      <div class="he-pill right">${svg('layers',14)} Viewing · <b>${D.label}</b></div>
+      <div class="he-eyebrow">LTD Agency · Agency OS</div>
+      <div class="he-mark">LTD Agency</div>
+      <div class="he-rule"></div>
+      <div class="he-quote" id="heroQuote">“${q.q}”</div>
+      <div class="he-author" id="heroAuthor">${q.a}</div>
+    </div>
 
-    <div class="grid g-4">${KPI.map(k=>stat(k)).join('')}</div>
+    <div class="demo-note">${svg('info',16)}<div><b>Working demo.</b> Toggle <b>Agents in Training</b> vs <b>Senior Agents</b> to reshape this dashboard, and open any <b>Academy</b> module to click through it. Branding is tailored to LTD (black + bronze) — swap in real assets anytime.</div></div>
+
+    <div class="grid g-4">${D.kpis.map(dstat).join('')}</div>
+
+    <div class="grid g-2 mt-l" style="align-items:start">
+      <div class="card card-pad">
+        <div class="flex between center"><div><div class="eyebrow">${svg('up',12)} Month over month</div><h3 class="serif" style="font-size:20px;color:var(--ink);margin-top:2px">${D.trend.title}</h3></div><span class="chip">Last 6 mo</span></div>
+        <p class="muted" style="font-size:12.5px;margin:6px 0 2px">${D.trend.subtitle}</p>
+        ${barChart(D.trend.data,D.trend.unit)}
+      </div>
+      ${contestCard(D.contest)}
+    </div>
 
     <div class="section-t" style="margin-top:30px">Academy — live modules</div>
     <div class="launch">${tiles.map(t=>`
@@ -703,15 +858,13 @@ function vDashboard(){
 
     <div class="grid g-2 mt-l" style="align-items:start">
       <div class="card card-pad">
-        <div class="flex between center mb"><h3 class="serif" style="font-size:18px;color:var(--ink)">Needs attention</h3><span class="chip">${svg('bolt',13)} 3 items</span></div>
-        ${attn('warn','6 trainees stalled on Compliance guardrails','Highest drop-off concept — consider a shorter re-cut.','analytics')}
-        ${attn('info','Maya Chen is behind pace','Adaptive engine added extra reps; nudge sent automatically.','adaptive')}
-        ${attn('ok','New recording ready to publish','7 concepts detected from your 48-min team call.','admin')}
+        <div class="flex between center mb"><h3 class="serif" style="font-size:19px;color:var(--ink)">Needs attention</h3><span class="chip">${svg('bolt',13)} ${D.attention.length} items</span></div>
+        ${D.attention.map(a=>attn(a[0],a[1],a[2],a[3])).join('')}
       </div>
       <div class="card card-pad">
-        <h3 class="serif" style="font-size:18px;color:var(--ink)">Your training funnel</h3>
-        <p class="muted" style="font-size:13px;margin:4px 0 16px">From invite to certified — the whole agency in one view.</p>
-        ${FUNNEL.slice(0,6).map(f=>`<div class="flex center gap" style="margin-bottom:9px"><div style="width:130px;font-size:12.5px;font-weight:600;color:var(--ink)">${f.l}</div><div class="bar" style="flex:1"><span style="width:${f.pct}%"></span></div><div style="width:34px;text-align:right;font-size:12.5px;font-weight:700;color:var(--tx-2)">${f.v}</div></div>`).join('')}
+        <h3 class="serif" style="font-size:19px;color:var(--ink)">${D.funnelTitle}</h3>
+        <p class="muted" style="font-size:13px;margin:4px 0 16px">${p==='senior'?'From lead to a monthly-producing agent.':'From invite to certified — the whole agency in one view.'}</p>
+        ${D.funnel.map(f=>`<div class="flex center gap" style="margin-bottom:10px"><div style="width:140px;font-size:12.5px;font-weight:600;color:var(--ink)">${f.l}</div><div class="bar" style="flex:1"><span style="width:${f.pct}%"></span></div><div style="width:40px;text-align:right;font-size:12.5px;font-weight:700;color:var(--tx-2)">${f.v}</div></div>`).join('')}
       </div>
     </div>
 
@@ -723,11 +876,11 @@ function attn(kind,t,d,go){const cls={warn:'b-warn',info:'b-info',ok:'b-ok'}[kin
 
 function spineBlock(){
   const nodes=[
-    {ic:'target',c:'#C15C5C',h:'Recruited',p:'Applicant enters via Recruiting.'},
-    {ic:'spark',c:'#8B5C9E',h:'Trained',p:'Adaptive Academy path, matched to ability.'},
-    {ic:'award',c:'#2E9E6B',h:'Licensed',p:'Certified — auto-flagged ready to sell.'},
-    {ic:'doc',c:'#3E7CB1',h:'Places policy',p:'Client + application in Policies / CRM.'},
-    {ic:'money',c:'#B27E28',h:'Gets paid',p:'Commission + upline override, automatically.'},
+    {ic:'target',c:'#A5625A',h:'Recruited',p:'Applicant enters via Recruiting.'},
+    {ic:'spark',c:'#6D5B72',h:'Trained',p:'Adaptive Academy path, matched to ability.'},
+    {ic:'award',c:'#5E7A6E',h:'Licensed',p:'Certified — auto-flagged ready to sell.'},
+    {ic:'doc',c:'#5B6B72',h:'Places policy',p:'Client + application in Policies / CRM.'},
+    {ic:'money',c:'#9F7D55',h:'Gets paid',p:'Commission + upline override, automatically.'},
   ];
   return `<div class="spine mt-l">
     <div class="eyebrow" style="color:var(--gold-light)">Why one platform</div>
@@ -985,9 +1138,26 @@ function vScaffold(v){
 /* ============ INTERACTION WIRING ============ */
 function wire(){
   document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>nav(b.dataset.go));
+  if(state.view==='dashboard')wireDash();
   if(state.view==='learn')wireLearn();
   if(state.view==='adaptive')document.querySelectorAll('[data-persona]').forEach(b=>b.onclick=()=>{state.persona=b.dataset.persona;render();});
   if(state.view==='admin')wireAdmin();
+}
+
+function wireDash(){
+  document.querySelectorAll('[data-profile]').forEach(b=>b.onclick=()=>{state.profile=b.dataset.profile;state.quoteIdx=0;render();});
+  startQuotes();
+}
+function startQuotes(){
+  if(state.quoteTimer)clearInterval(state.quoteTimer);
+  state.quoteTimer=setInterval(()=>{
+    const el=document.getElementById('heroQuote'),au=document.getElementById('heroAuthor');
+    if(!el){clearInterval(state.quoteTimer);state.quoteTimer=null;return;}
+    state.quoteIdx=(state.quoteIdx+1)%QUOTES.length;
+    const q=QUOTES[state.quoteIdx];
+    el.style.opacity=0;au.style.opacity=0;
+    setTimeout(()=>{el.textContent='“'+q.q+'”';au.textContent=q.a;el.style.opacity=1;au.style.opacity=1;},450);
+  },5200);
 }
 
 function wireLearn(){
