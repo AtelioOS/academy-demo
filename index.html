@@ -445,6 +445,43 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
 .ev-body .et{font-weight:600;font-size:14px;color:var(--ink)}
 .ev-body .em{font-size:12px;color:var(--tx-2);display:flex;gap:12px;margin-top:2px;flex-wrap:wrap}
 .ev-body .em svg{width:12px;height:12px}
+
+/* ---------- phase banner (Growth modules) ---------- */
+.phase-banner{display:flex;align-items:center;gap:10px;background:var(--gold-tint);border:1px solid #ecdcb8;border-radius:var(--r-md);padding:11px 16px;font-size:13px;color:var(--gold-deep);margin-bottom:22px}
+.phase-banner svg{width:16px;height:16px;flex:none}
+.phase-banner b{color:#7a5615}
+/* Recruiting kanban */
+.kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:start}
+@media(max-width:960px){.kanban{grid-template-columns:repeat(2,1fr)}}
+.kcol{background:var(--surface-2);border:1px solid var(--bd);border-radius:var(--r-lg);padding:12px}
+.kcol .kh{font-size:12.5px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}
+.kcol .kh .kn{background:var(--tint);border-radius:var(--r-pill);font-size:11px;padding:1px 8px;color:var(--tx-2);font-weight:700}
+.kcard{background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-md);padding:11px 12px;box-shadow:var(--sh-sm);margin-bottom:9px}
+.kcard:last-child{margin-bottom:0}
+.kcard .kn2{font-weight:600;font-size:13px;color:var(--ink)}
+.kcard .km{font-size:11.5px;color:var(--tx-2);margin-top:2px}
+.kcard .ktag{font-size:10px;font-weight:700;color:var(--gold-deep);background:var(--gold-tint);padding:1px 7px;border-radius:4px;display:inline-flex;align-items:center;gap:4px;margin-top:7px}
+.kcard .ktag svg{width:10px;height:10px}
+.seq{position:relative;padding-left:22px}
+.seq::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--bd)}
+.seqi{position:relative;padding:9px 0 9px 14px}
+.seqi::before{content:"";position:absolute;left:-19px;top:13px;width:11px;height:11px;border-radius:50%;background:var(--gold);border:2px solid var(--surface)}
+.seqi .st{font-weight:600;font-size:13px;color:var(--ink)}
+.seqi .sm{font-size:12px;color:var(--tx-2)}
+.seqi .sd3{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold-deep)}
+/* AI Social */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.posts{grid-template-columns:1fr}}
+.post{background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm)}
+.post .pimg{height:118px;display:grid;place-items:center;color:#fff;position:relative}
+.post .pimg .plat{position:absolute;top:10px;right:10px;font-size:10.5px;font-weight:700;background:rgba(0,0,0,.28);padding:3px 9px;border-radius:var(--r-pill);backdrop-filter:blur(3px)}
+.post .pimg svg{width:34px;height:34px;opacity:.9}
+.post .pb2{padding:13px 15px}
+.post .pcap{font-size:12.5px;color:var(--tx);line-height:1.45}
+.post .pmeta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.post .pmeta .when{font-size:11.5px;color:var(--tx-3)}
+.budget-bar{height:10px;border-radius:var(--r-pill);background:var(--tint);overflow:hidden;margin-top:8px}
+.budget-bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--gold-light),var(--gold-deep))}
 </style>
 </head>
 <body>
@@ -510,22 +547,14 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
     </div>
 
     <div class="navgroup">
-      <div class="lbl">Agency Modules</div>
-      <button class="nav-i" data-view="policies">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
-        Policies & Products <span class="tag soon">Soon</span>
+      <div class="lbl">Growth · Phases 2–3</div>
+      <button class="nav-i" data-view="recruiting">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M18 6v6M15 9h6"/></svg>
+        Recruiting CRM <span class="tag soon">Phase 2</span>
       </button>
-      <button class="nav-i" data-view="clients">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M16 6.5a3 3 0 0 1 0 5.5M18 20c0-2-1-3.6-2.5-4.4"/></svg>
-        Clients (CRM) <span class="tag soon">Soon</span>
-      </button>
-      <button class="nav-i" data-view="portal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h5"/></svg>
-        Client Portal <span class="tag soon">Soon</span>
-      </button>
-      <button class="nav-i" data-view="commissions">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.2c0-1.2 1.1-2 2.5-2s2.5.8 2.5 2-1.1 1.6-2.5 1.8-2.5.6-2.5 1.9 1.1 2 2.5 2 2.5-.8 2.5-2"/></svg>
-        Commissions <span class="tag soon">Soon</span>
+      <button class="nav-i" data-view="aisocial">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 4l1.2 2.8L19 8l-2.8 1.2L15 12l-1.2-2.8L11 8l2.8-1.2L15 4z"/><path d="M6 13l.8 1.9L9 16l-2.2.9L6 19l-.8-2.1L3 16l2.2-1.1L6 13z"/></svg>
+        AI Social Studio <span class="tag soon">Phase 3</span>
       </button>
     </div>
 
@@ -836,22 +865,22 @@ const DASH={
   },
   senior:{
     label:"Senior Agents", greeting:"Good morning, Sare",
-    sub:"Your team's production and duplication at a glance — annualized premium, recruiting, and overrides vs last month.",
+    sub:"Your team's production and duplication at a glance — annualized premium, recruiting, and promotions vs last month.",
     pill:{l:"Team AP this quarter",v:"$792k"},
     kpis:[
       {l:"Team AP (mo)",v:"$284k",d:"+8%",up:true,ic:"money",series:[180,205,220,246,262,284],note:"vs $262k last month"},
-      {l:"Policies placed",v:"63",d:"+11",up:true,ic:"doc",series:[41,44,49,52,57,63],note:"vs 52 last month"},
+      {l:"Policies written",v:"63",d:"+11",up:true,ic:"doc",series:[41,44,49,52,57,63],note:"vs 52 last month"},
       {l:"Recruits in pipeline",v:"18",d:"+4",up:true,ic:"target",series:[9,11,12,14,15,18],note:"vs 14 last month"},
-      {l:"Team override (mo)",v:"$41k",d:"+9%",up:true,ic:"up",series:[26,29,31,35,38,41],note:"vs $38k last month"},
+      {l:"Agents promoted (qtr)",v:"7",d:"+3",up:true,ic:"trophy",series:[2,3,4,4,6,7],note:"vs 4 last quarter"},
     ],
     trend:{title:"Team production by month",subtitle:"Annualized premium ($000s) — the number your SMDs watch.",unit:"k",color:"var(--gold)",
       data:[{m:"Feb",v:180},{m:"Mar",v:205},{m:"Apr",v:220},{m:"May",v:246},{m:"Jun",v:262},{m:"Jul",v:284}]},
     funnelTitle:"Recruiting → production funnel",
     funnel:[{l:"Leads",v:120,pct:100},{l:"Interviews",v:58,pct:48},{l:"Contracted",v:31,pct:26},{l:"Licensed",v:22,pct:18},{l:"First policy",v:17,pct:14},{l:"Producing monthly",v:14,pct:12}],
     attention:[
-      ['warn','3 mentees stalled in training','Their certification is blocking your override tier.','analytics'],
+      ['warn','3 mentees stalled in training','Their certification is holding up the team’s promotion goals.','analytics'],
       ['info','2 recruits awaiting contracting','Sitting in onboarding > 5 days — nudge them through.','recruiting'],
-      ['ok','July override statement ready','$41,240 across your hierarchy — review before payout.','commissions'],
+      ['ok','5 agents up for promotion this month','Recognize them on the Wall of Fame at Saturday’s BPM.','walloffame'],
     ],
     contest:{title:"Q3 Production — Trip to Cancún",prize:"All-inclusive Cancún trip for 2",daysLeft:23,goal:60,
       fmt:v=>"$"+v+"k", leaders:[{n:"Priya Nair",val:52},{n:"Marcus Webb",val:47},{n:"Bita G.",val:41},{n:"Aisha Karim",val:33}]},
@@ -899,7 +928,7 @@ const state={view:'dashboard', current:'k5', persona:'maya', profile:'training',
 
 function toast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2400);}
 function setNav(){document.querySelectorAll('.nav-i').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));}
-const CRUMB={dashboard:['Dashboard',''],learn:['Academy','· Course Player'],adaptive:['Academy','· Adaptive Paths'],admin:['Academy','· Content Studio'],analytics:['Academy','· Analytics'],associates:['New Associates','· Team LTD'],walloffame:['Wall of Fame','· Team LTD'],vault:['LTD Vault','· Team LTD'],events:['Events','· Team LTD'],policies:['Policies & Products',''],clients:['Clients (CRM)',''],portal:['Client Portal',''],commissions:['Commissions','']};
+const CRUMB={dashboard:['Dashboard',''],learn:['Academy','· Course Player'],adaptive:['Academy','· Adaptive Paths'],admin:['Academy','· Content Studio'],analytics:['Academy','· Analytics'],associates:['New Associates','· Team LTD'],walloffame:['Wall of Fame','· Team LTD'],vault:['LTD Vault','· Team LTD'],events:['Events','· Team LTD'],recruiting:['Recruiting CRM','· Phase 2'],aisocial:['AI Social Studio','· Phase 3']};
 function nav(v){state.view=v;setNav();const c=CRUMB[v]||[v,''];document.getElementById('crumbTop').textContent=c[0];document.getElementById('crumbSub').textContent=c[1];render();document.querySelector('.main').scrollTop=0;}
 
 function render(){
@@ -915,6 +944,8 @@ function render(){
   else if(V==='walloffame')r.innerHTML=vWallOfFame();
   else if(V==='vault')r.innerHTML=vVault();
   else if(V==='events')r.innerHTML=vEvents();
+  else if(V==='recruiting')r.innerHTML=vRecruiting();
+  else if(V==='aisocial')r.innerHTML=vAISocial();
   else r.innerHTML=vScaffold(V);
   wire();
 }
@@ -927,14 +958,16 @@ function vDashboard(){
     {v:'adaptive',ic:'spark',c:'#6D5B72',t:'Adaptive Paths',d:'Placement assessment curates each trainee’s path to their ability.',live:true},
     {v:'admin',ic:'wand',c:'#9F7D55',t:'Content Studio',d:'Drop a recording → auto-chunk into concepts, chapters & draft quizzes.',live:true},
     {v:'analytics',ic:'up',c:'#5E7A6E',t:'Analytics',d:'Leaderboard, completion funnel, and where trainees get stuck.',live:true},
-    {v:'policies',ic:'doc',c:'#4C6B63',t:'Policies & Products',d:'Product catalog and application pipeline.',live:false},
-    {v:'commissions',ic:'money',c:'#B0894A',t:'Commissions',d:'Overrides, splits and agent statements.',live:false},
   ];
   const ltiles=[
-    {v:'associates',ic:'rocket',c:'#5E7A6E',t:'New Associates',d:'Onboarding + LLQP licensing, tracked to first policy.',live:true},
+    {v:'associates',ic:'rocket',c:'#5E7A6E',t:'New Associates',d:'Onboarding + LLQP licensing, tracked to first appointment.',live:true},
     {v:'walloffame',ic:'trophy',c:'#B0894A',t:'Wall of Fame',d:'Cash-flow rings, promotions & milestones — live.',live:true},
     {v:'vault',ic:'folder',c:'#6D5B72',t:'LTD Vault',d:'Scripts, forms & recordings, gated by license status.',live:true},
     {v:'events',ic:'cal',c:'#5B6B72',t:'Events',d:'BPMs, trainings & the countdown to convention.',live:true},
+  ];
+  const gtiles=[
+    {v:'recruiting',ic:'target',c:'#A5625A',t:'Recruiting CRM',d:'Prospect pipeline + automated outreach that recruits passively.',tag:'Phase 2'},
+    {v:'aisocial',ic:'wand',c:'#6D5B72',t:'AI Social Studio',d:'Auto-generates content, schedules posts & runs ad campaigns.',tag:'Phase 3'},
   ];
   const q=QUOTES[state.quoteIdx%QUOTES.length];
   return `<div class="view">
@@ -992,6 +1025,15 @@ function vDashboard(){
       </button>`).join('')}
     </div>
 
+    <div class="section-t" style="margin-top:30px">Growth — Phases 2 &amp; 3 of the proposal</div>
+    <div class="launch">${gtiles.map(t=>`
+      <button class="app-tile" data-go="${t.v}">
+        <span class="st"><span class="badge b-warn">${t.tag}</span></span>
+        <div class="ic" style="background:linear-gradient(135deg,${t.c},${shade(t.c)})">${svg(t.ic,22)}</div>
+        <h3>${t.t}</h3><p>${t.d}</p>
+      </button>`).join('')}
+    </div>
+
     <div class="grid g-2 mt-l" style="align-items:start">
       <div class="card card-pad">
         <div class="flex between center mb"><h3 class="serif" style="font-size:19px;color:var(--ink)">Needs attention</h3><span class="chip">${svg('bolt',13)} ${D.attention.length} items</span></div>
@@ -1012,16 +1054,16 @@ function attn(kind,t,d,go){const cls={warn:'b-warn',info:'b-info',ok:'b-ok'}[kin
 
 function spineBlock(){
   const nodes=[
-    {ic:'target',c:'#A5625A',h:'Recruited',p:'Applicant enters via Recruiting.'},
+    {ic:'target',c:'#A5625A',h:'Recruited',p:'Prospect enters via the Recruiting CRM.'},
     {ic:'spark',c:'#6D5B72',h:'Trained',p:'Adaptive Academy path, matched to ability.'},
-    {ic:'award',c:'#5E7A6E',h:'Licensed',p:'Certified — auto-flagged ready to sell.'},
-    {ic:'doc',c:'#5B6B72',h:'Places policy',p:'Client + application in Policies / CRM.'},
-    {ic:'money',c:'#9F7D55',h:'Gets paid',p:'Commission + upline override, automatically.'},
+    {ic:'award',c:'#5E7A6E',h:'Licensed',p:'LLQP tracked — auto-flagged ready to sell.'},
+    {ic:'flame',c:'#5B6B72',h:'In the field',p:'Field-training reps until they can run solo.'},
+    {ic:'trophy',c:'#9F7D55',h:'Producing',p:'Wins flow to contests & the Wall of Fame.'},
   ];
   return `<div class="spine mt-l">
     <div class="eyebrow" style="color:var(--gold-light)">Why one platform</div>
-    <h2 class="serif" style="font-size:23px;margin-top:6px;color:#fff">One agent record — from first invite to first commission</h2>
-    <p style="color:var(--on-dark-2);font-size:13.5px;max-width:640px;margin-top:8px">Training isn’t a standalone app bolted on the side. On the Agency OS, the person Sare recruits, the agent she trains, the policies they place, and the commissions they earn are <b style="color:#fff">the same record</b>. Academy is the front door to that spine.</p>
+    <h2 class="serif" style="font-size:23px;margin-top:6px;color:#fff">One agent record — from first invite to first sale</h2>
+    <p style="color:var(--on-dark-2);font-size:13.5px;max-width:640px;margin-top:8px">Training isn’t a standalone app bolted on the side. On the Agency OS, the person Sare recruits, the agent she trains, and the producer they become are <b style="color:#fff">the same record</b> — so nothing is entered twice. (Policies and commissions stay in WFG’s systems; this platform is the growth engine that feeds them.)</p>
     <div class="spine-flow">${nodes.map((n,i)=>`
       <div class="snode"><div class="si" style="background:${n.c}">${svg(n.ic,18)}</div><h4>${n.h}</h4><p>${n.p}</p></div>
       ${i<nodes.length-1?`<div class="sarrow">${svg('arrow',20)}</div>`:''}`).join('')}
@@ -1431,6 +1473,106 @@ function vEvents(){
         <p class="muted" style="font-size:12px;margin-bottom:14px">Agents about to hit a ring or rank.</p>
         ${MILESAHEAD.map((m,i)=>`<div style="margin-bottom:14px"><div class="flex center gap-s" style="margin-bottom:6px">${av(m.n,i)}<div style="flex:1"><b style="font-size:13px;color:var(--ink)">${m.n}</b><div style="font-size:11.5px;color:var(--tx-2)">${m.m}</div></div></div><div class="bar thin"><span style="width:${m.pct}%"></span></div></div>`).join('')}
       </div>
+    </div>
+  </div>`;
+}
+
+/* ---------- Recruiting CRM (Phase 2) ---------- */
+const PIPELINE=[
+  {stage:"New lead",n:34,cards:[
+    {n:"Jordan M.",m:"Business-owner event",tag:"Auto: text sent"},
+    {n:"Priya D.",m:"Instagram campaign",tag:"Auto: text sent"},
+    {n:"Lucas B.",m:"Referral — Devon",tag:"New today"}]},
+  {stage:"Contacted",n:21,cards:[
+    {n:"Hannah W.",m:"Kids’ wealth event",tag:"Follow-up Day 2"},
+    {n:"Sofia R.",m:"Warm market",tag:"Replied — warm"}]},
+  {stage:"Interview booked",n:12,cards:[
+    {n:"Marcus T.",m:"Zoom · Thu 6pm",tag:"Reminder set"},
+    {n:"Ava K.",m:"In-person · Fri",tag:"Confirmed"}]},
+  {stage:"At an event",n:9,cards:[
+    {n:"Diego S.",m:"Sat BPM · invited",tag:"RSVP’d"},
+    {n:"Nina P.",m:"Sat BPM · invited",tag:"Auto-reminder"}]},
+];
+const SEQUENCE=[
+  {d:"Day 0",t:"Instant text",m:"“Great meeting you — here’s a 2-min look at what we do.”"},
+  {d:"Day 2",t:"Value email",m:"Short story + invite to the Saturday corporate overview."},
+  {d:"Day 5",t:"Check-in text",m:"“Any questions before Saturday? Happy to hop on a quick call.”"},
+  {d:"Day 8",t:"Event reminder",m:"Auto-sent 24h before the BPM they RSVP’d to."},
+];
+function vRecruiting(){
+  const stats=[{l:"Leads (30d)",v:"120",ic:"target"},{l:"Contacted",v:"58",ic:"users"},{l:"Interviews booked",v:"31",ic:"cal"},{l:"Contracted",v:"18",ic:"check"}];
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Growth · Recruiting</div>
+      <h1>Recruiting CRM</h1>
+      <p>Recruiting is priority #1 — this turns events, campaigns, and referrals into one pipeline that follows up on its own, so prospects never go cold while you're in the field.</p>
+    </div></div>
+    <div class="phase-banner">${svg('info',16)}<div><b>Phase 2 of the proposal.</b> Shown here so you can visualize it — the automated outreach and public event calendar work together to recruit passively.</div></div>
+    <div class="grid g-4 mb">${stats.map(s=>`<div class="stat"><div class="sl">${svg(s.ic,15)} ${s.l}</div><div class="sv">${s.v}</div></div>`).join('')}</div>
+
+    <div class="section-t">Pipeline</div>
+    <div class="kanban mb">${PIPELINE.map(col=>`
+      <div class="kcol"><div class="kh">${col.stage}<span class="kn">${col.n}</span></div>
+        ${col.cards.map((c,i)=>`<div class="kcard">${av(c.n,i+col.stage.length)}<div class="kn2" style="margin-top:8px">${c.n}</div><div class="km">${svg('pin',11)} ${c.m}</div><span class="ktag">${svg('wand',10)} ${c.tag}</span></div>`).join('')}
+      </div>`).join('')}
+    </div>
+
+    <div class="grid g-2 mt-l" style="align-items:start">
+      <div class="card card-pad">
+        <div class="flex between center mb"><h3 class="serif" style="font-size:19px;color:var(--ink)">Automated outreach</h3><span class="badge b-ok">Running</span></div>
+        <p class="muted" style="font-size:12.5px;margin:-6px 0 14px">Every new lead is dropped into this sequence automatically — no manual chasing.</p>
+        <div class="seq">${SEQUENCE.map(s=>`<div class="seqi"><div class="sd3">${s.d}</div><div class="st">${s.t}</div><div class="sm">${s.m}</div></div>`).join('')}</div>
+      </div>
+      <div class="card card-pad">
+        <h3 class="serif" style="font-size:19px;color:var(--ink)">Feeds the funnel</h3>
+        <p class="muted" style="font-size:12.5px;margin:4px 0 14px">Where the agency is winning and losing recruits.</p>
+        ${[["Leads",120,100],["Interviews",58,48],["Contracted",31,26],["Licensed",22,18],["Producing",14,12]].map(f=>`<div class="funnel-row"><div class="fl" style="width:110px">${f[0]}</div><div class="ft"><span style="width:${f[2]}%">${f[2]}%</span></div><div class="fn">${f[1]}</div></div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------- AI Social Studio (Phase 3) ---------- */
+const POSTS=[
+  {plat:"Instagram",c:"#B0894A",cap:"“Protecting your family's future starts with one conversation.” 5 tips every parent should know 👇",when:"Scheduled · Thu 9am",st:"Scheduled",stk:"b-info",ic:"flame"},
+  {plat:"Facebook",c:"#5B6B72",cap:"We're hiring! Looking for driven people who want to build a business that helps families. DM to learn more.",when:"Posted · Tue",st:"Posted",stk:"b-ok",ic:"users"},
+  {plat:"TikTok",c:"#6D5B72",cap:"POV: you finally understand how an IUL works in 30 seconds. Save this. #financialliteracy",when:"Draft · needs review",st:"Draft",stk:"b-warn",ic:"video"},
+];
+function vAISocial(){
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Growth · Automation</div>
+      <h1>AI Social Studio</h1>
+      <p>Your minimal, informal social presence — put on autopilot. The engine writes on-brand content, schedules it, runs ad campaigns to a budget you set, and reports what's working.</p>
+    </div></div>
+    <div class="phase-banner">${svg('info',16)}<div><b>Phase 3 of the proposal.</b> A preview of the AI content + ad engine, so you can picture how recruiting reach scales without adding hours.</div></div>
+
+    <div class="grid g-2 mb" style="align-items:start">
+      <div class="card card-pad">
+        <div class="flex between center mb"><h3 class="serif" style="font-size:19px;color:var(--ink)">Recruiting campaign</h3><span class="badge b-ok">Live</span></div>
+        <div class="flex between center" style="font-size:13px"><span class="muted">Monthly ad budget</span><b style="color:var(--ink)">$600 / $800</b></div>
+        <div class="budget-bar"><span style="width:75%"></span></div>
+        <div class="grid g-3 mt-l" style="gap:12px">
+          <div><div class="sv" style="font-family:var(--f-display);font-size:26px;color:var(--ink)">18.4k</div><div class="muted" style="font-size:11.5px">Reach (30d)</div></div>
+          <div><div class="sv" style="font-family:var(--f-display);font-size:26px;color:var(--ink)">37</div><div class="muted" style="font-size:11.5px">Recruit leads</div></div>
+          <div><div class="sv" style="font-family:var(--f-display);font-size:26px;color:var(--ok)">$16</div><div class="muted" style="font-size:11.5px">Cost / lead</div></div>
+        </div>
+      </div>
+      <div class="card card-pad">
+        <h3 class="serif" style="font-size:19px;color:var(--ink)">This week's calendar</h3>
+        <p class="muted" style="font-size:12.5px;margin:4px 0 12px">Auto-scheduled — you only approve.</p>
+        ${[["Mon","Reel — client story","Posted"],["Tue","Recruiting post","Posted"],["Thu","IG carousel — 5 tips","Scheduled"],["Sat","Event promo — BPM","Scheduled"]].map(r=>`<div class="flex between center" style="padding:9px 0;border-bottom:1px solid var(--bd)"><div><b style="font-size:13px;color:var(--ink)">${r[0]} · ${r[1]}</b></div><span class="badge ${r[2]==='Posted'?'b-ok':'b-info'}">${r[2]}</span></div>`).join('')}
+      </div>
+    </div>
+
+    <div class="section-t">Generated content — pending your approval</div>
+    <div class="posts">${POSTS.map(p=>`
+      <div class="post">
+        <div class="pimg" style="background:linear-gradient(135deg,${p.c},${shade(p.c)})"><span class="plat">${p.plat}</span>${svg(p.ic,34)}</div>
+        <div class="pb2"><div class="pcap">${p.cap}</div>
+          <div class="pmeta"><span class="when">${p.when}</span><span class="badge ${p.stk}">${p.st}</span></div>
+        </div>
+      </div>`).join('')}
     </div>
   </div>`;
 }
