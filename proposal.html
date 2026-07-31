@@ -108,6 +108,17 @@ section:nth-child(even) .card{background:var(--surface-2)}
 .metric{display:flex;gap:14px;align-items:baseline;margin-bottom:10px}
 .metric .n{font-family:var(--f-display);font-weight:600;font-size:26px;color:var(--gold-deep);flex:none;min-width:74px}
 .metric .l{font-size:13.5px;color:var(--tx-2)}
+.anchor{display:flex;align-items:center;gap:24px;background:linear-gradient(135deg,var(--ink),var(--ink-3));color:#fff;border-radius:var(--r-xl);padding:26px 30px;box-shadow:var(--sh-md);flex-wrap:wrap}
+.anchor .a-lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark-2);font-weight:700;margin-bottom:6px}
+.anchor .a-lbl.gold{color:var(--gold-light)}
+.anchor .a-strike{font-family:var(--f-display);font-size:25px;color:var(--on-dark-2);text-decoration:line-through;text-decoration-color:var(--gold);text-decoration-thickness:2px}
+.anchor .a-arrow{color:var(--gold-light);font-size:26px}
+.anchor .a-right{flex:1;min-width:170px}
+.anchor .a-price{font-family:var(--f-display);font-weight:600;font-size:46px;color:#fff;line-height:1}
+.anchor .a-sub{font-size:12px;color:var(--on-dark-2);margin-top:3px}
+.a-note{background:var(--gold-tint);border:1px solid #ecdcb8;border-radius:var(--r-md);padding:16px 18px;font-size:14.5px;color:var(--gold-deep);font-style:italic;margin:14px 0 22px;line-height:1.55}
+.a-note b{color:#7a5615;font-style:normal}
+@media(max-width:600px){.anchor .a-arrow{transform:rotate(90deg)}}
 </style>
 </head>
 <body>
@@ -282,17 +293,32 @@ section:nth-child(even) .card{background:var(--surface-2)}
   <div class="wrap">
     <div class="eyebrow sec-eyebrow">Investment</div>
     <h2 class="title">Pricing</h2>
-    <p class="lead">A one-time setup fee per phase, plus a single monthly fee that covers hosting, maintenance, and support. Build only what you're ready for.</p>
+    <p class="lead">This is a business asset, not a website — priced against the leader hours it gives back and the producers it helps you license. Here's where it lands for LTD.</p>
+
+    <div class="anchor">
+      <div>
+        <div class="a-lbl">Comparable agency build</div>
+        <div class="a-strike">$55,000–$75,000</div>
+      </div>
+      <div class="a-arrow">→</div>
+      <div class="a-right">
+        <div class="a-lbl gold">The LTD partner price</div>
+        <div class="a-price">$40,000</div>
+        <div class="a-sub">Full three-phase platform · staged over ~3–4 months</div>
+      </div>
+    </div>
+    <p class="a-note">A fully custom, multi-module platform like this typically runs <b>$55,000–$75,000</b> to build with an agency. Because I believe in what your team is building — and I want to be your long-term partner, not a one-off vendor — I'd love to deliver the full platform for LTD at <b>$40,000</b>, staged so you invest as you see results.</p>
+
     <table class="ptable">
       <thead><tr><th>Phase</th><th>One-time setup</th><th>Added monthly</th><th>Typical timeline</th></tr></thead>
       <tbody>
-        <tr><td><b>1 · Training &amp; Licensing Core</b><div class="est">The must-haves</div></td><td class="amt">$7,000–$10,000</td><td class="amt">$300–$450</td><td>4–6 weeks</td></tr>
-        <tr><td><b>2 · Recruiting Engine</b><div class="est">CRM + events + outreach</div></td><td class="amt">$5,000–$8,000</td><td class="amt">+$150–$250</td><td>3–5 weeks</td></tr>
-        <tr><td><b>3 · Growth &amp; Automation</b><div class="est">AI social + integrations</div></td><td class="amt">$6,000–$11,000</td><td class="amt">+$150–$300*</td><td>4–6 weeks</td></tr>
-        <tr class="tot"><td>All three phases</td><td class="amt">≈ $18,000–$29,000</td><td class="amt">≈ $600–$1,000/mo</td><td>Staged over ~3–4 mo</td></tr>
+        <tr><td><b>1 · Training &amp; Licensing Core</b><div class="est">The must-haves</div></td><td class="amt">$14,500</td><td class="amt">$750</td><td>4–6 weeks</td></tr>
+        <tr><td><b>2 · Recruiting Engine</b><div class="est">CRM + events + outreach</div></td><td class="amt">$11,000</td><td class="amt">+$400</td><td>3–5 weeks</td></tr>
+        <tr><td><b>3 · Growth &amp; Automation</b><div class="est">AI social + integrations</div></td><td class="amt">$14,500</td><td class="amt">+$500*</td><td>4–6 weeks</td></tr>
+        <tr class="tot"><td>All three phases</td><td class="amt">$40,000</td><td class="amt">$1,650/mo</td><td>Staged over ~3–4 mo</td></tr>
       </tbody>
     </table>
-    <div class="note-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div><b>These are planning estimates, not a final quote.</b> Exact figures are confirmed once we lock Phase 1 scope. *Phase 3 monthly excludes pass-through costs you control directly (ad spend and AI usage). The monthly fee also lets you retire scattered subscriptions — see cost offsets below.</div></div>
+    <div class="note-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div><b>Start with Phase 1 and grow from there.</b> Setup is fixed once we confirm Phase&nbsp;1 scope. *Phase&nbsp;3 monthly excludes the pass-through costs you control directly (ad spend and AI usage). The monthly fee also lets you retire scattered subscriptions — see cost offsets below.</div></div>
   </div>
 </section>
 
