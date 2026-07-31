@@ -563,6 +563,7 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
 .frun .ft{font-weight:600;font-size:14px;color:var(--ink)}
 .frun .fnote{font-size:12.5px;color:#5a4a2f;background:var(--gold-tint);border-left:3px solid var(--gold);padding:9px 13px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin-top:8px;line-height:1.5}
 .frun .fnote b{color:#7a5615}
+.goalcard{background:var(--surface-2);border:1px solid var(--bd);border-radius:var(--r-md);padding:13px 15px}
 </style>
 </head>
 <body>
@@ -1017,7 +1018,7 @@ function contestCard(c){
 }
 
 /* =====================  APP  ===================== */
-const state={view:'dashboard', current:'k5', persona:'maya', profile:'training', vaultSeg:'nonlicensed', fcDeck:'All', fcIndex:0, fcFlip:false, fcKnown:new Set(), chat:null, quoteIdx:0, quoteTimer:null, pipeStep:-1, playing:false, playTimer:null};
+const state={view:'dashboard', current:'k5', persona:'maya', profile:'training', vaultSeg:'nonlicensed', planPreset:'333', fcDeck:'All', fcIndex:0, fcFlip:false, fcKnown:new Set(), chat:null, quoteIdx:0, quoteTimer:null, pipeStep:-1, playing:false, playTimer:null};
 
 function toast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2400);}
 function setNav(){document.querySelectorAll('.nav-i').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));}
@@ -1405,15 +1406,26 @@ const ASSOCIATES=[
   {n:"Andre Okafor",up:"Bita G.",start:"Jul 20",stage:1,status:"Contracting in review",k:"b-neutral"},
 ];
 const ONBOARD=[["WFG contracting signed",1],["Background check cleared",1],["E&O / compliance acknowledged",1],["Advisor code issued",1],["LLQP course enrolled",1],["LLQP exam booked",0],["Provincial licensing filed",0],["Academy Fast-Start assigned",0]];
-const FIELDCHALLENGE={goal:5,done:2,daysLeft:8,who:"Riley Tran",
-  runs:[
-    {n:"Cousin — Maya",st:"done",badge:"No-show",bk:"b-bad",note:"<b>Trainer debrief:</b> the invite was too casual — no clear time or reason to meet. Reps like this are expected early. Fix for next time: lock a specific time and a clear “why.”"},
-    {n:"Old coworker — Dan",st:"done",badge:"Met · not now",bk:"b-warn",note:"<b>Trainer debrief:</b> great rapport, but you pitched before setting the table. Next time, frame the meeting first — then let the trainer present."},
-    {n:"Gym friend — Priya",st:"booked",badge:"Booked w/ trainer · Thu",bk:"b-info",note:"You set the frame; your trainer co-runs the presentation."},
-    {n:"Neighbour — Sam",st:"invite",badge:"Invite drafted",bk:"b-neutral",note:""},
-    {n:"1 more to line up",st:"empty",badge:"Open slot",bk:"b-neutral",note:""},
-  ]};
+const PLANS=[
+  {id:"333",name:"3 / 3 / 30",tag:"A 30-day fast-start cadence",window:"18 days left",goals:[{l:"Outreach",d:22,t:30},{l:"Appointments booked",d:6,t:9},{l:"Progress to certification",d:60,t:100,pct:true}]},
+  {id:"5f",name:"5 field trainings · 2 weeks",tag:"Reps in the field alongside your trainer",window:"8 days left",goals:[{l:"Field trainings",d:2,t:5},{l:"Appointments booked",d:3,t:5},{l:"Progress to certification",d:45,t:100,pct:true}]},
+  {id:"w1",name:"Week-1 Fast Start",tag:"Reach out to 10 and book 3 in your first week",window:"3 days left",goals:[{l:"Reach-outs",d:7,t:10},{l:"Bookings",d:2,t:3},{l:"Progress to certification",d:20,t:100,pct:true}]},
+  {id:"custom",name:"Custom",tag:"Trainee & trainer set their own targets",window:"Custom window",goals:[{l:"Outreach",d:0,t:0},{l:"Meetings",d:0,t:0},{l:"Progress to certification",d:0,t:0,pct:true}]},
+];
+const PLAN_RUNS=[
+  {n:"Cousin — Maya",st:"done",badge:"No-show",bk:"b-bad",note:"<b>Trainer debrief:</b> the invite was too casual — no clear time or reason to meet. Reps like this are expected early. Fix for next time: lock a specific time and a clear “why.”"},
+  {n:"Old coworker — Dan",st:"done",badge:"Met · not now",bk:"b-warn",note:"<b>Trainer debrief:</b> great rapport, but you pitched before setting the table. Next time, frame the meeting first — then let the trainer present."},
+  {n:"Gym friend — Priya",st:"booked",badge:"Booked w/ trainer · Thu",bk:"b-info",note:"You set the frame; your trainer co-runs the presentation."},
+  {n:"Neighbour — Sam",st:"invite",badge:"Invite drafted",bk:"b-neutral",note:""},
+  {n:"1 more to line up",st:"empty",badge:"Open slot",bk:"b-neutral",note:""},
+];
+function goalcard(g){
+  const custom=g.t===0; const pct=custom?0:(g.pct?g.d:Math.round(g.d/g.t*100));
+  const val=custom?'Set target':(g.pct?g.d+'%':g.d+' / '+g.t);
+  return `<div class="goalcard"><div class="flex between center" style="margin-bottom:7px"><span style="font-size:12.5px;font-weight:600;color:var(--ink)">${g.l}</span><span style="font-size:12px;color:${custom?'var(--tx-3)':'var(--tx-2)'}">${val}</span></div><div class="bar"><span style="width:${pct}%"></span></div></div>`;
+}
 function vAssociates(){
+  const plan=PLANS.find(p=>p.id===state.planPreset)||PLANS[0];
   const stats=[{l:"In onboarding",v:"6",ic:"users"},{l:"In licensing",v:"9",ic:"doc"},{l:"Licensed this month",v:"7",ic:"award"},{l:"Avg. time to license",v:"21d",ic:"clock"}];
   return `<div class="view">
     <div class="ph"><div>
@@ -1443,29 +1455,33 @@ function vAssociates(){
       </div>
     </div>
 
-    <div class="section-t mt-l">Field Training Challenge</div>
+    <div class="section-t mt-l">Personalized Training Plan</div>
     <div class="chal">
       <div class="ch-top">
         <div>
-          <div class="eyebrow" style="color:var(--gold-light)">Fast-start goal · ${FIELDCHALLENGE.who}</div>
-          <h3>5 field trainings in 2 weeks</h3>
-          <p class="csub">Invite 5 people you know who might want to learn about finance, and run each meeting alongside your trainer. The first couple are out in the wild — that's where the reps, the mistakes, and your own style come from.</p>
+          <div class="eyebrow" style="color:var(--gold-light)">Personalized plan · Riley Tran</div>
+          <h3>Set the plan that fits each trainee</h3>
+          <p class="csub">Goals for outreach, meetings, and progress to certification — pick a recommended cadence like 3/3/30 or build a custom one. Because it's online, every plan is easy to track and follow up on.</p>
         </div>
         <div class="cprog">
-          <div class="cnum">${FIELDCHALLENGE.done} / ${FIELDCHALLENGE.goal}</div>
-          <div class="cdays">${FIELDCHALLENGE.daysLeft} days left</div>
-          <div class="cbar"><span style="width:${Math.round(FIELDCHALLENGE.done/FIELDCHALLENGE.goal*100)}%"></span></div>
+          <div class="cnum" style="font-size:24px">${plan.name}</div>
+          <div class="cdays">${plan.window}</div>
         </div>
       </div>
     </div>
     <div class="chal-body">
-      ${FIELDCHALLENGE.runs.map((r,i)=>`<div class="frun">
+      <div class="deck-chips" style="margin:14px 0 6px">${PLANS.map(p=>`<button class="dchip ${p.id===plan.id?'on':''}" data-plan="${p.id}">${p.name}</button>`).join('')}</div>
+      <p class="muted" style="font-size:12.5px;margin:0 0 14px">${plan.tag}</p>
+      <div class="grid g-3" style="gap:14px">${plan.goals.map(goalcard).join('')}</div>
+      <hr class="hr">
+      <div style="font-weight:700;font-size:13.5px;color:var(--ink);margin-bottom:10px">Logged reps &amp; trainer debriefs</div>
+      ${PLAN_RUNS.map((r,i)=>`<div class="frun">
         <div class="fnum ${r.st}">${r.st==='done'?svg('check',15):(r.st==='empty'?'+':i+1)}</div>
         <div class="fbody"><div class="flex between center gap"><div class="ft">${r.n}</div><span class="badge ${r.bk}">${r.badge}</span></div>
         ${r.note?`<div class="fnote">${r.note}</div>`:''}</div>
       </div>`).join('')}
     </div>
-    <div class="rationale mt">${svg('spark',18)}<div><b>The coaching loop:</b> after each early attempt, the trainer breaks down what went right and what went wrong — that's the 1:1 time Sare spends today, captured and made repeatable. A few rounds in, the new agent knows how to approach the conversation and set the table for a professional meeting.</div></div>
+    <div class="rationale mt">${svg('spark',18)}<div><b>The coaching loop:</b> after each rep, the trainer breaks down what went right and what went wrong — that's the 1:1 time Sare spends today, captured and made repeatable. A few rounds in, the new agent knows how to approach the conversation and set the table for a professional meeting.</div></div>
 
     ${spineBlock()}
   </div>`;
@@ -1846,6 +1862,7 @@ function wire(){
   if(state.view==='adaptive')document.querySelectorAll('[data-persona]').forEach(b=>b.onclick=()=>{state.persona=b.dataset.persona;render();});
   if(state.view==='admin')wireAdmin();
   if(state.view==='vault')document.querySelectorAll('[data-vault]').forEach(b=>b.onclick=()=>{state.vaultSeg=b.dataset.vault;render();});
+  if(state.view==='associates')document.querySelectorAll('[data-plan]').forEach(b=>b.onclick=()=>{state.planPreset=b.dataset.plan;render();});
 }
 
 function wireDash(){
