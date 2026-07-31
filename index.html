@@ -482,6 +482,87 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
 .post .pmeta .when{font-size:11.5px;color:var(--tx-3)}
 .budget-bar{height:10px;border-radius:var(--r-pill);background:var(--tint);overflow:hidden;margin-top:8px}
 .budget-bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--gold-light),var(--gold-deep))}
+
+/* ---------- Flashcards ---------- */
+.deck-chips{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:22px}
+.dchip{font-size:12.5px;font-weight:600;color:var(--tx-2);background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-pill);padding:8px 15px;cursor:pointer;transition:all .14s}
+.dchip:hover{border-color:var(--bd-strong)}
+.dchip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.dchip .cnt{opacity:.6;font-weight:700;margin-left:5px}
+.fc-wrap{max-width:640px;margin:0 auto}
+.fc{perspective:1800px;height:310px;cursor:pointer;margin-bottom:18px}
+.fc-inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.4,.15,.2,1);transform-style:preserve-3d}
+.fc.flipped .fc-inner{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:var(--r-xl);border:1px solid var(--bd);box-shadow:var(--sh-md);display:grid;place-items:center;padding:36px;text-align:center}
+.fc-front{background:var(--surface)}
+.fc-front .fe{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold-deep);position:absolute;top:22px;left:0;right:0}
+.fc-front .q{font-family:var(--f-display);font-weight:600;font-size:28px;color:var(--ink);line-height:1.25}
+.fc-front .hint{position:absolute;bottom:18px;left:0;right:0;font-size:12px;color:var(--tx-3)}
+.fc-back{background:linear-gradient(135deg,var(--ink),var(--ink-3));color:var(--on-dark);transform:rotateY(180deg)}
+.fc-back .fe{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold-light);position:absolute;top:22px;left:0;right:0}
+.fc-back .a{font-size:16.5px;line-height:1.55;max-width:470px}
+.fc-back .a b{color:#fff}
+.fc-controls{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px}
+.fc-nav{width:42px;height:42px;border-radius:50%;border:1px solid var(--bd);background:var(--surface);display:grid;place-items:center;color:var(--tx-2);box-shadow:var(--sh-sm)}
+.fc-nav:hover{background:var(--hover);color:var(--tx)}
+.fc-nav svg{width:18px;height:18px}
+.fc-count{font-size:13px;font-weight:600;color:var(--tx-2);min-width:70px;text-align:center;font-variant-numeric:tabular-nums}
+.fc-judge{display:flex;gap:12px;justify-content:center;margin-top:14px}
+.fc-known{text-align:center;margin-top:16px;font-size:13px;color:var(--tx-2)}
+.fc-known b{color:var(--ok)}
+
+/* ---------- Study Buddy ---------- */
+.chat-wrap{max-width:780px;margin:0 auto}
+.chat-hero{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,var(--ink),var(--ink-3));color:#fff;border-radius:var(--r-lg);padding:18px 22px;margin-bottom:18px}
+.chat-hero .ci{width:46px;height:46px;border-radius:12px;background:rgba(198,169,126,.18);border:1px solid rgba(198,169,126,.3);display:grid;place-items:center;flex:none}
+.chat-hero .ci svg{width:24px;height:24px;color:var(--gold-light)}
+.chat-hero h3{font-family:var(--f-display);font-size:20px}
+.chat-hero p{color:var(--on-dark-2);font-size:12.5px;margin-top:2px}
+.chat{background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-lg);box-shadow:var(--sh-sm);height:460px;overflow-y:auto;padding:22px}
+.msg{display:flex;gap:11px;margin-bottom:16px;max-width:84%}
+.msg .mav{width:32px;height:32px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-weight:700;font-size:11px}
+.msg .mav svg{width:17px;height:17px}
+.msg .bub{padding:12px 15px;border-radius:14px;font-size:13.5px;line-height:1.55}
+.msg.user{margin-left:auto;flex-direction:row-reverse}
+.msg.user .bub{background:var(--ink);color:var(--on-dark);border-bottom-right-radius:4px}
+.msg.user .mav{background:var(--ink-3)}
+.msg.bot .bub{background:var(--surface-2);border:1px solid var(--bd);color:var(--tx);border-bottom-left-radius:4px}
+.msg.bot .mav{background:linear-gradient(135deg,var(--gold),var(--gold-deep))}
+.bub b{color:var(--ink)} .msg.user .bub b{color:#fff}
+.src-chip{font-size:11px;color:var(--gold-deep);background:var(--gold-tint);padding:3px 9px;border-radius:var(--r-pill);display:inline-flex;gap:5px;align-items:center;margin-top:9px;font-weight:600}
+.src-chip svg{width:11px;height:11px}
+.chat-input{display:flex;gap:10px;margin-top:14px}
+.chat-input input{flex:1;border:1px solid var(--bd-strong);border-radius:var(--r-pill);padding:12px 18px;font-family:inherit;font-size:14px;background:var(--surface);color:var(--tx)}
+.chat-input input:focus{outline:none;border-color:var(--gold)}
+.chat-input button{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#fff;display:grid;place-items:center;flex:none}
+.chat-input button svg{width:18px;height:18px}
+.sugg{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.sugg .s{font-size:12.5px;font-weight:600;color:var(--tx);background:var(--surface);border:1px solid var(--bd);border-radius:var(--r-pill);padding:8px 14px;cursor:pointer;transition:all .14s}
+.sugg .s:hover{border-color:var(--gold);background:var(--gold-tint)}
+
+/* ---------- Field Training Challenge ---------- */
+.chal{background:linear-gradient(135deg,var(--ink),var(--ink-3));color:#fff;border-radius:var(--r-xl) var(--r-xl) 0 0;padding:24px 28px}
+.chal .ch-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px}
+.chal h3{font-family:var(--f-display);font-size:23px;color:#fff}
+.chal .csub{color:var(--on-dark-2);font-size:13px;margin-top:7px;max-width:540px;line-height:1.5}
+.chal .cprog{text-align:right;flex:none}
+.chal .cnum{font-family:var(--f-display);font-size:38px;color:var(--gold-light);line-height:1}
+.chal .cdays{font-size:12px;color:var(--on-dark-2);margin-top:3px}
+.chal .cbar{width:210px;height:8px;border-radius:var(--r-pill);background:rgba(255,255,255,.15);overflow:hidden;margin-top:11px;margin-left:auto}
+.chal .cbar>span{display:block;height:100%;background:linear-gradient(90deg,var(--gold-light),var(--gold))}
+.chal-body{background:var(--surface);border:1px solid var(--bd);border-top:none;border-radius:0 0 var(--r-xl) var(--r-xl);padding:6px 24px 16px;box-shadow:var(--sh-sm)}
+.frun{display:flex;align-items:flex-start;gap:14px;padding:15px 0;border-bottom:1px solid var(--bd)}
+.frun:last-child{border-bottom:none}
+.frun .fnum{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:700;font-size:12px;margin-top:1px}
+.frun .fnum svg{width:15px;height:15px}
+.frun .fnum.done{background:var(--ok);color:#fff}
+.frun .fnum.booked{background:var(--gold);color:#fff}
+.frun .fnum.invite{background:var(--tint);color:var(--tx-2)}
+.frun .fnum.empty{background:var(--surface);border:2px dashed var(--bd-strong);color:var(--tx-3)}
+.frun .fbody{flex:1}
+.frun .ft{font-weight:600;font-size:14px;color:var(--ink)}
+.frun .fnote{font-size:12.5px;color:#5a4a2f;background:var(--gold-tint);border-left:3px solid var(--gold);padding:9px 13px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin-top:8px;line-height:1.5}
+.frun .fnote b{color:#7a5615}
 </style>
 </head>
 <body>
@@ -511,6 +592,14 @@ h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
       <button class="nav-i" data-view="learn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M7 9.5V14c0 1.5 2.2 3 5 3s5-1.5 5-3V9.5"/><path d="M21 7v5"/></svg>
         Course Player <span class="tag live">Live</span>
+      </button>
+      <button class="nav-i" data-view="flashcards">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="8" width="13" height="13" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg>
+        Flashcards <span class="tag live">Live</span>
+      </button>
+      <button class="nav-i" data-view="studybuddy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8 8 0 0 1-11.5 7.2L4 20.5l1.8-4.7A8 8 0 1 1 21 11.5z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg>
+        Study Buddy <span class="tag live">Live</span>
       </button>
       <button class="nav-i" data-view="adaptive">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
@@ -629,6 +718,10 @@ const I = {
   form:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
   pin:'<path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',
   ticket:'<path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H6a2 2 0 0 1-2-2 2 2 0 0 0 0-4z"/><path d="M14 6v12"/>',
+  cards:'<rect x="3" y="8" width="13" height="13" rx="2"/><path d="M7 8V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/>',
+  chat:'<path d="M21 11.5a8 8 0 0 1-11.5 7.2L4 20.5l1.8-4.7A8 8 0 1 1 21 11.5z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/>',
+  send:'<path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/>',
+  sparkle:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/>',
 };
 const svg=(k,w=18)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:${w}px;height:${w}px">${I[k]||''}</svg>`;
 const initials=n=>n.split(' ').map(x=>x[0]).slice(0,2).join('');
@@ -924,11 +1017,11 @@ function contestCard(c){
 }
 
 /* =====================  APP  ===================== */
-const state={view:'dashboard', current:'k5', persona:'maya', profile:'training', vaultSeg:'nonlicensed', quoteIdx:0, quoteTimer:null, pipeStep:-1, playing:false, playTimer:null};
+const state={view:'dashboard', current:'k5', persona:'maya', profile:'training', vaultSeg:'nonlicensed', fcDeck:'All', fcIndex:0, fcFlip:false, fcKnown:new Set(), chat:null, quoteIdx:0, quoteTimer:null, pipeStep:-1, playing:false, playTimer:null};
 
 function toast(msg){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=msg;t.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('show'),2400);}
 function setNav(){document.querySelectorAll('.nav-i').forEach(b=>b.classList.toggle('active',b.dataset.view===state.view));}
-const CRUMB={dashboard:['Dashboard',''],learn:['Academy','· Course Player'],adaptive:['Academy','· Adaptive Paths'],admin:['Academy','· Content Studio'],analytics:['Academy','· Analytics'],associates:['New Associates','· Team LTD'],walloffame:['Wall of Fame','· Team LTD'],vault:['LTD Vault','· Team LTD'],events:['Events','· Team LTD'],recruiting:['Recruiting CRM','· Phase 2'],aisocial:['AI Social Studio','· Phase 3']};
+const CRUMB={dashboard:['Dashboard',''],learn:['Academy','· Course Player'],flashcards:['Academy','· Flashcards'],studybuddy:['Academy','· Study Buddy'],adaptive:['Academy','· Adaptive Paths'],admin:['Academy','· Content Studio'],analytics:['Academy','· Analytics'],associates:['New Associates','· Team LTD'],walloffame:['Wall of Fame','· Team LTD'],vault:['LTD Vault','· Team LTD'],events:['Events','· Team LTD'],recruiting:['Recruiting CRM','· Phase 2'],aisocial:['AI Social Studio','· Phase 3']};
 function nav(v){state.view=v;setNav();const c=CRUMB[v]||[v,''];document.getElementById('crumbTop').textContent=c[0];document.getElementById('crumbSub').textContent=c[1];render();document.querySelector('.main').scrollTop=0;}
 
 function render(){
@@ -940,6 +1033,8 @@ function render(){
   else if(V==='adaptive')r.innerHTML=vAdaptive();
   else if(V==='admin')r.innerHTML=vAdmin();
   else if(V==='analytics')r.innerHTML=vAnalytics();
+  else if(V==='flashcards')r.innerHTML=vFlashcards();
+  else if(V==='studybuddy')r.innerHTML=vStudyBuddy();
   else if(V==='associates')r.innerHTML=vAssociates();
   else if(V==='walloffame')r.innerHTML=vWallOfFame();
   else if(V==='vault')r.innerHTML=vVault();
@@ -955,6 +1050,8 @@ function vDashboard(){
   const p=state.profile, D=DASH[p];
   const tiles=[
     {v:'learn',ic:'video',c:'#5B6B72',t:'Course Player',d:'Adaptive video course, cut into concepts with quizzes after each segment.',live:true},
+    {v:'flashcards',ic:'cards',c:'#B0894A',t:'Flashcards',d:'Study the whole deck or drill one track — great before the exam.',live:true},
+    {v:'studybuddy',ic:'sparkle',c:'#6D5B72',t:'Study Buddy',d:'AI coach trained on your courses & materials — answers on-message.',live:true},
     {v:'adaptive',ic:'spark',c:'#6D5B72',t:'Adaptive Paths',d:'Placement assessment curates each trainee’s path to their ability.',live:true},
     {v:'admin',ic:'wand',c:'#9F7D55',t:'Content Studio',d:'Drop a recording → auto-chunk into concepts, chapters & draft quizzes.',live:true},
     {v:'analytics',ic:'up',c:'#5E7A6E',t:'Analytics',d:'Leaderboard, completion funnel, and where trainees get stuck.',live:true},
@@ -1308,6 +1405,14 @@ const ASSOCIATES=[
   {n:"Andre Okafor",up:"Bita G.",start:"Jul 20",stage:1,status:"Contracting in review",k:"b-neutral"},
 ];
 const ONBOARD=[["WFG contracting signed",1],["Background check cleared",1],["E&O / compliance acknowledged",1],["Advisor code issued",1],["LLQP course enrolled",1],["LLQP exam booked",0],["Provincial licensing filed",0],["Academy Fast-Start assigned",0]];
+const FIELDCHALLENGE={goal:5,done:2,daysLeft:8,who:"Riley Tran",
+  runs:[
+    {n:"Cousin — Maya",st:"done",badge:"No-show",bk:"b-bad",note:"<b>Trainer debrief:</b> the invite was too casual — no clear time or reason to meet. Reps like this are expected early. Fix for next time: lock a specific time and a clear “why.”"},
+    {n:"Old coworker — Dan",st:"done",badge:"Met · not now",bk:"b-warn",note:"<b>Trainer debrief:</b> great rapport, but you pitched before setting the table. Next time, frame the meeting first — then let the trainer present."},
+    {n:"Gym friend — Priya",st:"booked",badge:"Booked w/ trainer · Thu",bk:"b-info",note:"You set the frame; your trainer co-runs the presentation."},
+    {n:"Neighbour — Sam",st:"invite",badge:"Invite drafted",bk:"b-neutral",note:""},
+    {n:"1 more to line up",st:"empty",badge:"Open slot",bk:"b-neutral",note:""},
+  ]};
 function vAssociates(){
   const stats=[{l:"In onboarding",v:"6",ic:"users"},{l:"In licensing",v:"9",ic:"doc"},{l:"Licensed this month",v:"7",ic:"award"},{l:"Avg. time to license",v:"21d",ic:"clock"}];
   return `<div class="view">
@@ -1337,6 +1442,31 @@ function vAssociates(){
         ${[["Sofia Marín",100,"Licensed"],["Riley Tran",100,"Licensed"],["Maya Chen",62,"In course"],["Jordan Blake",40,"Exam booked"],["Andre Okafor",8,"Not started"]].map(r=>`<div style="margin-bottom:12px"><div class="flex between" style="font-size:12.5px;margin-bottom:4px"><b style="color:var(--ink)">${r[0]}</b><span class="muted">${r[2]}</span></div><div class="bar"><span style="width:${r[1]}%"></span></div></div>`).join('')}
       </div>
     </div>
+
+    <div class="section-t mt-l">Field Training Challenge</div>
+    <div class="chal">
+      <div class="ch-top">
+        <div>
+          <div class="eyebrow" style="color:var(--gold-light)">Fast-start goal · ${FIELDCHALLENGE.who}</div>
+          <h3>5 field trainings in 2 weeks</h3>
+          <p class="csub">Invite 5 people you know who might want to learn about finance, and run each meeting alongside your trainer. The first couple are out in the wild — that's where the reps, the mistakes, and your own style come from.</p>
+        </div>
+        <div class="cprog">
+          <div class="cnum">${FIELDCHALLENGE.done} / ${FIELDCHALLENGE.goal}</div>
+          <div class="cdays">${FIELDCHALLENGE.daysLeft} days left</div>
+          <div class="cbar"><span style="width:${Math.round(FIELDCHALLENGE.done/FIELDCHALLENGE.goal*100)}%"></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="chal-body">
+      ${FIELDCHALLENGE.runs.map((r,i)=>`<div class="frun">
+        <div class="fnum ${r.st}">${r.st==='done'?svg('check',15):(r.st==='empty'?'+':i+1)}</div>
+        <div class="fbody"><div class="flex between center gap"><div class="ft">${r.n}</div><span class="badge ${r.bk}">${r.badge}</span></div>
+        ${r.note?`<div class="fnote">${r.note}</div>`:''}</div>
+      </div>`).join('')}
+    </div>
+    <div class="rationale mt">${svg('spark',18)}<div><b>The coaching loop:</b> after each early attempt, the trainer breaks down what went right and what went wrong — that's the 1:1 time Sare spends today, captured and made repeatable. A few rounds in, the new agent knows how to approach the conversation and set the table for a professional meeting.</div></div>
+
     ${spineBlock()}
   </div>`;
 }
@@ -1477,6 +1607,118 @@ function vEvents(){
   </div>`;
 }
 
+/* ---------- Flashcards ---------- */
+const FLASHCARDS=[
+  {deck:"Invitation", q:"Value-first framing", a:"Open with the <b>prospect's problem</b> — protecting their family's income — not your product or company."},
+  {deck:"Invitation", q:"The 3-question invite framework", a:"Q1 permission → Q2 surface the gap → Q3 the ask. The <b>middle question</b> creates the tension that makes the ask land."},
+  {deck:"Invitation", q:"Posture over pressure", a:"A calm, curious tone signals you're <b>offering something valuable</b> — it lifts response rates far more than a perfect script."},
+  {deck:"Edification", q:"What is edification?", a:"Transferring <b>third-party credibility</b> to the person joining the call, so the prospect trusts faster."},
+  {deck:"Edification", q:"The 45-second story", a:"Before → bridge → after. Keep it <b>short and repeatable</b> so anyone on the team can deliver it."},
+  {deck:"Advanced", q:"Term vs. permanent", a:"<b>Term</b> = level coverage for a set period, lower cost, no cash value. <b>Permanent (WL/IUL)</b> = builds cash value and is designed to last for life."},
+  {deck:"Advanced", q:"Needs-based selling", a:"Match the product to the client's <b>documented need</b> — better for the client and compliant."},
+  {deck:"Advanced", q:"The DIME method", a:"<b>D</b>ebt · <b>I</b>ncome · <b>M</b>ortgage · <b>E</b>ducation — a fast way to size income-replacement need."},
+  {deck:"Advanced", q:"The 4 real objections", a:"Money · spouse · “let me think” · trust. Isolate and resolve with <b>feel-felt-found</b>."},
+  {deck:"Advanced", q:"Compliance guardrail", a:"Document the need; recommend <b>suitable, affordable</b> coverage. Never misstate on the app or guarantee returns."},
+  {deck:"Field Training", q:"A trainee's job on a first ride-along", a:"<b>Observe, take notes, support</b> the lead. Watching a real close, live, is the lesson."},
+  {deck:"Field Training", q:"When does a trainee speak?", a:"<b>When the lead edifies them in</b> — a short, planned moment — not by jumping in mid-appointment."},
+  {deck:"Field Training", q:"How to end a field debrief", a:"With <b>one specific improvement</b> plus the <b>next booked rep</b>. Momentum beats a long critique."},
+  {deck:"Licensing", q:"What is the LLQP?", a:"The <b>Life Licence Qualification Program</b> — Canada's licensing path: 4 modules → the provincial exam."},
+  {deck:"Licensing", q:"Cash value", a:"The savings component inside a <b>permanent</b> policy that grows over time and can be borrowed against."},
+];
+const DECKS=["All","Invitation","Edification","Advanced","Field Training","Licensing"];
+function fcList(){return state.fcDeck==='All'?FLASHCARDS:FLASHCARDS.filter(c=>c.deck===state.fcDeck);}
+function vFlashcards(){
+  const list=fcList(); const i=Math.min(state.fcIndex,list.length-1); const c=list[i];
+  const known=[...state.fcKnown].filter(k=>list.some(x=>x.q===k)).length;
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Academy · Study Tools</div>
+      <h1>Flashcards</h1>
+      <p>Quick-recall practice built from every course. Study the whole deck or drill a single track — ideal before the licensing exam.</p>
+    </div></div>
+    <div class="deck-chips">${DECKS.map(d=>{const n=d==='All'?FLASHCARDS.length:FLASHCARDS.filter(x=>x.deck===d).length;return `<button class="dchip ${d===state.fcDeck?'on':''}" data-deck="${d}">${d}<span class="cnt">${n}</span></button>`;}).join('')}</div>
+    <div class="fc-wrap">
+      <div class="fc ${state.fcFlip?'flipped':''}" id="fcard">
+        <div class="fc-inner">
+          <div class="fc-face fc-front"><div class="fe">${c.deck}</div><div class="q">${c.q}</div><div class="hint">Click to reveal ↻</div></div>
+          <div class="fc-face fc-back"><div class="fe">Answer</div><div class="a">${c.a}</div></div>
+        </div>
+      </div>
+      <div class="fc-controls">
+        <button class="fc-nav" id="fcPrev"><span style="display:grid;transform:rotate(180deg)">${svg('arrow',18)}</span></button>
+        <div class="fc-count">${i+1} / ${list.length}</div>
+        <button class="fc-nav" id="fcNext">${svg('arrow',18)}</button>
+      </div>
+      <div class="fc-judge">
+        <button class="btn btn-ghost btn-sm" id="fcReview">${svg('refresh',14)} Review again</button>
+        <button class="btn btn-gold btn-sm" id="fcKnown">${svg('check',14)} Got it</button>
+      </div>
+      <div class="fc-known">Mastered <b>${known}</b> of ${list.length} in this deck</div>
+    </div>
+  </div>`;
+}
+function wireFlashcards(){
+  document.querySelectorAll('[data-deck]').forEach(b=>b.onclick=()=>{state.fcDeck=b.dataset.deck;state.fcIndex=0;state.fcFlip=false;render();});
+  const card=document.getElementById('fcard'); if(card)card.onclick=()=>{state.fcFlip=!state.fcFlip;card.classList.toggle('flipped');};
+  const list=fcList();
+  const go=n=>{state.fcIndex=(state.fcIndex+n+list.length)%list.length;state.fcFlip=false;render();};
+  const prev=document.getElementById('fcPrev'); if(prev)prev.onclick=()=>go(-1);
+  const next=document.getElementById('fcNext'); if(next)next.onclick=()=>go(1);
+  const rev=document.getElementById('fcReview'); if(rev)rev.onclick=()=>go(1);
+  const kn=document.getElementById('fcKnown'); if(kn)kn.onclick=()=>{state.fcKnown.add(list[Math.min(state.fcIndex,list.length-1)].q);go(1);};
+}
+
+/* ---------- Study Buddy (contextual AI) ---------- */
+const CHAT_SEED=[
+  {role:'bot',text:"Hi! I'm your Study Buddy — trained on <b>every LTD course</b>, the licensing modules, and the materials in the Vault. Ask me anything about the products, the scripts, or your practice, and I'll answer from <b>your agency's own content</b>. What are you working on?"},
+];
+const SB_REPLIES=[
+  {q:"Explain IUL vs Term simply", k:['iul','term','permanent','difference'], src:"Module 3 · Product Guide",
+   a:"From your <b>WFG Product Guide</b>: <b>Term</b> is pure protection for a set number of years — lowest cost, no cash value. <b>IUL</b> is permanent — it lasts for life and builds <b>cash value</b> tied to a market index (with a floor so a down market doesn't erase it). Rule of thumb from Module 3: use <b>term</b> when the need is temporary (mortgage / kids years); consider <b>IUL</b> when they want lifelong coverage plus a tax-advantaged savings component. Want me to quiz you on when to recommend each?"},
+  {q:"Handle “I need to think about it”", k:['think','objection','thinking','not sure','wait'], src:"Module 3 · Vault script",
+   a:"That's one of the <b>4 real objections</b> in Module 3. Use <b>feel-felt-found</b>: “I understand — a lot of families felt the same. What they found was that the cost of waiting is usually higher than the policy.” Then <b>isolate</b>: “Just so I can help — is it the monthly amount, the timing, or something else?” The word-for-word script is in the Vault under <b>Closing &amp; Objection Handling</b>."},
+  {q:"Quiz me on compliance", k:['compliance','suitab','afford','legal','quiz'], src:"Module 3 · Compliance Brief",
+   a:"Here's one from <b>Compliance Guardrails</b>:<br><br><i>A client wants coverage but can't afford the ideal amount. What's the compliant move?</i><br><br>A) Overstate the budget on the app · B) Document the need and offer suitable coverage they can afford · C) Skip the needs analysis · D) Promise guaranteed returns<br><br>Reply with a letter and I'll tell you if you nailed it 😊"},
+  {q:"How do I run a field debrief?", k:['field','ride','debrief','shadow','solo'], src:"Module 4 · Field Playbook",
+   a:"From the <b>Field Training</b> track: keep it to ~10 minutes and end with <b>one specific improvement</b> plus the <b>next booked rep</b> — momentum beats a long critique. And remember: on a first ride-along the trainee's job is to <b>observe and support</b>, speaking only when the lead brings them in."},
+];
+const SB_DEFAULT="Good question. I only answer from <b>what your agency has uploaded</b> — the LTD courses, licensing modules, and Vault materials — so trainees always hear your approved language. Here's the short version, and I can pull up the exact lesson or script, or quiz you on it. Want me to?";
+function msgHTML(m){
+  const avm=m.role==='bot'?`<div class="mav">${svg('sparkle',17)}</div>`:`<div class="mav">SR</div>`;
+  const src=m.src?`<div><span class="src-chip">${svg('folder',11)} Source: ${m.src}</span></div>`:'';
+  return `<div class="msg ${m.role==='bot'?'bot':'user'}">${avm}<div class="bub">${m.text}${src}</div></div>`;
+}
+function vStudyBuddy(){
+  if(!state.chat)state.chat=CHAT_SEED.slice();
+  return `<div class="view">
+    <div class="ph"><div>
+      <div class="eyebrow">Academy · Study Tools</div>
+      <h1>Study Buddy</h1>
+      <p>A built-in AI coach trained only on your agency's own courses and materials — so every answer stays on-message and compliant.</p>
+    </div></div>
+    <div class="chat-wrap">
+      <div class="chat-hero"><div class="ci">${svg('sparkle',24)}</div><div><h3>Ask about anything you're learning</h3><p>Products · scripts · objections · compliance · field practice — answered from LTD's content.</p></div></div>
+      <div class="chat" id="chat">${state.chat.map(msgHTML).join('')}</div>
+      <div class="sugg">${SB_REPLIES.map(r=>`<button class="s" data-ask="${r.q.replace(/"/g,'&quot;')}">${r.q}</button>`).join('')}</div>
+      <div class="chat-input"><input id="chatInput" placeholder="Ask your Study Buddy…" autocomplete="off" /><button id="chatSend">${svg('send',18)}</button></div>
+    </div>
+  </div>`;
+}
+function askBuddy(text){
+  state.chat.push({role:'user',text});
+  const low=text.toLowerCase();
+  const r=SB_REPLIES.find(x=>x.q===text)||SB_REPLIES.find(x=>x.k.some(kw=>low.includes(kw)));
+  if(r)state.chat.push({role:'bot',text:r.a,src:r.src}); else state.chat.push({role:'bot',text:SB_DEFAULT});
+  render();
+}
+function wireStudyBuddy(){
+  const c=document.getElementById('chat'); if(c)c.scrollTop=c.scrollHeight;
+  document.querySelectorAll('[data-ask]').forEach(b=>b.onclick=()=>askBuddy(b.dataset.ask));
+  const send=document.getElementById('chatSend'), inp=document.getElementById('chatInput');
+  if(send)send.onclick=()=>{const v=inp.value.trim();if(v)askBuddy(v);};
+  if(inp){inp.focus();inp.onkeydown=e=>{if(e.key==='Enter'){const v=inp.value.trim();if(v)askBuddy(v);}};}
+}
+
 /* ---------- Recruiting CRM (Phase 2) ---------- */
 const PIPELINE=[
   {stage:"New lead",n:34,cards:[
@@ -1598,6 +1840,8 @@ function vScaffold(v){
 function wire(){
   document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>nav(b.dataset.go));
   if(state.view==='dashboard')wireDash();
+  if(state.view==='flashcards')wireFlashcards();
+  if(state.view==='studybuddy')wireStudyBuddy();
   if(state.view==='learn')wireLearn();
   if(state.view==='adaptive')document.querySelectorAll('[data-persona]').forEach(b=>b.onclick=()=>{state.persona=b.dataset.persona;render();});
   if(state.view==='admin')wireAdmin();
